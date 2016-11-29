@@ -52,3 +52,9 @@ gem 'devise'
 gem 'paperclip'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'font-awesome-sass', '~> 4.7.0'
+
+#Postgress SQL 
+gem 'pg'
+
+#added 20161129
+gem 'rmagick'

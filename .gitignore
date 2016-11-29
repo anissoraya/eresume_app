@@ -19,3 +19,9 @@
 
 # Ignore Byebug command history file.
 .byebug_history
+
+# Ignore dir below
+/public/system/users/avatars 
+
+# Ignore file below
+/config/database.yml
