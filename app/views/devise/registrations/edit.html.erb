@@ -44,7 +44,15 @@
          <%= f.password_field :current_password, autofocus: true, class: 'form-control', placeholder: 'current password' %>
          <br>
      </div>
+     <div class="form-group">
+          <div class="col-md-12">
+            <div id="input-group-addon"></div>
+             <%= f.text_field :subdomain, autofocus: true, class: 'form-control', placeholder: 'Name of Your Domain' %>
+             <br>
+         </div>
+     </div>
   </div>
+
   <br>
   <div class="actions">
     <center>
