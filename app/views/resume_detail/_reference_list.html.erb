@@ -1,0 +1,23 @@
+<% @references.each do |reference| %>
+  <div align="right">
+    <%= link_to edit_reference_path(reference), class: "btn btn-success" do %>
+      <i class="glyphicon glyphicon-pencil" style="color:white"></i>
+    <% end %>
+    <%= link_to reference, method: :delete, data: {confirm: 'Are you sure to delete?'}, class: "btn btn-danger" do %>
+      <i class="glyphicon glyphicon-remove" style="color:white"></i>
+    <% end %>
+  </div>
+  <div>
+    <table>
+      <tr><td><h4><%= reference.name %><h4></td></tr>
+      <tr><td><%= reference.relationship %></td></tr>
+      <tr><td><%= reference.company %>, <%= reference.address %></td></tr>
+      <tr><td><%= reference.email %></td></tr>
+      <tr><td><%= reference.phone %></td></tr>
+      <tr><td><%= reference.description %></td></tr>
+    </table>
+  </div>
+    <br>
+  <legend></legend>
+  <br>
+<%end%>

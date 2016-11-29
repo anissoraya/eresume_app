@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= @user.personal_detail.name %></title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <style>
+    body{
+      margin:0;
+      padding:0;
+      font-family: Times;
+    }
+    .header{
+      min-height:300px;
+      background-color: black;
+      padding: 70px 20px 20px 40px;
+      color:white;
+    }
+    .header a{
+      color:#d8d8d8
+    }
+    .header a:hover{
+      color:white
+    }
+    .table{
+      border: 0;
+    }
+    .panel{
+      padding:0px 5px 20px 20px;
+    }
+    .panel-default{
+      background: none;
+      border: 1px dashed white;
+    }
+    .progress {
+      height: 25px;
+
+}
+  .progress .skill {
+    font: normal 9px "Open Sans Web";
+    line-height: 25px;
+    padding: 0;
+    margin: 0 0 0 20px;
+    text-transform: uppercase;
+  }
+  .progress .skill .val {
+    float: right;
+    font-style: normal;
+    margin: 0 20px 0 0;
+  }
+
+  .progress-bar {
+    text-align: left;
+    transition-duration: 3s;
+  }
+    </style>
+  </head>
+  <body data-spy="scroll" data-offset="0" data-target="#nav" >
+    <div class="header">
+      <div class="col-sm-6">
+      <caption>
+        <h1><%= @user.personal_detail.name%></h1>
+      </caption>
+      <section>
+        <a href="#about_me">About Me</a> |
+        <a href="#edu">Educations</a> |
+        <a href="#work">Experiences</a> |
+        <a href="#project">Projects</a> |
+        <a href="#skill">Skills</a> |
+        <a href="#ref">Contact</a>
+        </nav>
+      </div>
+      <div class="col-sm-6">
+        <div class="panel panel-default" id="about_me">
+        <h3>About Me</h3>
+        <%= @user.summary.description %>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row" id="edu" >
+      <legend><h3>Educations</h3></legend>
+      <br>
+      <% @user.educations.each do |edu| %>
+      <div class="row" style="padding:0px 0px 40px 40px">
+              <div class="col-sm-6">
+                <strong><%= edu.major%></strong> <br>(<%= edu.date_enter %> - <%= edu.date_quit %>)<br><%= edu.school %>
+              </div>
+              <div class="col-sm-6" style="padding-left:70px">
+                <%= edu.description %>
+              </div>
+      </div>
+      <%end%>
+    </div>
+      <div class="row" id="work" >
+      <legend><h3>Experiences</h3></legend>
+      <br>
+      <% @user.employment_histories.each do |work| %>
+      <div class="row"  style="padding:0px 0px 40px 40px">
+              <div class="col-sm-6">
+                <strong><%= work.job_title%></strong> <br>(<%= work.date_enter %> - <%= work.date_quit %>)<br> <%= work.company %>
+              </div>
+              <div class="col-sm-6" style="padding-left:70px">
+                <%= work.description %>
+              </div>
+      </div>
+      <%end%>
+    </div>
+      <div class="row" id="project" >
+      <legend><h3>Projects</h3></legend>
+      <br>
+      <% @user.projects.each do |project| %>
+      <div class="row"  style="padding:0px 0px 40px 40px">
+              <div class="col-sm-6">
+                <strong><%= project.title%></strong> <br>(<%= project.pro_date %>)<br> <%= project.company %>
+              </div>
+              <div class="col-sm-6" style="padding-left:70px">
+                <br>
+                <%= project.description %>
+              </div>
+      </div>
+      <%end%>
+      </div>
+      <div class="row" id="skill">
+      <legend><h3>Skills</h3></legend>
+      <br>
+      <% @user.skills.order(rate: :desc).each do |skill| %>
+      <div class="row" style="padding:0px 0px 40px 40px">
+              <div class="col-sm-4">
+                <strong><%= skill.title%></strong>
+              </div>
+              <div class="col-sm-8" style="padding-left:70px">
+                <div class="progress skill-bar ">
+                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="<%= 100*skill.rate/5 %>" aria-valuemin="0" aria-valuemax="100">
+                        <span class="skill"> <i class="val"><%= 100*skill.rate/5 %>%</i></span>
+                    </div>
+                </div>
+              </div>
+
+      </div>
+      <%end%>
+      </div>
+      <div class="row" id="language">
+      <legend><h3>Languages</h3></legend>
+      <br>
+      <% @user.languages.each do |language| %>
+      <div class="row"   style="padding:0px 0px 40px 40px">
+              <div class="col-sm-4">
+                <strong><%= language.title%></strong>
+              </div>
+              <div class="col-sm-8" style="padding-left:70px">
+                <div class="progress skill-bar ">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%= 100*language.writing_rate/5 %>" aria-valuemin="0" aria-valuemax="100">
+                        <span class="skill">Writing level <i class="val"><%= 100*language.writing_rate/5 %>%</i></span>
+                    </div>
+                </div>
+                <div class="progress skill-bar ">
+                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="<%= 100*language.spoken_rate/5 %>" aria-valuemin="0" aria-valuemax="100">
+                        <span class="skill">Speaking level <i class="val"><%= 100*language.spoken_rate/5 %>%</i></span>
+                    </div>
+                </div>
+              </div>
+
+
+      </div>
+      <%end%>
+    </div>
+      <div class="row" id="ref" >
+      <div class="col-sm-6">
+      <legend><h3>References</h3></legend>
+      <br>
+      <% @user.references.each do |ref| %>
+      <div class="row"  style="padding:0px 0px 40px 40px">
+              <div class="col-sm-6">
+                <strong><%= ref.name%></strong>
+                <br> <%= ref.company %>
+                , <%= ref.address %>
+                <br><%= ref.phone %>
+                <br><%= ref.email %>
+              </div>
+      </div>
+      <%end%>
+    </div>
+    <div class="col-sm-6">
+    <legend><h3>Contact</h3></legend>
+    <br>
+      <span style="padding-right:10px"><i class="fa fa-map-marker"></i></span><%= @user.personal_detail.full_street_address %><br>
+      <span style="padding-right:10px"><i class="fa fa-phone"></i></span><%= @user.personal_detail.phone_no %><br>
+      <span style="padding-right:10px"><i class="fa fa-envelope"></i></span><%= @user.email %>
+    </div>
+    </div>
+    </div>
+  </body>
+  </html>
+  <script>
+  $(function() {
+  $('a[href*="#"]:not([href="#"])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
+});
+
+  $(document).ready(function() {
+        $('.progress .progress-bar').css("width",
+                  function() {
+                      return $(this).attr("aria-valuenow") + "%";
+                  }
+          )
+      });
+  </script>

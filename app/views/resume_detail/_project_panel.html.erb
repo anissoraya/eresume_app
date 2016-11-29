@@ -1,0 +1,19 @@
+<div class="col-xs-12"><br></div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-heading"><div class="panel-title">Projects <span style="float:right"><button id="project-show" class="btn btn default">Show</button></span></div></div>
+        <div class="panel-body">
+            <div class="col-xs-12" id="project-list" style="display:none">
+              <%= render 'project_list' %>
+            </div>
+            <br>
+            <div align="center"><button id="add_project" class="btn btn-default" >Add Project</button></div>
+        <br>
+            <div  class="col-xs-12" id="new_project_form" style="display:none">
+              <%= render 'projects/form', project: current_user.projects.build %>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>

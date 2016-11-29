@@ -1,0 +1,36 @@
+<div class="container">
+  <br>
+  <div class="row">
+
+    <div class="col-xs-4">
+      <div class="panel panel-default" style="padding:10px; height:350px">
+        <center>
+            <img src="<%= image_url('resume-icon.png') %>" style="width:60%" >
+            <br><br>
+            <a href="<%= manage_layout_path %>" class="btn btn-success" style="color:white; font-size:20px; border-radius:0px; width:200px">Manage Layout</a>
+        </center>
+      </div>
+    </div>
+    <div class="col-xs-4">
+      <div class="panel panel-default" style="padding:10px; height:350px">
+        <center>
+            <img src="<%= image_url('resume-icon-1.png') %>" style="width:56%" >
+            <br><br>
+            <a href="<%= resume_detail_index_path %>" class="btn btn-success" style="color:white; font-size:20px; border-radius:0px; width:200px">Manage Resume</a>
+        </center>
+      </div>
+    </div>
+    <div class="col-xs-4">
+      <div class="panel panel-default" style="padding:10px; height:350px">
+        <center>
+            <img src="<%= image_url('avatar.png') %>" style="width:63%" >
+            <br><br>
+            <a href="<%= profile_index_path(id: current_user.id) %>" class="btn btn-success" style="color:white; font-size:20px; border-radius:0px; width:200px">Go to Profile</a>
+        </center>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <br>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<% @projects.each do |project| %>
+  <div align="right">
+    <%= link_to edit_project_path(project), class: "btn btn-success" do %>
+      <i class="glyphicon glyphicon-pencil" style="color:white"></i>
+    <% end %>
+    <%= link_to project, method: :delete, data: {confirm: 'Are you sure to delete?'}, class: "btn btn-danger" do %>
+      <i class="glyphicon glyphicon-remove" style="color:white"></i>
+    <% end %>
+  </div>
+  <h4><%= project.title %> (<%= project.pro_date %>)</h4>
+  <%= project.company %> <br>
+  Description: <%= project.description %>
+  <%if !project.link.blank? %>
+  <center><iframe width="560" height="315" src="<%= project.link %>" frameborder="0" allowfullscreen></iframe></center>
+  <%end%>
+  <br>
+<%end%>

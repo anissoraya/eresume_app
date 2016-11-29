@@ -1,0 +1,28 @@
+<style>
+  .jumbotron{
+    background:url(<%= image_url('jumbo-back.png') %>);
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height:600px;
+    padding-top: 200px;
+    position: relative;;
+
+  }
+@media only screen and (max-width: 768px) {
+  .jumbotron{
+    padding:10%;
+    min-height:10%;
+  }
+}
+</style>
+<div class="jumbotron text-center">
+  <h1 style="color:white">E Resume</h1>
+  <p style="color:white;">Publish your resume online with only RM 30/year</p>
+  <%if !user_signed_in? %><a href="<%= new_user_registration_path %>" class="btn btn-info" style="color:white">Sign Up</a><%end%>
+</div>
+
+<div class="container">
+  <div class="row">
+    <%= render 'features' %>
+  </div>
+</div>

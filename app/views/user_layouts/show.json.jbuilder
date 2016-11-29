@@ -1,0 +1,1 @@
+json.partial! "user_layouts/user_layout", user_layout: @user_layout

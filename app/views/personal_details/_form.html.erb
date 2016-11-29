@@ -1,0 +1,71 @@
+        <!--form start-->
+        <%= form_for(personal_detail) do |f| %>
+          <% if personal_detail.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(personal_detail.errors.count, "error") %> prohibited this personal_detail from being saved:</h2>
+
+              <ul>
+              <% personal_detail.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+        <!-- Text input-->
+        <div class="form-group">
+          <%= f.label 'Full Name', class:'col-sm-2 control-label' %>
+          <div class="col-sm-10">
+            <%= f.text_field :name, class: 'form-control', autofocus: true %>
+            <br>
+          </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <%= f.label :address, class:'col-sm-2 control-label' %>
+          <div class="col-sm-10">
+            <%= f.text_field :address, class: 'form-control'%>
+            <br>
+          </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <%= f.label :city, class:'col-sm-2 control-label' %>
+          <div class="col-sm-10">
+            <%= f.text_field :city, class: 'form-control' %>
+            <br>
+          </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <%= f.label :state, class:'col-sm-2 control-label' %>
+          <div class="col-sm-4">
+            <%= f.text_field :state, class: 'form-control' %>
+            <br>
+          </div>
+
+          <%= f.label 'Postcode', class:'col-sm-2 control-label' %>
+          <div class="col-sm-4">
+            <%= f.text_field :postal_code, class: 'form-control' %>
+            <br>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :phone_no, class:'col-sm-2 control-label' %>
+          <div class="col-sm-4">
+            <%= f.text_field :phone_no, class: 'form-control', autofocus: true %>
+            <br>
+          </div>
+
+          <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <div class="pull-right">
+              <%= f.submit 'Save', class: 'btn btn-primary' %>
+            </div>
+          </div>
+        </div>
+        <%end%>
+        <!--form end-->

@@ -1,0 +1,404 @@
+
+<!-- CSS Layout -->
+<style>
+body,html{
+  height: 100%;
+  background-color: #f2f2f2;
+}
+
+/* remove outer padding */
+.main .row{
+padding: 0px;
+margin: 0px;
+background-color: #f2f2f2;
+}
+
+/*Remove rounded coners*/
+
+nav.sidebar.navbar {
+border-bottom-right-radius:10px;
+    border-bottom-left-radius:0px;
+    border-top-right-radius:0px;
+}
+
+nav.sidebar, .main{
+-webkit-transition: margin 200ms ease-out;
+  -moz-transition: margin 200ms ease-out;
+  -o-transition: margin 200ms ease-out;
+  transition: margin 200ms ease-out;
+}
+
+/* Add gap to nav and right windows.*/
+.main{
+padding: 10px 10px 30px 30px;
+}
+
+/* .....NavBar: Icon only with coloring/layout.....*/
+
+/*small/medium side display*/
+@media (min-width: 768px) {
+
+/*Allow main to be next to Nav*/
+.main{
+  position: absolute;
+  width: calc(100% - 40px); /*keeps 100% minus nav size*/
+  margin-left: 40px;
+  float: right;
+}
+
+/*lets nav bar to be showed on mouseover*/
+nav.sidebar:hover + .main{
+  margin-left: 200px;
+}
+
+/*Center Brand*/
+nav.sidebar.navbar.sidebar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+  margin-left: 0px;
+}
+/*Center Brand*/
+nav.sidebar .navbar-brand, nav.sidebar .navbar-header{
+  text-align: center;
+  width: 100%;
+  margin-left: 0px;
+}
+
+/*Center Icons*/
+nav.sidebar a{
+  padding-right: 13px;
+}
+
+/*adds border top to first nav box */
+nav.sidebar .navbar-nav > li:first-child{
+  border-top: 1px #e5e5e5 solid;
+}
+
+/*adds border to bottom nav boxes*/
+nav.sidebar .navbar-nav > li{
+  border-bottom: 1px #e5e5e5 solid;
+}
+
+/* Colors/style dropdown box*/
+nav.sidebar .navbar-nav .open .dropdown-menu {
+  position: static;
+  float: none;
+  width: auto;
+  margin-top: 0;
+  background-color: transparent;
+  border: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+/*allows nav box to use 100% width*/
+nav.sidebar .navbar-collapse, nav.sidebar .container-fluid{
+  padding: 0 0px 0 0px;
+}
+
+/*colors dropdown box text */
+.navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
+  color: #ffffff;
+}
+
+/*gives sidebar width/height*/
+nav.sidebar{
+  width: 200px;
+  height: 100%;
+  margin-left: -160px;
+  float: left;
+  z-index: 8000;
+  margin-bottom: 0px;
+}
+
+/*give sidebar 100% width;*/
+nav.sidebar li {
+  width: 100%;
+}
+
+/* Move nav to full on mouse over*/
+nav.sidebar:hover{
+  margin-left: 0px;
+}
+/*for hiden things when navbar hidden*/
+.forAnimate{
+  opacity: 0;
+}
+}
+
+/* .....NavBar: Fully showing nav bar..... */
+
+@media (min-width: 1330px) {
+
+/*Allow main to be next to Nav*/
+.main{
+  width: calc(100% - 200px); /*keeps 100% minus nav size*/
+  margin-left: 200px;
+  margin-right: 100px;
+}
+
+/*Show all nav*/
+nav.sidebar{
+  margin-left: 0px;
+  float: left;
+}
+/*Show hidden items on nav*/
+nav.sidebar .forAnimate{
+  opacity: 1;
+}
+}
+
+nav.sidebar .navbar-nav .open .dropdown-menu>li>a:hover, nav.sidebar .navbar-nav .open .dropdown-menu>li>a:focus {
+color: #ffffff;
+background-color: transparent;
+}
+.sidebar-fixed-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 50px;
+  background-color: #f2f2f2;
+}
+nav:hover .forAnimate{
+opacity: 1;
+}
+section{
+padding-left: 15px;
+}
+
+//TODO should be removed from here when merging
+
+.verticle-content{
+display: block;}
+
+.panel-default{
+  border: 1px solid #96a5bc;
+  min-height: 450px;
+}
+.panel-default .panel-heading{
+  background-color: #96a5bc;
+  color:white;
+}
+.panel-default .panel-body{
+  color: grey;
+}
+
+.progress-bar {
+  transition-duration: 3s;
+}
+</style>
+<!-- CSS Layout -->
+  </head>
+  <body class="bg">
+    <nav class="navbar navbar-default sidebar sidebar-fixed-bar" role="navigation">
+      <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"></a>
+        </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#about_me">About Me<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a></li>
+          <li><a href="#resume">Resume<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-file"></span></a></li>
+          <li><a href="#project">Projects<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-briefcase"></span></a></li>
+          <li><a href="#contact">Contact<span style="font-size:16px;" class="pull-right hidden-xs showopacity"><i class="fa fa-phone fa-lg"></i></span></a></li>
+          <li><a data-toggle="modal" data-target="#video">Video<span style="font-size:16px;" class="pull-right hidden-xs showopacity"><i class="fa fa-video-camera fa-md"></i></span></a></li>
+        </ul>
+      </div>
+    </div>
+</nav>
+  <div class="main">
+    <div class="row" id="about_me">
+      <div class="col-sm-10" style="margin-left:40px;height:600px">
+        <h3>About Me</h3>
+        <legend></legend>
+        <div class="col-sm-12">
+          <div class="panel panel-default" style="min-height:400px">
+            <div class="panel-body" style="text-align:center">
+              <img src="<%= @user.avatar(:thumb)%>" style="border-radius:100%" /><br><br>
+              <strong><%= @user.personal_detail.name %></strong><br><br>
+              <span style="padding-right:10px"><i class="fa fa-map-marker"></i></span>
+              <span><%= @user.personal_detail.full_street_address %></span><br><br>
+              <span style="padding-right:10px"><i class="fa fa-envelope"></i></span>
+              <span><%= @user.email %></span><br><br>
+              <span style="padding-right:10px"><i class="fa fa-phone"></i></span>
+              <span><%= @user.personal_detail.phone_no %></span><br><br>
+              <legend></legend>
+              <span><h4>Summary</h4></span><br>
+              <span><%= @user.summary.description %></span><br><br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" id="resume">
+      <div class="col-sm-10" style="margin-left:40px;min-height:600px">
+        <h3>My Resume</h3>
+        <legend></legend>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="panel panel-default">
+              <div class="panel-heading"><div class="panel-title">EDUCATION</div></div>
+              <div class="panel-body">
+                <% @user.educations.each do |edu|%>
+                  <strong><%= edu.major %></strong><br>
+                  <%= edu.date_enter %> - <%= edu.date_quit %> (<%= edu.status %>)
+                  <br>
+                  <%= edu.school %><br><br>
+                  <%= edu.description%><br><br>
+                  <legend></legend>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="panel panel-default">
+              <div class="panel-heading"><div class="panel-title">WORK EXPERIENCES</div></div>
+              <div class="panel-body">
+                <% @user.employment_histories.each do |work|%>
+                  <strong><%= work.job_title %> (<%= work.company %>)</strong><br>
+                  <%= work.date_enter %> - <%if work.presently_emp? %> Present <%else%><%= work.date_quit %><%end%>
+                  <br><br>
+                  <%= work.description%><br><br>
+                  <legend></legend>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+              <div class="panel panel-default">
+                <div class="panel-heading"><div class="panel-title">SKILLS</div></div>
+                <div class="panel-body">
+                  <% @user.skills.order(rate: :desc).each do |skill|%>
+                    <strong><%= skill.title %></strong><br>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="<%= 100*skill.rate/5 %>"
+                        aria-valuemin="0" aria-valuemax="100">
+                          <%= 100*skill.rate/5 %>%
+                        </div>
+                    </div>
+                    <legend></legend>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="panel panel-default">
+                <div class="panel-heading"><div class="panel-title">LANGUAGES</div></div>
+                <div class="panel-body">
+                  <% @user.languages.each do |lan|%>
+                    <strong><%= lan.title %></strong><br>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%= 100*lan.writing_rate/5 %>"
+                        aria-valuemin="0" aria-valuemax="100">
+                          Writing <%= 100*lan.writing_rate/5 %>%
+                        </div>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="<%= 100*lan.spoken_rate/5 %>"
+                        aria-valuemin="0" aria-valuemax="100">
+                          Spoken <%= 100*lan.spoken_rate/5 %>%
+                        </div>
+                    </div>
+                    <legend></legend>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" id="project">
+      <div class="col-sm-10" style="margin-left:40px;height:600px">
+        <h3>My Projects</h3>
+        <legend></legend>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <% @user.projects.order(project_date: :desc).each do |pro| %>
+              <strong><%= pro.title %></strong> (<%= pro.pro_date %>) <br>
+              <%= pro.company %>
+              <br><br>
+              <%= pro.description %>
+              <br><br>
+              <legend></legend>
+            <% end %>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="row" id="contact">
+      <div class="col-sm-10" style="margin-left:40px;height:600px">
+        <h3>References</h3>
+        <legend></legend>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <% @user.references.each do |ref|%>
+              <strong><%= ref.name %></strong><br>
+              <%= ref.address %><br>
+              <%= ref.phone %><br>
+              <%= ref.email %>
+              <br><br>
+              <legend></legend>
+            <%end%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="video" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Introduction Video</h4>
+      </div>
+      <div class="modal-body">
+        <p><iframe width="560" height="315" src="<%= @user.summary.link %>" frameborder="0" allowfullscreen></iframe></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+  </html>
+  <script>
+  $(document).ready(function() {
+     $('.progress .progress-bar').css("width",
+               function() {
+                   return $(this).attr("aria-valuenow") + "%";
+               }
+       )
+   });
+    $(function() {
+    $('a[href*="#"]:not([href="#"])').click(function() {
+      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+        if (target.length) {
+          $('html, body').animate({
+            scrollTop: target.offset().top
+          }, 1000);
+          return false;
+        }
+      }
+    });
+  });
+
+
+
+  </script>

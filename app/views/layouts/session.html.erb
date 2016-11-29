@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>E-resume.my</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+<!-- CSS Layout -->
+<style>
+body{
+  color: black;
+}
+.panel{
+  margin: 0px;
+}
+.navbar-default{
+  background-color: #2BBBAD;
+  border: 0;
+  border-radius: 0;
+}
+.top-nav-collapse {
+         background-color: #3F729B !important;
+     }
+
+     <!--Remember to set navbar color for mobile devices -->
+     @media only screen and (max-width: 768px) {
+         .navbar {
+             background-color: #3F729B !important;
+         }
+     }
+   }
+
+   .navbar-toggle{
+     background-color: black;
+   }
+</style>
+<!-- CSS Layout -->
+  </head>
+
+  <body>
+
+    <!-- Navbar -->
+
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="<%= root_path %>" style="color:white; font-weight:bold">E resume.my</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><img src="<%= current_user.avatar %>" style="width:40px; height:40px; border-radius:90px"/>
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="<%= dashboard_index_path %>">Dashboard</a></li>
+          <li><a href="<%= profile_index_path(id: current_user.id)%>">My Profile</a></li>
+          <li><%= link_to 'Log Out', destroy_user_session_path, method: :delete %></li>
+        </ul>
+      </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- alert -->
+<% if flash[:alert] %>
+<div class="alert alert-danger" id="alert">
+  <span style="padding-right:10px"><i class="glyphicon glyphicon-remove"></i></span> <%= flash[:alert]%>
+</div>
+  <%elsif flash[:notice]%>
+    <div class="alert alert-success" id="notice">
+      <span style="padding-right:10px" ><i class="glyphicon glyphicon-ok"></i></span> <%= flash[:notice]%>
+    </div>
+<%end%>
+<!-- alert -->
+
+  <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+<div class="col-xs-12"><br></div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-heading"><div class="panel-title">Working Experiences <span style="float:right"><button id="exp-show" class="btn btn default">Show</button></span></div></div>
+        <div class="panel-body">
+            <div class="col-xs-12" id="exp-list" style="display:none">
+              <%= render 'working_exp_list' %>
+            </div>
+            <br>
+            <div align="center"><button id="new_working_exp_button" class="btn btn-default" >Add Working Experience</button></div>
+        <br>
+            <div  class="col-xs-12" id="new_exp_form" style="display:none">
+              <%= render 'employment_histories/form', employment_history: current_user.employment_histories.build %>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>

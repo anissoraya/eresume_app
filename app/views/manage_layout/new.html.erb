@@ -1,0 +1,34 @@
+<div class="container">
+<div class="col-sm-6 centered">
+<%= form_for(@layout, url:'#', method: :post) do |f| %>
+  <%= f.label :name, class:'form-label' %>
+  <%= f.text_field :name, class: 'form-control', placeholder: 'resume_layout/layoutname' %>
+  <br>
+  <%= f.label 'Upload Image', class:'form-label' %>
+  <%= f.file_field :layout_image %>
+  <br>
+  <%= f.submit 'Submit', class: 'btn btn-default' %>
+<%end%>
+</div>
+</div>
+<br>
+<legend></legend>
+
+<div class="container">
+  <table class="table">
+    <tr>
+      <td>Layout Image</td>
+      <td>Name</td>
+    </tr>
+  <% @layouts.each do |layout| %>
+  <tr>
+    <td>
+      <%= image_tag(layout.layout_image(:thumb)) %>
+    </td>
+    <td>
+      <%= layout.name %>
+    </td>
+  </tr>
+  <%end%>
+  </table>
+</div>

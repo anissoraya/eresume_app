@@ -1,0 +1,77 @@
+<%= form_for(employment_history) do |f| %>
+  <% if employment_history.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(employment_history.errors.count, "error") %> prohibited this employment_history from being saved:</h2>
+
+      <ul>
+      <% employment_history.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :job_title, class:'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= f.text_field :job_title, class: 'form-control', autofocus: true %>
+      <br>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :company, class:'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= f.text_field :company, class: 'form-control', autofocus: true %>
+      <br>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :location, class:'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= f.text_field :location, class: 'form-control', autofocus: true %>
+      <br>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label 'Presently Employ', class:'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= f.check_box :presently_emp %>
+      <br>
+    </div>
+  </div>
+  <div class="col-sm-12"></div>
+  <div class="field">
+    <%= f.label :description, class:'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= f.text_area :description, class: 'form-control', autofocus: true %>
+      <br>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :start_date, class:'col-sm-2 control-label' %>
+    <div class="col-sm-4">
+      <%= f.date_field :start_date, class: 'form-control', autofocus: true %>
+      <br>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :end_date, class:'col-sm-2 control-label' %>
+    <div class="col-sm-4">
+      <%= f.date_field :end_date, class: 'form-control', autofocus: true %>
+      <br>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <div class="pull-right">
+        <%= f.submit 'Save', class: 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+<% end %>

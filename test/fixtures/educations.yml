@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  major: MyString
+  school: MyString
+  status: MyString
+  location: MyText
+  start_date: 2016-11-10
+  end_date: 2016-11-10
+  description: MyText
+  user: one
+
+two:
+  major: MyString
+  school: MyString
+  status: MyString
+  location: MyText
+  start_date: 2016-11-10
+  end_date: 2016-11-10
+  description: MyText
+  user: two

@@ -1,0 +1,19 @@
+<%= form_for(user_layout) do |f| %>
+  <% if user_layout.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user_layout.errors.count, "error") %> prohibited this user_layout from being saved:</h2>
+
+      <ul>
+      <% user_layout.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.text_field :layout_id %>
+    <%= f.text_field :user_id %>
+    <%= f.submit 'Save' %>
+  </div>
+<% end %>

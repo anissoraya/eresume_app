@@ -1,0 +1,159 @@
+<style>
+.progress {
+  height: 25px;
+
+}
+.progress .skill {
+  font: normal 12px "Open Sans Web";
+  line-height: 25px;
+  padding: 0;
+  margin: 0 0 0 20px;
+  text-transform: uppercase;
+}
+.progress .skill .val {
+  float: right;
+  font-style: normal;
+  margin: 0 20px 0 0;
+}
+
+.progress-bar {
+  text-align: left;
+  transition-duration: 3s;
+}
+</style>
+<div class="container">
+<br>
+  <%= render 'personal_detail_panel' %>
+<!---------------------------------->
+  <%= render 'summary' %>
+<!---------------------------------->
+  <%= render 'education_panel' %>
+<!----------------------------------->
+  <%= render 'working_experience_panel' %>
+<!----------------------------------->
+  <%= render 'skill_panel' %>
+<!----------------------------------->
+  <%= render 'language_panel' %>
+<!----------------------------------->
+  <%= render 'project_panel' %>
+<!----------------------------------->
+  <%= render 'references_panel' %>
+<!----------------------------------->
+  <%= render 'video_panel' %>
+</div>
+</div>
+<div class="row">
+</div class="col-sm-12"><br><br></div>
+</div>
+<!-- Trigger the modal with a button -->
+
+<script>
+$(document).ready(function(){
+    $("#toogle").click(function(){
+        $("#personal_details_edit").slideToggle();
+    });
+
+    $("#new_education_button").click(function(){
+        $("#new_education_form").slideToggle();
+        $(this).text(function(i,text){
+          return text === "Add Education" ? "Cancel" : "Add Education";
+        });
+    });
+    $('#edu-show').click(function(){
+      $('#edu-list').slideToggle();
+      $(this).text(function(i,text){
+        return text === "Show" ? "Hide" : "Show";
+      });
+    });
+    $("#new_working_exp_button").click(function(){
+        $("#new_exp_form").slideToggle();
+        $(this).text(function(i,text){
+          return text === "Add Working Experience" ? "Cancel" : "Add Working Experience";
+        });
+    });
+    $('#exp-show').click(function(){
+      $('#exp-list').slideToggle();
+      $(this).text(function(i,text){
+        return text === "Show" ? "Hide" : "Show";
+      });
+    });
+    $("#summary").click(function(){
+        $("#summary_edit").slideToggle();
+    });
+    $("#add_pd").click(function(){
+        $("#new_pd_form").slideToggle();
+    });
+    $("#add_summary").click(function(){
+        $("#new_summary_form").slideToggle();
+    });
+    $("#skill-show").click(function(){
+        $("#skill-list").slideToggle();
+        $(this).text(function(i,text){
+          return text === "Show" ? "Hide" : "Show";
+        });
+    });
+    $("#add_skill").click(function(){
+        $("#new_skill_form").slideToggle();
+        $(this).text(function(i,text){
+          return text === "Add Skill" ? "Cancel" : "Add Skill";
+        });
+    });
+    $("#language-show").click(function(){
+        $("#language-list").slideToggle();
+        $(this).text(function(i,text){
+          return text === "Show" ? "Hide" : "Show";
+        });
+    });
+    $("#add_language").click(function(){
+        $("#new_language_form").slideToggle();
+        $(this).text(function(i,text){
+          return text === "Add Language" ? "Cancel" : "Add Language";
+        });
+    });
+    $("#project-show").click(function(){
+        $("#project-list").slideToggle();
+        $(this).text(function(i,text){
+          return text === "Show" ? "Hide" : "Show";
+        });
+    });
+    $("#add_project").click(function(){
+        $("#new_project_form").slideToggle();
+        $(this).text(function(i,text){
+          return text === "Add Project" ? "Cancel" : "Add Project";
+        });
+    });
+    $("#reference-show").click(function(){
+        $("#reference-list").slideToggle();
+        $(this).text(function(i,text){
+          return text === "Show" ? "Hide" : "Show";
+        });
+    });
+    $("#add_reference").click(function(){
+        $("#new_reference_form").slideToggle();
+        $(this).text(function(i,text){
+          return text === "Add Reference" ? "Cancel" : "Add Reference";
+        });
+    });
+    $("#video-show").click(function(){
+        $("#video-list").slideToggle();
+        $(this).text(function(i,text){
+          return text === "Show" ? "Hide" : "Show";
+        });
+    });
+    $("#add_video").click(function(){
+        $("#new_video_form").slideToggle();
+        $(this).text(function(i,text){
+          return text === "Add Video" ? "Cancel" : "Add Video";
+        });
+    });
+});
+
+$(document).ready(function() {
+     $('.progress .progress-bar').css("width",
+               function() {
+                   return $(this).attr("aria-valuenow") + "%";
+               }
+       )
+   });
+
+</script>

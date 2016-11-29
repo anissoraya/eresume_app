@@ -1,0 +1,38 @@
+
+<p>
+  <strong>Name:</strong>
+  <%= @personal_detail.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @personal_detail.address %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @personal_detail.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @personal_detail.state %>
+</p>
+
+<p>
+  <strong>Postal code:</strong>
+  <%= @personal_detail.postal_code %>
+</p>
+
+<p>
+  <strong>Phone no:</strong>
+  <%= @personal_detail.phone_no %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @personal_detail.user %>
+</p>
+
+<%= link_to 'Edit', edit_personal_detail_path(@personal_detail) %> |
+<%= link_to 'Back', personal_details_path %>

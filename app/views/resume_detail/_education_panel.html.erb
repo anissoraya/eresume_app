@@ -1,0 +1,19 @@
+<div class="col-xs-12"><br></div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-heading"><div class="panel-title">Education <span style="float:right"><button id="edu-show" class="btn btn default">Show</button></span></div></div>
+        <div class="panel-body">
+            <div class="col-xs-12" id="edu-list" style="display:none">
+              <%= render 'education_list' %>
+            </div>
+            <br>
+            <div align="center"><button id="new_education_button" class="btn btn-default" >Add Education</button></div>
+        <br>
+            <div  class="col-xs-12" id="new_education_form" style="display:none">
+                <%= render 'educations/form', education: current_user.educations.build %>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,191 @@
+<style>
+.back{
+  background-color: #f9f9f9;
+
+}
+body{
+  color:white;
+}
+.profilephoto{
+  border-radius: 360px;
+  width: 200px;
+  height: 200px;
+}
+.panel{
+  background: none;
+  border: 2px solid white;
+  padding: 15px;
+}
+.header{
+  padding: 20px;
+  background-color: #3aa597;
+  height: 250px;
+}
+.title{
+  color: #767777;
+}
+</style>
+
+<body class="back">
+<div class="header">
+  <div class="row">
+    <div class="col-sm-offset-1 col-sm-3">
+      <img src="<%= @user.avatar %>" class="profilephoto" />
+    </div>
+    <div class="col-sm-7">
+        <div><h3><%= @user.personal_detail.name %></h3></div>
+        <div><%= @user.summary.description %></div>
+    </div>
+
+  </div>
+</div>
+<div class="container" style="padding:10px">
+<!--Contact-->
+  <div class="row">
+    <div class="col-sm-12">
+      <h3 class="title"><center>CONTACT</center><br><legend></legend></h3>
+      <div class="container" style="color:#767777">
+        <div class="col-sm-4"><center><strong>Address:</strong><br> <%= @user.personal_detail.full_street_address %></center></div>
+        <div class="col-sm-4"><center><strong>Phone No:</strong><br> <%= @user.personal_detail.phone_no%></center></div>
+        <div class="col-sm-4"><center><strong>Email:</strong><br> <%= @user.email%></center></div>
+      </div>
+    </div>
+  </div>
+    <br><br>
+<!--Contact-->
+<!--Education-->
+  <div class="row">
+    <div class="col-sm-6">
+      <h3 class="title"><center>EDUCATIONS</center><br><legend></legend></h3>
+      <div class="container" style="color:#767777">
+        <div class="col-sm-6">
+          <% @user.educations.each do |education| %>
+          <strong><%= education.major %></strong><br>
+          <%= education.date_enter %> - <%= education.date_quit %><br>
+          <%= education.school %><br>
+          <%= education.description %>
+          <br>
+          <%end%>
+        <br>
+      </div>
+    </div>
+  </div>
+  <!--Education-->
+  <!--Work-->
+  <div class="col-sm-6">
+    <h3 class="title"><center>WORKING EXPERIENCES</center><br><legend></legend></h3>
+    <div class="container" style="color:#767777">
+      <div class="col-sm-6">
+        <% @user.employment_histories.each do |work| %>
+        <strong><%= work.job_title %></strong><br>
+        <%= work.date_enter %> - <%= work.date_quit %><br>
+        <%= work.company %><br>
+        <%= work.description %>
+        <br>
+        <%end%>
+      <br>
+    </div>
+  </div>
+</div>
+</div>
+<!--Work-->
+<!--Project-->
+<% if @user.projects.present? %>
+  <div class="row">
+    <div class="col-sm-12">
+      <h3 class="title"><center>PROJECTS</center><br><legend></legend></h3>
+        <% @user.projects.each do |project| %>
+          <strong><%= project.title %> (<%= project.pro_date %>)</strong><br>
+        <%= project.company %><br>
+        <%= project.description %>
+      <%end%>
+    </div>
+  </div>
+<%end%>
+<!--Project-->
+<!--Skill-->
+<% if @user.skills.present? %>
+  <div class="row">
+    <div class="col-sm-12" style="color:black">
+      <h3 class="title"><center>SKILLS</center><br><legend></legend></h3>
+        <% @user.skills.each do |skill| %>
+        <div class="col-sm-4" align="center">
+          <strong><%= skill.title %> : </strong>
+        <% skill.rate.times do %>
+        <%= image_tag 'green-btn.png', style:'width:20px; height:20px' %>
+        <%end%>
+      </div>
+      <%end%>
+    </div>
+  </div>
+  <br>
+<%end%>
+<!--Skill-->
+<!--Languages-->
+<% if @user.languages.present? %>
+  <div class="row">
+    <div class="col-sm-12" style="color:black">
+      <h3 class="title"><center>LANGUAGES</center><br><legend></legend></h3>
+        <% @user.languages.each do |language| %>
+        <div class="col-sm-12">
+          <center><strong><%= language.title %>  </strong></center><br>
+          <center>
+          <div class="col-sm-6">Writing:
+            <% language.writing_rate.times do %>
+            <%= image_tag 'green-btn.png', style:'width:20px; height:20px' %>
+          <%end%>
+        </div>
+      </center>
+      <center>
+        <div class="col-sm-6">Speaking:
+          <% language.spoken_rate.times do %>
+          <%= image_tag 'green-btn.png', style:'width:20px; height:20px' %>
+        <%end%>
+        <br><br>
+      </div>
+    </center>
+        </div>
+
+      <%end%>
+    </div>
+  </div>
+  <br>
+<%end%>
+<!--Languages-->
+<!--Project-->
+<% if @user.references.present? %>
+  <div class="row">
+    <div class="col-sm-12" style="color:#767777">
+      <h3 class="title"><center>REFERENCES</center><br></h3>
+        <table class="table table-striped">
+          <tr>
+            <th>Employer</th>
+            <th>Company</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Email</th>
+          </tr>
+        <% @user.references.each do |reference| %>
+          <tr>
+            <td><strong><%= reference.name %></strong><br></td>
+            <td><%= reference.company %></td>
+            <td><%= reference.address %></td>
+            <td><%= reference.phone %><br></td>
+            <td><%= reference.email %></td>
+        </tr>
+      <%end%>
+    </table>
+    </div>
+  </div>
+<%end%>
+<!--Video-->
+<% if !@user.summary.link.blank? %>
+  <div class="row">
+    <div class="col-sm-12">
+      <h3 class="title"><center>Video</center><br><legend></legend></h3>
+        <center><iframe width="560" height="315" src="<%= @user.summary.link %>" frameborder="0" allowfullscreen></iframe></center>
+    </div>
+  </div>
+<%end%>
+<!--Video-->
+</body>

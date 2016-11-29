@@ -1,0 +1,19 @@
+<div class="col-xs-12"><br></div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-heading"><div class="panel-title">Professional Skills <span style="float:right"><button id="skill-show" class="btn btn default">Show</button></span></div></div>
+        <div class="panel-body">
+            <div class="col-xs-12" id="skill-list" style="display:none">
+              <%= render 'skill_list' %>
+            </div>
+            <br>
+            <div align="center"><button id="add_skill" class="btn btn-default" >Add Skill</button></div>
+        <br>
+            <div  class="col-xs-12" id="new_skill_form" style="display:none">
+              <%= render 'skills/form', skill: current_user.skills.build %>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,18 @@
+<% @educations.each do |education| %>
+  <div align="right">
+    <%= link_to edit_education_path(education), class: "btn btn-success" do %>
+      <i class="glyphicon glyphicon-pencil" style="color:white"></i>
+    <% end %>
+    <%= link_to education, method: :delete, data: {confirm: 'Are you sure to delete?'}, class: "btn btn-danger" do %>
+      <i class="glyphicon glyphicon-remove" style="color:white"></i>
+    <% end %>
+  </div>
+  <h4><%= education.major %> <span>(<%= education.status %>)</span></h4>
+  <%= education.date_enter %> -
+  <%= education.date_quit %><br>
+  <%= education.school %><br>
+  <%= education.location %><br>
+  Description: <%= education.description %>
+  <br><br>
+  <legend></legend>
+<%end%>

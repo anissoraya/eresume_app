@@ -1,0 +1,1 @@
+json.array! @user_layouts, partial: 'user_layouts/user_layout', as: :user_layout

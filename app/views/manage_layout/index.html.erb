@@ -1,0 +1,125 @@
+<div class="container"style="min-height: 500px;text-align:center">
+<% if current_user.user_layout.present? %>
+  <%= form_for(current_user.user_layout) do |f| %>
+    <% Layout.all.each do |b| %>
+      <div class="col-sm-4">
+        <%= f.radio_button :layout_id, b.id %>
+        <%= image_tag(b.layout_image(:thumb)) %>
+        <br>
+      </div>
+      <% end %>
+      <div class="row">
+      <div class="col-sm-12">
+        <br>
+        <center><%= f.submit 'Save' %></center>
+      </div>
+    </div>
+<%end%>
+  <%else%>
+    <%= form_for(current_user.build_user_layout) do |f| %>
+        <% Layout.all.each do |b| %>
+          <div class="col-sm-4">
+              <%= f.radio_button :layout_id, b.id %>
+              <%= image_tag(b.layout_image(:thumb)) %>
+              <br>
+            </div>
+            <% end %>
+            <div class="row">
+            <div class="col-sm-12">
+              <br>
+              <center><%= f.submit 'Save' %></center>
+            </div>
+        </div>
+  <%end%>
+<%end%>
+
+</div>
+<!--
+<div class="container"style="min-height: 500px;margin-left:155px">
+  <div class="panel panel-default" style="margin:20px; padding:20px; width:750px;">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="panel panel-default" style="width:213px;padding:5px">
+          <section><img src="#" style="width:200px;height:300px;"/></section>
+          <section>
+            <center>
+            <% if current_user.user_layout.present?  %>
+                <%= render 'user_layouts/form', user_layout: current_user.user_layout %>
+            <%end%>
+            </center>
+          </section>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="panel panel-default" style="width:213px;padding:5px">
+          <section><img src="#" style="width:200px;height:300px;"/></section>
+          <section>
+            <center>
+            <% if current_user.user_layout.present?  %>
+                <%= render 'user_layouts/form', user_layout: current_user.user_layout %>
+            <%end%>
+            </center>
+          </section>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="panel panel-default" style="width:213px;padding:5px">
+          <section><img src="#" style="width:200px;height:300px;"/></section>
+          <section>
+            <center>
+            <% if current_user.user_layout.present?  %>
+                <%= render 'user_layouts/form', user_layout: current_user.user_layout, title: 'resume_layout/resume2' %>
+            <%end%>
+            </center>
+          </section>
+        </div>
+      </div>
+    </div>
+    <!---->
+<!--
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="panel panel-default" style="width:213px;padding:5px">
+          <section><img src="#" style="width:200px;height:300px;"/></section>
+          <section>
+            <center>
+            <% if current_user.user_layout.present? %>
+                <%= render 'user_layouts/form', user_layout: current_user.user_layout %>
+            <%end%>
+            </center>
+          </section>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="panel panel-default" style="width:213px;padding:5px">
+          <section><img src="#" style="width:200px;height:300px;"/></section>
+          <section>
+            <center>
+            <% if current_user.user_layout.present?  %>
+                <%= render 'user_layouts/form', user_layout: current_user.user_layout %>
+            <%end%>
+            </center>
+          </section>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="panel panel-default" style="width:213px;padding:5px">
+          <section><img src="#" style="width:200px;height:300px;"/></section>
+          <section>
+            <center>
+            <% if current_user.user_layout.present?  %>
+                <%= render 'user_layouts/form', user_layout: current_user.user_layout %>
+            <%end%>
+            </center>
+          </section>
+        </div>
+      </div>
+    </div>
+    <!---->
+
+
+
+
+  </div>
+
+</div>

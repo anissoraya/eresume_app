@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Employment Histories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Job title</th>
+      <th>Company</th>
+      <th>Location</th>
+      <th>Presently emp</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th>Description</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @employment_histories.each do |employment_history| %>
+      <tr>
+        <td><%= employment_history.job_title %></td>
+        <td><%= employment_history.company %></td>
+        <td><%= employment_history.location %></td>
+        <td><%= employment_history.presently_emp %></td>
+        <td><%= employment_history.start_date %></td>
+        <td><%= employment_history.end_date %></td>
+        <td><%= employment_history.description %></td>
+        <td><%= employment_history.user %></td>
+        <td><%= link_to 'Show', employment_history %></td>
+        <td><%= link_to 'Edit', edit_employment_history_path(employment_history) %></td>
+        <td><%= link_to 'Destroy', employment_history, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Employment History', new_employment_history_path %>

@@ -1,0 +1,19 @@
+<div class="col-xs-12"><br></div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-heading"><div class="panel-title">Video Gallery <span style="float:right"><button id="video-show" class="btn btn default">Show</button></span></div></div>
+        <div class="panel-body">
+            <div class="col-xs-12" id="video-list" style="display:none">
+              <%= render 'video_list' %>
+            </div>
+            <br>
+            <div align="center"><button id="add_video" class="btn btn-default" >Add Video</button></div>
+        <br>
+            <div  class="col-xs-12" id="new_video_form" style="display:none">
+              <%= render 'video_galleries/form', video_gallery: current_user.video_galleries.build %>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>

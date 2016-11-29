@@ -1,0 +1,19 @@
+<div class="col-xs-12"><br></div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-heading"><div class="panel-title">References <span style="float:right"><button id="reference-show" class="btn btn default">Show</button></span></div></div>
+        <div class="panel-body">
+            <div class="col-xs-12" id="reference-list" style="display:none">
+              <%= render 'reference_list' %>
+            </div>
+            <br>
+            <div align="center"><button id="add_reference" class="btn btn-default" >Add Reference</button></div>
+        <br>
+            <div  class="col-xs-12" id="new_reference_form" style="display:none">
+              <%= render 'references/form', reference: current_user.references.build %>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
