@@ -21,7 +21,9 @@
 .byebug_history
 
 # Ignore dir below
-/public/system/users/avatars 
+/public/system/users/avatars
+/public/assets
+/public/system/layouts/layout_images
 
 # Ignore file below
 /config/database.yml
