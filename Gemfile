@@ -52,8 +52,10 @@ gem 'devise'
 gem 'paperclip'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'font-awesome-sass', '~> 4.7.0'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
-#Postgress SQL 
+#Postgress SQL
 gem 'pg'
 
 #added 20161129

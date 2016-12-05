@@ -11,11 +11,23 @@ class ResumePreviewController < ApplicationController
   end
 
   def preview_layout_3
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render :pdf => "my_pdf_name.pdf",
+                :template => 'resume_preview/preview_cv.pdf.erb',
+                :layout => "#{@user.user_layout.layout.name}.html.erb"
+      end
+    end
+  end
+
+  def preview_cv
+    @user = User.find(current_user.id)
   end
 
   protected
   def user_data
-    @user = User.find_by_subdomain!(request.subdomain)
+    @user = User.find(current_user.id)
   end
 
   def check_layout

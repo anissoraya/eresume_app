@@ -10,10 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161129062659) do
+ActiveRecord::Schema.define(version: 20161201094016) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  create_table "admins", force: :cascade do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "username"
+    t.index ["email"], name: "index_admins_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+    t.index ["username"], name: "index_admins_on_username", unique: true
+  end
+
+  create_table "certificates", force: :cascade do |t|
+    t.string   "title"
+    t.date     "date"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_certificates_on_user_id"
+  end
 
   create_table "educations", force: :cascade do |t|
     t.string   "major"
@@ -26,7 +51,7 @@ ActiveRecord::Schema.define(version: 20161129062659) do
     t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["user_id"], name: "index_educations_on_user_id", using: :btree
+    t.index ["user_id"], name: "index_educations_on_user_id"
   end
 
   create_table "employment_histories", force: :cascade do |t|
@@ -40,7 +65,7 @@ ActiveRecord::Schema.define(version: 20161129062659) do
     t.integer  "user_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.index ["user_id"], name: "index_employment_histories_on_user_id", using: :btree
+    t.index ["user_id"], name: "index_employment_histories_on_user_id"
   end
 
   create_table "languages", force: :cascade do |t|
@@ -50,7 +75,7 @@ ActiveRecord::Schema.define(version: 20161129062659) do
     t.integer  "user_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.index ["user_id"], name: "index_languages_on_user_id", using: :btree
+    t.index ["user_id"], name: "index_languages_on_user_id"
   end
 
   create_table "layouts", force: :cascade do |t|
@@ -73,7 +98,7 @@ ActiveRecord::Schema.define(version: 20161129062659) do
     t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["user_id"], name: "index_personal_details_on_user_id", using: :btree
+    t.index ["user_id"], name: "index_personal_details_on_user_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -85,7 +110,7 @@ ActiveRecord::Schema.define(version: 20161129062659) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.string   "link"
-    t.index ["user_id"], name: "index_projects_on_user_id", using: :btree
+    t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
   create_table "references", force: :cascade do |t|
@@ -99,7 +124,7 @@ ActiveRecord::Schema.define(version: 20161129062659) do
     t.integer  "user_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.index ["user_id"], name: "index_references_on_user_id", using: :btree
+    t.index ["user_id"], name: "index_references_on_user_id"
   end
 
   create_table "skills", force: :cascade do |t|
@@ -108,7 +133,7 @@ ActiveRecord::Schema.define(version: 20161129062659) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_skills_on_user_id", using: :btree
+    t.index ["user_id"], name: "index_skills_on_user_id"
   end
 
   create_table "summaries", force: :cascade do |t|
@@ -117,7 +142,7 @@ ActiveRecord::Schema.define(version: 20161129062659) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "link"
-    t.index ["user_id"], name: "index_summaries_on_user_id", using: :btree
+    t.index ["user_id"], name: "index_summaries_on_user_id"
   end
 
   create_table "user_layouts", force: :cascade do |t|
@@ -125,8 +150,8 @@ ActiveRecord::Schema.define(version: 20161129062659) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["layout_id"], name: "index_user_layouts_on_layout_id", using: :btree
-    t.index ["user_id"], name: "index_user_layouts_on_user_id", using: :btree
+    t.index ["layout_id"], name: "index_user_layouts_on_layout_id"
+    t.index ["user_id"], name: "index_user_layouts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -148,9 +173,9 @@ ActiveRecord::Schema.define(version: 20161129062659) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "subdomain"
-    t.index ["email", "subdomain"], name: "index_users_on_email_and_subdomain", unique: true, using: :btree
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-    t.index ["username"], name: "index_users_on_username", unique: true, using: :btree
+    t.index ["email", "subdomain"], name: "index_users_on_email_and_subdomain", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   create_table "video_galleries", force: :cascade do |t|
@@ -159,17 +184,7 @@ ActiveRecord::Schema.define(version: 20161129062659) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
-    t.index ["user_id"], name: "index_video_galleries_on_user_id", using: :btree
+    t.index ["user_id"], name: "index_video_galleries_on_user_id"
   end
 
-  add_foreign_key "educations", "users"
-  add_foreign_key "employment_histories", "users"
-  add_foreign_key "languages", "users"
-  add_foreign_key "personal_details", "users"
-  add_foreign_key "projects", "users"
-  add_foreign_key "references", "users"
-  add_foreign_key "skills", "users"
-  add_foreign_key "summaries", "users"
-  add_foreign_key "user_layouts", "layouts"
-  add_foreign_key "user_layouts", "users"
 end

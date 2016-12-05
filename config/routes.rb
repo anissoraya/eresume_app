@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :admins, controllers: {registrations:'admins/registrations', sessions: 'admins/sessions'}
+  resources :certificates
   resources :video_galleries
   get 'manage_layout/index', as: 'manage_layout'
   get 'resume_preview/preview_layout_1'
@@ -7,6 +9,8 @@ Rails.application.routes.draw do
   post 'manage_layout/new', to: 'manage_layout#create'
   get 'manage_layout/new'
   get 'dashboard/index'
+  get 'resume_preview/preview_cv'
+  get 'dashboard/admin_page', as: 'admin_home'
 
   resources :languages
   resources :skills

@@ -1,0 +1,41 @@
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+  <div id="signupbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+      <div class="panel panel-success" >
+              <div class="panel-heading">
+                  <div class="panel-title"><center>Sign Up</center></div>
+              </div>
+              <div class="panel-body" >
+                    <div class="form-group">
+                         <div class="col-md-12">
+                            <%= f.text_field :username, autofocus: true, class: 'form-control', placeholder: 'username' %>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                           <div class="col-md-12">
+                              <%= f.email_field :email, autocomplete: "off", class: 'form-control', placeholder: 'email' %>
+                              <br>
+                          </div>
+                    </div>
+                    <div class="field">
+                         <div class="col-md-12">
+                            <%= f.password_field :password, autofocus: true, class: 'form-control', placeholder: 'password' %>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="field">
+                         <div class="col-md-12">
+                            <%= f.password_field :password_confirmation, autofocus: true, class: 'form-control', placeholder: 'confirm password' %>
+                            <br>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="actions">
+                      <center><%= f.submit "Sign up", class: 'btn btn-success' %></center>
+                    </div>
+                  <% end %>
+                </div>
+            </div>
+          </div>
+</div>

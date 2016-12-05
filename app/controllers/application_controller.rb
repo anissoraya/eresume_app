@@ -5,7 +5,14 @@ class ApplicationController < ActionController::Base
 
   private
   def determine_layout
-    current_user ? "session" : "application"
+    if user_signed_in?
+      "session"
+    elsif admin_signed_in?
+      "admin_session"
+    else
+      "application"
+    end
+
   end
 
   protected
@@ -13,13 +20,6 @@ class ApplicationController < ActionController::Base
     added_attrs = [:avatar, :username, :subdomain, :email, :password, :password_confirmation, :remember_me]
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
-  end
-
-  def after_sign_up_path(resource)
-    dashboard_index_path
-  end
-  def after_sign_in_path(resource)
-    dashboard_index_path
   end
 
 end

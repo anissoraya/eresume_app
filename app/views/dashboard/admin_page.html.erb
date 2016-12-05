@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="col-sm-11">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="panel-title">User</div>
+      </div>
+        <table class="table">
+          <tr>
+            <th>User ID</th>
+            <th>Email</th>
+          </tr>
+          <% @user.each do |user| %>
+            <tr>
+              <td><%= user.id %></td>
+              <td><%= user.email %></td>
+              <td><img src="<%= user.avatar %>" style="width:50px;height:50px;border-radius:100%" /></td>
+            </tr>
+          <%end%>
+        </table>
+    </div>
+  </div>
+</div>

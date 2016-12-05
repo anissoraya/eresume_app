@@ -1,5 +1,5 @@
 
-<%= form_for(video_gallery) do |f| %>
+<%= form_for(video_gallery, id:'form_vd', remote: true) do |f| %>
   <% if video_gallery.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(video_gallery.errors.count, "error") %> prohibited this video_gallery from being saved:</h2>
@@ -40,3 +40,19 @@
     </div>
   </div>
 <% end %>
+<script type='text/javascript'>
+
+$('#form_vd').submit(function() {
+   var valuesToSubmit = $(this).serialize();
+   $.ajax({
+       type: "POST",
+       url: $(this).attr('action'), //sumbits it to the given url of the form
+       data: valuesToSubmit,
+       dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
+   }).success(function(json){
+       console.log("success", json);
+   });
+   return false; // prevents normal behaviour
+});
+
+</script>

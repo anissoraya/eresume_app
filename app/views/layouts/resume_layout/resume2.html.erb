@@ -7,23 +7,36 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <style>
+  html,body{
+    margin:0;
+    padding: 0;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+  }
   body{
     background-color: #c6c6c6;
   }
-  .container{
-    margin-top:50px
+
+  body{
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 18px;
+  color: #595959;
   }
+
   .main {
   width: 100%;
-  height: 100%;
-  display: -webkit-flex; /* Safari */
+  min-height: 11in;
+  display: -webkit-flex;
   display: flex;
   overflow-y: auto;
   }
   .main .left-box {
     background-color: white;
-    -webkit-flex: 1;  /* Safari 6.1+ */
-    -ms-flex: 1;  /* IE 10 */
+    -webkit-flex: 1;
+    -ms-flex: 1;
     flex: 1;
     width:100px;
     color:black;
@@ -31,8 +44,8 @@
   }
   .main .right-box{
     background-color: #667896;
-    -webkit-flex: 1;  /* Safari 6.1+ */
-    -ms-flex: 1;  /* IE 10 */
+    -webkit-flex: 1;
+    -ms-flex: 1;
     flex: 0.32;
     color:white;
 
@@ -67,12 +80,12 @@
   font-weight: bold;
   font-size: 19px;
 }
+
   </style>
 
 </head>
   <body>
-    <div class="container">
-      <div class="main">
+  <div class="main">
         <div class="left-box">
 
           <% if @user.summary.present? %>
@@ -83,6 +96,7 @@
           </section>
           <% end %>
           <% if @user.educations.present? %>
+          <div class="row">
           <section>
             <div class="title">
             <span style="padding-left:9px"><i class="fa fa-graduation-cap"></i></span><span style="padding-left:10px">EDUCATIONS</span>
@@ -97,11 +111,13 @@
                 <%end %>
             </div>
           </section>
+          </div>
           <%end%>
           <% if @user.employment_histories.present? %>
+          <div class="row">
           <section>
             <div class="title">
-            <span style="padding-left:9px"><i class="fa fa-briefcase"></i></span><span style="padding-left:10px">WORKING EXPERIENCES</span>
+            <span style="padding-left:9px"><i class="fa fa-briefcase"></i></span><span style="padding-left:10px">EXPERIENCES</span>
             </div>
             <div class="body">
               <% @user.employment_histories.each do |work| %>
@@ -113,8 +129,10 @@
                 <%end %>
             </div>
           </section>
+        </div>
           <%end%>
           <% if @user.projects.present? %>
+          <div class="row">
           <section>
             <div class="title">
             <span style="padding-left:9px"><i class="fa fa-rocket"></i></span><span style="padding-left:10px">PROJECTS</span>
@@ -129,8 +147,10 @@
                 <%end %>
             </div>
           </section>
+        </div>
           <%end%>
           <% if @user.references.present? %>
+          <div class="row">
           <section>
             <div class="title">
             <span style="padding-left:9px"><i class="fa fa-phone"></i></span><span style="padding-left:10px">REFERENCES</span>
@@ -144,9 +164,10 @@
                 <%end %>
             </div>
           </section>
+        </div>
           <%end%>
         </div>
-        <!-- Right -->
+
         <div class="right-box">
             <div style="padding:10px">
             <h3><center><%= @user.personal_detail.name %></center></h3>
@@ -181,21 +202,14 @@
             </div>
             <div class="body">
               <% @user.languages.each do |language|%>
-              <div><%= language.title %></div>
               <div class="progress">
                 <div class="progress-bar progress-bar-default" style="width:<%= 100*language.writing_rate/5%>%" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-                  <span style="text-align:center">Writing</span>
-                </div>
-              </div>
-              <div class="progress">
-                <div class="progress-bar progress-bar-default" style="width:<%= 100*language.spoken_rate/5%>%" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-                  <span style="text-align:center">Spoken</span>
+                  <span style="text-align:center"><%= language.title %></span>
                 </div>
               </div>
               <%end%>
             </div>
         </div>
       </div>
-    </div>
   </body>
   </html>

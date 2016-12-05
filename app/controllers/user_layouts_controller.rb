@@ -28,7 +28,7 @@ class UserLayoutsController < ApplicationController
 
     respond_to do |format|
       if @user_layout.save
-        format.html { redirect_to resume_preview/preview_layout_3, notice: 'User layout was successfully created.' }
+        format.html { redirect_to resume_detail_index_path, notice: 'User layout was successfully created.' }
         format.json { render :show, status: :created, location: @user_layout }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class UserLayoutsController < ApplicationController
   def update
     respond_to do |format|
       if @user_layout.update(user_layout_params)
-        format.html { redirect_to manage_layout_path, notice: 'User layout was successfully updated.' }
+        format.html { redirect_to resume_detail_index_path, notice: 'User layout was successfully updated.' }
         format.json { render :show, status: :ok, location: @user_layout }
       else
         format.html { render :edit }

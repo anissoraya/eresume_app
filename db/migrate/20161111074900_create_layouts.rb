@@ -1,9 +1,12 @@
 class CreateLayouts < ActiveRecord::Migration[5.0]
-  def change
+  def self.up
     create_table :layouts do |t|
       t.string :name
 
       t.timestamps
     end
+  end
+  def self.down
+     drop_table :layouts
   end
 end

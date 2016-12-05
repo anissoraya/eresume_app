@@ -4,36 +4,45 @@
     <title>E-resume.my</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <style>
+    html,body{
+      margin:0;
+      padding: 0;
+      margin: 0;
+      padding: 0;
+      background-color: black;
+    }
     body{
       background-color: #c6c6c6;
     }
-    .container{
-      margin-top:50px
-    }
+
     .main {
     width: 100%;
-    height: 100%;
-    display: -webkit-flex; /* Safari */
+    min-height: 11in;
+    display: -webkit-flex;
     display: flex;
     overflow-y: auto;
     }
+
+
   .main .left-box {
-    -webkit-flex: 1;  /* Safari 6.1+ */
-    -ms-flex: 1;  /* IE 10 */
+    -webkit-flex: 1;
+    -ms-flex: 1;
     flex: 0.32;
-    width:100px;
+    width:20%;
     color:white;
   }
   .main .right-box{
-    -webkit-flex: 1;  /* Safari 6.1+ */
-    -ms-flex: 1;  /* IE 10 */
+    -webkit-flex: 1;
+    -ms-flex: 1;
     flex: 1;
-    padding:10px;
+    width:50%;
+    padding:20px 20px 0 20px;
 
   }
+
   .section-title{
     width: 100%;
     padding: 10px;
@@ -54,11 +63,11 @@
     font-weight: bold;
     font-size: 19px;
   }
+
     </style>
   </head>
 
   <body>
-    <div class="container">
     <div class="main">
       <div class="left-box" style="background-color:#667896; ">
         <div style="padding:10px"><center><h3><%= @user.personal_detail.name %></h3></center></div>
@@ -91,15 +100,9 @@
         </div>
         <div class="body">
           <% @user.languages.each do |language|%>
-          <div><%= language.title %></div>
           <div class="progress">
             <div class="progress-bar progress-bar-default" style="width:<%= 100*language.writing_rate/5%>%" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-              <span style="text-align:center">Writing</span>
-            </div>
-          </div>
-          <div class="progress">
-            <div class="progress-bar progress-bar-default" style="width:<%= 100*language.spoken_rate/5%>%" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-              <span style="text-align:center">Spoken</span>
+              <span style="text-align:center"><%= language.title %></span>
             </div>
           </div>
           <%end%>
@@ -114,70 +117,76 @@
         </section>
         <% end %>
         <% if @user.educations.present? %>
+        <div class="row">
         <section>
           <div class="title">
           <span style="padding-left:9px"><i class="fa fa-graduation-cap"></i></span><span style="padding-left:10px">EDUCATIONS</span>
           </div>
           <div class="body">
             <% @user.educations.each do |edu| %>
-                <div class="col-sm-6" style="font-weight:bold;">
+                <div class="col-sm-6 col-xs-6" style="font-weight:bold;">
                     <%= edu.major %>
                 </div>
-                <div class="col-sm-6" style="text-align:right"><%= edu.date_enter %> - <%= edu.date_quit %></div>
-                <div class="col-sm-12"><%= edu.school %><br><%= edu.description%></div>
+                <div class="col-sm-6 col-xs-6" style="text-align:right"><%= edu.date_enter %> - <%= edu.date_quit %></div>
+                <div class="col-sm-12 col-xs-12"><%= edu.school %><br><%= edu.description%></div>
               <%end %>
           </div>
         </section>
+      </div>
         <%end%>
         <% if @user.employment_histories.present? %>
+        <div class="row">
         <section>
           <div class="title">
-          <span style="padding-left:9px"><i class="fa fa-briefcase"></i></span><span style="padding-left:10px">WORKING EXPERIENCES</span>
+          <span style="padding-left:9px"><i class="fa fa-briefcase"></i></span><span style="padding-left:10px">EXPERIENCES</span>
           </div>
           <div class="body">
             <% @user.employment_histories.each do |work| %>
-                <div class="col-sm-6" style="font-weight:bold;">
+                <div class="col-sm-6 col-xs-6" style="font-weight:bold;">
                     <%= work.job_title %>
                 </div>
-                <div class="col-sm-6" style="text-align:right"><%= work.date_enter %> - <%= work.date_quit %></div>
-                <div class="col-sm-12"><%= work.company %><br><%= work.description%></div>
+                <div class="col-sm-6 col-xs-6" style="text-align:right"><%= work.date_enter %> - <%= work.date_quit %></div>
+                <div class="col-sm-12 col-xs-12"><%= work.company %><br><%= work.description%></div>
               <%end %>
           </div>
         </section>
+      </div>
         <%end%>
         <% if @user.projects.present? %>
+        <div class="row">
         <section>
           <div class="title">
           <span style="padding-left:9px"><i class="fa fa-rocket"></i></span><span style="padding-left:10px">PROJECTS</span>
           </div>
           <div class="body">
             <% @user.projects.each do |project| %>
-                <div class="col-sm-6" style="font-weight:bold;">
+                <div class="col-sm-6 col-xs-6" style="font-weight:bold;">
                     <%= project.title %>
                 </div>
-                <div class="col-sm-6" style="text-align:right"><%= project.pro_date %></div>
-                <div class="col-sm-12"><%= project.company %><br><%= project.description%></div>
+                <div class="col-sm-6 col-xs-6" style="text-align:right"><%= project.pro_date %></div>
+                <div class="col-xs-12 col-sm-12"><%= project.company %><br><%= project.description%></div>
               <%end %>
           </div>
         </section>
+      </div>
         <%end%>
         <% if @user.references.present? %>
+        <div class="row">
         <section>
           <div class="title">
           <span style="padding-left:9px"><i class="fa fa-phone"></i></span><span style="padding-left:10px">REFERENCES</span>
           </div>
           <div class="body">
             <% @user.references.each do |ref| %>
-                <div class="col-sm-6" style="font-weight:bold;">
+                <div class="col-sm-6 col-xs-6" style="font-weight:bold;">
                     <%= ref.name %>
                 </div>
-                <div class="col-sm-12"><%= ref.company%><br><%= ref.address%><br><%= ref.phone%><br><%= ref.email%></div>
+                <div class="col-sm-12 col-xs-12"><%= ref.company%><br><%= ref.address%><br><%= ref.phone%><br><%= ref.email%></div>
               <%end %>
           </div>
         </section>
+      </div>
         <%end%>
     </div>
-  </div>
-
   </body>
   </html>

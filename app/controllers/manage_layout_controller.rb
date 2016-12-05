@@ -1,5 +1,6 @@
 class ManageLayoutController < ApplicationController
   before_action :authenticate_user!, only: [:index]
+  #before_action :authenticate_admin!, only: [:new]
   def index
     @layouts = Layout.all
   end

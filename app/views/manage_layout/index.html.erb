@@ -1,19 +1,34 @@
+<style>
+.radio-toolbar label > input{ /* HIDE RADIO */
+  visibility: hidden; /* Makes input not-clickable */
+  position: absolute; /* Remove input from document flow */
+}
+.radio-toolbar label > input + img{ /* IMAGE STYLES */
+  cursor:pointer;
+  border:2px solid transparent;
+}
+.radio-toolbar label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
+  border:2px solid #457c7a;
+  opacity:30%;
+}
+
+
+</style>
 <div class="container"style="min-height: 500px;text-align:center">
 <% if current_user.user_layout.present? %>
-  <%= form_for(current_user.user_layout) do |f| %>
-    <% Layout.all.each do |b| %>
-      <div class="col-sm-4">
-        <%= f.radio_button :layout_id, b.id %>
-        <%= image_tag(b.layout_image(:thumb)) %>
-        <br>
-      </div>
-      <% end %>
-      <div class="row">
-      <div class="col-sm-12">
-        <br>
-        <center><%= f.submit 'Save' %></center>
-      </div>
+  <%= form_for(current_user.user_layout, id:'form',remote: true) do |f| %>
+
+  <div class="radio-toolbar">
+  <%= f.collection_radio_buttons(:layout_id, Layout.all, :id, :layout_image)  do |b| %>
+    <div class="col-sm-4"><%= b.label { b.radio_button + image_tag(b.object.layout_image) } %></div>
+  <%end%>
+</div>
+    <div class="row">
+    <div class="col-sm-12">
+      <br>
+      <center><%= f.submit 'Save', class: 'btn btn-success', style:'width:150px' %></center>
     </div>
+  </div>
 <%end%>
   <%else%>
     <%= form_for(current_user.build_user_layout) do |f| %>
@@ -27,7 +42,7 @@
             <div class="row">
             <div class="col-sm-12">
               <br>
-              <center><%= f.submit 'Save' %></center>
+              <center><%= f.submit 'Save', class: 'btn btn-success' %></center>
             </div>
         </div>
   <%end%>
@@ -123,3 +138,19 @@
   </div>
 
 </div>
+<script type='text/javascript'>
+
+$('#form').submit(function() {
+   var valuesToSubmit = $(this).serialize();
+   $.ajax({
+       type: "POST",
+       url: $(this).attr('action'), //sumbits it to the given url of the form
+       data: valuesToSubmit,
+       dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
+   }).success(function(json){
+       console.log("success", json);
+   });
+   return false; // prevents normal behaviour
+});
+
+</script>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>E-resume.my</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <style>
+    html,body{
+      margin: 0;
+      padding: 0;
+      background-color: black;
+    }
+    body{
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 18px;
+    color: #595959;
+    }
+
+    .main{
+      margin-right: auto;
+      margin-left: auto;
+      width: 950px;
+      height:11in;
+      background-color: white;
+    }
+    .pd{
+      padding: 20px 20px 20px 20px;
+      background-color: white;
+      min-height:200px;
+    }
+    .bg1{
+      background-color: white;
+    }
+    .bg2{
+      background-color: green;
+    }
+    .label-title{
+      color: #389B17;
+    }
+    .pic{
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+    .pic img{
+      width:180px;
+      height:180px;
+      border-radius:10px;
+      border:3px solid white;
+      -webkit-box-shadow: 0px 0px 11px 0px rgba(50, 50, 50, 0.75);
+      -moz-box-shadow:    0px 0px 11px 0px rgba(50, 50, 50, 0.75);
+      box-shadow:         0px 0px 11px 0px rgba(50, 50, 50, 0.75);
+    }
+    .pe p{
+      padding: 20px 10px 20px 20px;
+    }
+    .video-link a{
+      color: black;
+    }
+    .video-link a:hover{
+      color: green;
+      background: none;
+    }
+    @media screen and (max-width: 860px) {
+
+      .main{
+        margin-right: auto;
+        margin-left: auto;
+        width: 100%;
+        height:auto;
+        background-color: white;
+      }
+    }
+    </style>
+  </head>
+    <body>
+      <div class="container main">
+          <div class="row">
+            <div class="col-xs-12 pd">
+              <div class="col-xs-8 bg1">
+                <div class="col-xs-4 pic ">
+                  <img src="<%= @user.avatar %>" />
+                </div>
+                <div class="col-xs-8 pe">
+                  <p>
+                    <h4 class="label-title"><%= @user.personal_detail.name%></h4>
+                    <p>
+                      <%= @user.summary.description %>
+                    </p>
+                  </p>
+                </div>
+              </div>
+              <div class="col-xs-4 bg1">
+                <h5 class="label-title">Watch Video</h5>
+                <p class="video-link">
+                  <% @user.video_galleries.take(4).each do |video|%>
+                    <a href="http://www.youtube.com/watch?v=<%= video.link %>" target="_blank"><%= video.name %></a>
+                    <legend></legend>
+                  <%end%>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-4">
+              <div style="border-bottom:1px dotted #389B17"><h5>EDUCATION</h5></div>
+              <% @user.educations.order(end_date: :desc).each do |edu| %>
+              <div class="col-xs-12"><strong><%= edu.major %></strong></div>
+              <p><div class="col-xs-8"><%= edu.description%></div><div class="col-xs-4" style="text-align:right"><%= edu.date_enter%>-<%= edu.date_quit%></div>
+                <br></br>
+              </p>
+              <%end%>
+
+            </div>
+            <div class="col-xs-4">
+              <div style="border-bottom:1px dotted #389B17"><h5>WORKING EXPERIENCES</h5></div>
+              <% @user.employment_histories.order(end_date: :desc).each do |work| %>
+              <div class="col-xs-12"><strong><%= work.job_title %></strong></div>
+              <p><div class="col-xs-8"><%= work.company%><br><%= work.description %></div><div class="col-xs-4" style="text-align:right"><%= work.date_enter%>-<%= work.date_quit%></div>
+                <br></br>
+              </p>
+              <%end%>
+            </div>
+            <div class="col-xs-4">
+              <div style="border-bottom:1px dotted #389B17"><h5>SKILLS</h5></div>
+              <% @user.skills.order(rate: :desc).each do |skill| %>
+              <div class="col-xs-12"><strong><%= skill.title %></strong>
+                <br> <% skill.rate.times.each do |r| %>
+                        <span><i class="fa fa-star"></i></span>
+                      <%end%>
+              </div>
+              <br></br>
+              <%end%>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-xs-4">
+              <div style="border-bottom:1px dotted #389B17"><h5>CERTIFICATES</h5></div>
+              <% @user.educations.order(end_date: :desc).each do |edu| %>
+              <div class="col-xs-12"><strong><%= edu.major %></strong></div>
+              <p><div class="col-xs-8"><%= edu.description%></div><div class="col-xs-4" style="text-align:right"><%= edu.date_enter%>-<%= edu.date_quit%></div>
+                <br></br>
+              </p>
+              <%end%>
+
+            </div>
+            <div class="col-xs-4">
+              <div style="border-bottom:1px dotted #389B17"><h5>PROJECTS</h5></div>
+              <% @user.projects.order(project_date: :desc).each do |pro| %>
+              <div class="col-xs-12"><strong><%= pro.title %> (<%= pro.company %>)</strong></div>
+              <p><div class="col-xs-8"><%= pro.description%></div><div class="col-xs-4" style="text-align:right"><%= pro.pro_date %></div>
+                <br></br>
+              </p>
+              <%end%>
+
+            </div>
+            <div class="col-xs-4">
+              <div style="border-bottom:1px dotted #389B17"><h5>LANGUAGES</h5></div>
+              <% @user.languages.order(writing_rate: :desc).each do |lan| %>
+              <div class="col-xs-12"><strong><%= lan.title %></strong>
+              <br> <% lan.writing_rate.times.each do |r| %>
+                      <span><i class="fa fa-star"></i></span>
+                    <%end%>
+                <br>
+              </div>
+              <%end%>
+            </div>
+          </div>
+          <div class="row">
+            <br>
+            <div class="col-xs-12">
+              <div style="border-top:1px solid grey; width:100%"></div>
+              <div style="border-bottom:1px solid grey; width:100%; padding-top:3px"></div>
+            </div>
+            <br>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="col-xs-6">
+                <div style="border-bottom:1px dotted #389B17"><h5>REFERENCES</h5></div>
+                <div class="col-xs-12">
+                  <% @user.references.each do |ref| %>
+                  <div class="row">
+                    <div class="col-xs-7">
+                    <strong><%= ref.name %><br></strong>
+                    <%= ref.company %><br>
+                    <%= ref.address %><br>
+                    </div>
+                    <div class="col-xs-5">
+                    <%= ref.phone %><br>
+                    <%= ref.email %><br>
+                    </div>
+                  <%end%>
+                </div>
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div style="border-bottom:1px dotted #389B17"><h5>CONTACT</h5></div>
+                <div class="col-xs-12">
+                  <div class="col-xs-1"><i class="fa fa-map-marker"></i></div><div class="col-xs-11"><%= @user.personal_detail.full_street_address %></div><br>
+                  <div class="col-xs-1"><i class="fa fa-phone"></i></div><div class="col-xs-11"><%= @user.personal_detail.phone_no%></div><br>
+                  <div class="col-xs-1"><i class="fa fa-envelope"></i></div><div class="col-xs-11"><%= @user.email%></div><br>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </body>
+    </html>

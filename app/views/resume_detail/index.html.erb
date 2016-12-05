@@ -23,6 +23,9 @@
 </style>
 <div class="container">
 <br>
+<div class="col-sm-6"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal"><span style="padding-right:10px"><i class="fa fa-search"></i></span>Preview</button></div>
+<div class="col-sm-6" style="text-align:right"><%= link_to manage_layout_path,  class: "btn btn-success", style:"color:white" do %><span style="padding-right:10px"><i class="fa fa-pencil-square-o"></i></span>Choose Layout<%end%></div>
+<br><br>
   <%= render 'personal_detail_panel' %>
 <!---------------------------------->
   <%= render 'summary' %>
@@ -44,6 +47,26 @@
 </div>
 <div class="row">
 </div class="col-sm-12"><br><br></div>
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog" style="width:10.3in">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+
+      <div class="modal-body">
+        <% if current_user.user_layout.present? %>
+        <iframe src="<%= resume_preview_preview_layout_3_path %>" scrolling="no" style="width:9.97in;height:11in;border:1px solid grey;"></iframe>
+        <%else%>
+          <center>Please choose layout first.</center>
+        <%end%>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 </div>
 <!-- Trigger the modal with a button -->
 
