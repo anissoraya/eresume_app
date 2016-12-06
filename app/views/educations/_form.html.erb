@@ -58,7 +58,14 @@
   <div class="form-group">
     <%= f.label :start_date, class:'col-sm-2 control-label' %>
     <div class="col-sm-4">
-      <%= f.date_field :start_date, class: 'form-control', autofocus: true %>
+      <div class="form-group">
+      <div class='input-group date' id='datetimepicker1'>
+      <%= f.text_field :start_date, class: "form-control" %>
+      <span class="input-group-addon">
+          <span class="glyphicon glyphicon-calendar"></span>
+      </span>
+        </div>
+      </div>
       <br>
     </div>
   </div>
@@ -66,7 +73,15 @@
 <div class="form-group">
   <%= f.label :end_date, class:'col-sm-2 control-label' %>
   <div class="col-sm-4">
-    <%= f.date_field :end_date, class: 'form-control', autofocus: true %>
+    <div class="form-group">
+    <div class='input-group date' id='datetimepicker2'>
+    <%= f.text_field :end_date, class: "form-control" %>
+    <span class="input-group-addon">
+        <span class="glyphicon glyphicon-calendar"></span>
+    </span>
+      </div>
+    </div>
+
     <br>
   </div>
 </div>
@@ -93,6 +108,23 @@ $('#form_edu').submit(function() {
        console.log("success", json);
    });
    return false; // prevents normal behaviour
+});
+
+$(function () {
+        $('#datetimepicker1').datetimepicker({
+            format: 'YYYY-MM-DD'
+        });
+        $('#datetimepicker2').datetimepicker({
+            useCurrent: false,
+            format: 'YYYY-MM-DD' //Important! See issue #1075
+
+        });
+        $("#datetimepicker1").on("dp.change", function (e) {
+            $('#datetimepicker2').data("DateTimePicker").minDate(e.date);
+        });
+        $("#datetimepicker2").on("dp.change", function (e) {
+            $('#datetimepicker1').data("DateTimePicker").maxDate(e.date);
+        });
 });
 
 </script>

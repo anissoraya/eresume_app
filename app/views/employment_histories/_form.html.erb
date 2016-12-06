@@ -38,7 +38,7 @@
   <div class="field">
     <%= f.label 'Presently Employ', class:'col-sm-2 control-label' %>
     <div class="col-sm-10">
-      <%= f.check_box :presently_emp %>
+      <%= f.check_box :presently_emp, id: 'present' %>
       <br>
     </div>
   </div>
@@ -54,7 +54,12 @@
   <div class="field">
     <%= f.label :start_date, class:'col-sm-2 control-label' %>
     <div class="col-sm-4">
-      <%= f.date_field :start_date, class: 'form-control', autofocus: true %>
+        <div class='input-group date' id='datetimepicker3'>
+          <%= f.text_field :start_date, class: "form-control" %>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+        </div>
       <br>
     </div>
   </div>
@@ -62,7 +67,12 @@
   <div class="form-group">
     <%= f.label :end_date, class:'col-sm-2 control-label' %>
     <div class="col-sm-4">
-      <%= f.date_field :end_date, class: 'form-control', autofocus: true %>
+      <div class='input-group date' id='datetimepicker4'>
+        <%= f.text_field :end_date, class: "form-control",  id:'date-field1' %>
+        <span class="input-group-addon">
+          <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+      </div>
       <br>
     </div>
   </div>
@@ -90,5 +100,29 @@ $('#form_emp').submit(function() {
    });
    return false; // prevents normal behaviour
 });
+$(function () {
+        $('#datetimepicker3').datetimepicker({
+            format: 'YYYY-MM-DD'
+        });
+        $('#datetimepicker4').datetimepicker({
+            useCurrent: false,
+            format: 'YYYY-MM-DD' //Important! See issue #1075
+
+        });
+        $("#datetimepicker3").on("dp.change", function (e) {
+            $('#datetimepicker4').data("DateTimePicker").minDate(e.date);
+        });
+        $("#datetimepicker4").on("dp.change", function (e) {
+            $('#datetimepicker3').data("DateTimePicker").maxDate(e.date);
+        });
+
+});
+$(function (){
+  enable_cb();
+  $("#present").click(enable_cb);
+});
+function enable_cb() {
+    $("#date-field1").prop("disabled", this.checked);
+}
 
 </script>

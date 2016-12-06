@@ -11,9 +11,6 @@ class Admin < ApplicationRecord
            if User.where(email: username).exists?
              errors.add(:username, :invalid)
            end
-           if User.where(email: subdomain).exists?
-             errors.add(:subdomain, :invalid)
-           end
          end
 
          def login=(login)
