@@ -119,7 +119,11 @@
               <div style="border-bottom:1px dotted #389B17"><h5>WORKING EXPERIENCES</h5></div>
               <% @user.employment_histories.order(end_date: :desc).each do |work| %>
               <div class="col-xs-12"><strong><%= work.job_title %></strong></div>
-              <p><div class="col-xs-8"><%= work.company%><br><%= work.description %></div><div class="col-xs-4" style="text-align:right"><%= work.date_enter%>-<%= work.date_quit%></div>
+              <p><div class="col-xs-8"><%= work.company%><br><%= work.description %></div><div class="col-xs-4" style="text-align:right"><%= work.date_enter%>-<% if work.presently_emp? %>
+               Present
+              <%else%>
+              <%= work.date_quit %>
+              <%end%></div>
                 <br></br>
               </p>
               <%end%>

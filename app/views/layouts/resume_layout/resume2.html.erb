@@ -124,7 +124,11 @@
                   <div class="col-sm-6" style="font-weight:bold;">
                       <%= work.job_title %>
                   </div>
-                  <div class="col-sm-6" style="text-align:right"><%= work.date_enter %> - <%= work.date_quit %></div>
+                  <div class="col-sm-6" style="text-align:right"><%= work.date_enter %> - <% if work.presently_emp? %>
+                   Present
+                  <%else%>
+                  <%= work.date_quit %>
+                  <%end%></div>
                   <div class="col-sm-12"><%= work.company %><br><%= work.description%></div>
                 <%end %>
             </div>
