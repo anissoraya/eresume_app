@@ -7,7 +7,7 @@ class EmploymentHistory < ApplicationRecord
   end
 
   def date_quit
-    if !end_date.empty?
+    if !end_date.nil?
     end_date.strftime("%b %Y")
     end
   end
