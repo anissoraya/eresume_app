@@ -15,5 +15,7 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require jquery_ujs
+//= require jquery.PrintArea
+//= require jquery.validate
 //= require turbolinks
 //= require_tree .

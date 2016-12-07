@@ -34,6 +34,8 @@
 <!----------------------------------->
   <%= render 'working_experience_panel' %>
 <!----------------------------------->
+  <%= render 'certificate_panel' %>
+<!----------------------------------->
   <%= render 'skill_panel' %>
 <!----------------------------------->
   <%= render 'language_panel' %>
@@ -168,6 +170,18 @@ $(document).ready(function(){
         $(this).text(function(i,text){
           return text === "Add Video" ? "Cancel" : "Add Video";
         });
+    });
+    $("#new_cert_button").click(function(){
+        $("#new_cert_form").slideToggle();
+        $(this).text(function(i,text){
+          return text === "Add Certificate" ? "Cancel" : "Add Certificate";
+        });
+    });
+    $('#cert-show').click(function(){
+      $('#cert-list').slideToggle();
+      $(this).text(function(i,text){
+        return text === "Show" ? "Hide" : "Show";
+      });
     });
 });
 

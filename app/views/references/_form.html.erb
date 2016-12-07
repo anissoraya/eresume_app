@@ -1,4 +1,4 @@
-<%= form_for(reference, id:'form_re', remote: true) do |f| %>
+<%= form_for(reference) do |f| %>
   <% if reference.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(reference.errors.count, "error") %> prohibited this reference from being saved:</h2>
@@ -14,7 +14,7 @@
 <div class="field">
   <%= f.label :name, class:'col-sm-2 control-label' %>
   <div class="col-sm-10">
-    <%= f.text_field :name, class: 'form-control', autofocus: true %>
+    <%= f.text_field :name, class: 'form-control', autofocus: true, required: true %>
     <br>
   </div>
 </div>
@@ -22,7 +22,7 @@
 <div class="field">
   <%= f.label :relationship, class:'col-sm-2 control-label' %>
   <div class="col-sm-10">
-    <%= f.text_field :relationship, class: 'form-control', autofocus: true %>
+    <%= f.text_field :relationship, class: 'form-control', autofocus: true, required: true %>
     <br>
   </div>
 </div>
@@ -30,7 +30,7 @@
 <div class="field">
   <%= f.label :company, class:'col-sm-2 control-label' %>
   <div class="col-sm-10">
-    <%= f.text_field :company, class: 'form-control', autofocus: true %>
+    <%= f.text_field :company, class: 'form-control', autofocus: true, required: true %>
     <br>
   </div>
 </div>
@@ -38,7 +38,7 @@
 <div class="field">
   <%= f.label :email, class:'col-sm-2 control-label' %>
   <div class="col-sm-10">
-    <%= f.text_field :email, class: 'form-control', autofocus: true %>
+    <%= f.text_field :email, class: 'form-control', autofocus: true, required: true %>
     <br>
   </div>
 </div>
@@ -46,13 +46,13 @@
 <div class="field">
   <%= f.label :phone, class:'col-sm-2 control-label' %>
   <div class="col-sm-10">
-    <%= f.text_field :phone, class: 'form-control', autofocus: true %>
+    <%= f.text_field :phone, class: 'form-control', autofocus: true, required: true %>
     <br>
   </div>
 </div>
 
 <div class="field">
-  <%= f.label :address, class:'col-sm-2 control-label' %>
+  <%= f.label :address, class:'col-sm-2 control-label', required: true %>
   <div class="col-sm-10">
     <%= f.text_area :address, class: 'form-control', autofocus: true %>
     <br>
@@ -77,18 +77,43 @@
 <% end %>
 
 <script type='text/javascript'>
+/*
+$( document ).ready(function () {
+  $( "#new_reference" ).validate( {
+    rules: {
+      name: {required: true},
+      relationship: {required: true},
+      company: {required: true},
+      address: {required: true}
 
-$('#form_re').submit(function() {
-   var valuesToSubmit = $(this).serialize();
-   $.ajax({
-       type: "POST",
-       url: $(this).attr('action'), //sumbits it to the given url of the form
-       data: valuesToSubmit,
-       dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
-   }).success(function(json){
-       console.log("success", json);
-   });
-   return false; // prevents normal behaviour
+
+    },
+    messages: {
+      name: "Name can't be blank",
+      relationship: "Relationship can't be blank",
+      company: "Company can't be blank",
+      address: "Address can't be blank"
+
+    },
+    errorElement: "em",
+    errorPlacement: function ( error, element ) {
+      // Add the `help-block` class to the error element
+      error.addClass( "help-block" );
+
+      if ( element.prop( "type" ) === "checkbox" ) {
+        error.insertAfter( element.parent( "label" ) );
+      } else {
+        error.insertAfter( element );
+      }
+
+    },
+    highlight: function ( element, errorClass, validClass ) {
+      $( element ).parents( ".col-sm-10, .col-sm-4" ).addClass( "has-error" ).removeClass( "has-success" );
+    },
+    unhighlight: function (element, errorClass, validClass) {
+      $( element ).parents( ".col-sm-10, .col-sm-4" ).addClass( "has-success" ).removeClass( "has-error" );
+    }
+  });
 });
-
+*/
 </script>

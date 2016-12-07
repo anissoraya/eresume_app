@@ -1,17 +1,29 @@
-<div class="container">
-<div class="col-sm-6 centered">
-<%= form_for(@layout, url:'#', method: :post) do |f| %>
-  <%= f.label :name, class:'form-label' %>
-  <%= f.text_field :name, class: 'form-control', placeholder: 'resume_layout/layoutname' %>
-  <br>
-  <%= f.label 'Upload Image', class:'form-label' %>
-  <%= f.file_field :layout_image %>
-  <br>
-  <%= f.submit 'Submit', class: 'btn btn-default' %>
-<%end%>
+<style>
+  @media screen and (max-width:780px){
+    .panel{
+      margin-top: 50px;
+      margin-right: 30px;
+      margin-left: 30px;
+    }
+  }
+</style>
+
+<div class="panel panel-default" style="margin-left:35px">
+  <div class="panel-body">
+  <%= form_for(@layout, url:'#', method: :post) do |f| %>
+    <%= f.label :name, class:'form-label' %>
+    <div class="input-group">
+    <span class="input-group-addon">resume_layout/</span>
+    <%= f.text_field :name, class: 'form-control', placeholder: 'layout name' %>
+    </div>
+    <br>
+    <%= f.label 'Upload Image', class:'form-label' %>
+    <%= f.file_field :layout_image %>
+    <br>
+    <%= f.submit 'Submit', class: 'btn btn-default' %>
+  <%end%>
 </div>
 </div>
-<br>
 <legend></legend>
 
 <div class="container">
@@ -24,6 +36,7 @@
   <tr>
     <td>
       <%= image_tag(layout.layout_image(:thumb)) %>
+
     </td>
     <td>
       <%= layout.name %>

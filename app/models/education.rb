@@ -3,10 +3,18 @@ class Education < ApplicationRecord
   self.order(end_date: :desc)
   STATUS = %w[Graduated Graduating Enrolled Deferred Transferred].freeze
   def date_enter
-    start_date.strftime("%b %Y")
+    if !start_date.nil?
+      start_date.strftime("%b %Y")
+    else
+      start_date
+    end
   end
 
   def date_quit
+    if !end_date.nil?
     end_date.strftime("%b %Y")
+    else
+    end_date
+    end
   end
 end

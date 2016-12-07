@@ -56,4 +56,5 @@ class User < ApplicationRecord
     has_many :references, dependent: :destroy
     has_one :user_layout, dependent: :destroy
     has_many :video_galleries, dependent: :destroy
+    has_many :certificates, dependent: :destroy
 end

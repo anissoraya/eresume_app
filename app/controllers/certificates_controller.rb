@@ -14,7 +14,7 @@ class CertificatesController < ApplicationController
 
   # GET /certificates/new
   def new
-    @certificate = Certificate.new
+    @certificate = current_user.certificates.build
   end
 
   # GET /certificates/1/edit
@@ -24,11 +24,11 @@ class CertificatesController < ApplicationController
   # POST /certificates
   # POST /certificates.json
   def create
-    @certificate = Certificate.new(certificate_params)
+    @certificate = current_user.certificates.build(certificate_params)
 
     respond_to do |format|
       if @certificate.save
-        format.html { redirect_to @certificate, notice: 'Certificate was successfully created.' }
+        format.html { redirect_to resume_detail_index_path, notice: 'Certificate was successfully created.' }
         format.json { render :show, status: :created, location: @certificate }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class CertificatesController < ApplicationController
   def update
     respond_to do |format|
       if @certificate.update(certificate_params)
-        format.html { redirect_to @certificate, notice: 'Certificate was successfully updated.' }
+        format.html { redirect_to resume_detail_index_path, notice: 'Certificate was successfully updated.' }
         format.json { render :show, status: :ok, location: @certificate }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class CertificatesController < ApplicationController
   def destroy
     @certificate.destroy
     respond_to do |format|
-      format.html { redirect_to certificates_url, notice: 'Certificate was successfully destroyed.' }
+      format.html { redirect_to resume_detail_index_path, notice: 'Certificate was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

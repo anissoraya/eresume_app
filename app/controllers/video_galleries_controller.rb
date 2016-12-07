@@ -28,7 +28,7 @@ class VideoGalleriesController < ApplicationController
 
     respond_to do |format|
       if @video_gallery.save
-        format.html { redirect_to @video_gallery, notice: 'Video gallery was successfully created.' }
+        format.html { redirect_to resume_detail_index_path, notice: 'Video gallery was successfully created.' }
         format.json { render :show, status: :created, location: @video_gallery }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class VideoGalleriesController < ApplicationController
   def update
     respond_to do |format|
       if @video_gallery.update(video_gallery_params)
-        format.html { redirect_to @video_gallery, notice: 'Video gallery was successfully updated.' }
+        format.html { redirect_to resume_detail_index_path, notice: 'Video gallery was successfully updated.' }
         format.json { render :show, status: :ok, location: @video_gallery }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class VideoGalleriesController < ApplicationController
   def destroy
     @video_gallery.destroy
     respond_to do |format|
-      format.html { redirect_to video_galleries_url, notice: 'Video gallery was successfully destroyed.' }
+      format.html { redirect_to resume_detail_index_path, notice: 'Video gallery was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

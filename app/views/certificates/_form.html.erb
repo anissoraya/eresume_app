@@ -1,32 +1,77 @@
+<style>
+
+</style>
 <%= form_for(certificate) do |f| %>
-  <% if certificate.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(certificate.errors.count, "error") %> prohibited this certificate from being saved:</h2>
 
-      <ul>
-      <% certificate.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+
+  <div class="field">
+    <%= f.label :title, class:'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= f.text_field :title, name:'title', class: 'form-control', autofocus: true, required: true %>
+      <span></span>
+      <br>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
   </div>
 
-  <div class="field">
-    <%= f.label :date %>
-    <%= f.date_select :date %>
-  </div>
 
   <div class="field">
-    <%= f.label :user_id %>
-    <%= f.text_field :user_id %>
+    <%= f.label :date, class:'col-sm-2 control-label' %>
+    <div class="col-sm-4">
+        <div class='input-group date' id='datetimepicker5'>
+          <%= f.text_field :date, name: 'date', class: "form-control", required: true %>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+        </div>
+      <br>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <div class="pull-right">
+        <%= f.submit 'Save', class: 'btn btn-primary' %>
+      </div>
+    </div>
   </div>
 <% end %>
+<script type="text/javascript">
+/*
+$(document).ready(function(){
+    $('#datetimepicker5').datetimepicker({
+      format: 'YYYY-MM-DD'
+    });
+});
+$( document ).ready(function () {
+  $( "#new_certificate" ).validate( {
+    rules: {
+      title: {required: true},
+      date: {required: true}
+    },
+    messages: {
+      title: "Title can't be blank",
+      date: "Date can't be blank"
+    },
+    errorElement: "em",
+    errorPlacement: function ( error, element ) {
+      // Add the `help-block` class to the error element
+      error.addClass( "help-block" );
+
+      if ( element.prop( "type" ) === "checkbox" ) {
+        error.insertAfter( element.parent( "label" ) );
+      } else {
+        error.insertAfter( element );
+      }
+
+    },
+    highlight: function ( element, errorClass, validClass ) {
+      $( element ).parents( ".col-sm-10, .col-sm-4" ).addClass( "has-error" ).removeClass( "has-success" );
+    },
+    unhighlight: function (element, errorClass, validClass) {
+      $( element ).parents( ".col-sm-10, .col-sm-4" ).addClass( "has-success" ).removeClass( "has-error" );
+    }
+  });
+});
+*/
+</script>

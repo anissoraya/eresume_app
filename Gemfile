@@ -55,7 +55,6 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.17.43'
 gem 'font-awesome-sass', '~> 4.7.0'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
-
 #Postgress SQL
 gem 'pg'
 

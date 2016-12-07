@@ -1,0 +1,111 @@
+.main {
+width: 100%;
+min-height: 11in;
+display: -webkit-flex;
+display: flex;
+overflow-y: auto;
+}
+.main .left-box {
+  background-color: white;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  width:100px;
+  color:black;
+  padding:20px 20px 0 20px;
+}
+.main .right-box{
+  background-color: #667896;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 0.32;
+  color:white;
+
+}
+#circle {
+width: 40px;
+height: 40px;
+background: black;
+-moz-border-radius: 50px;
+-webkit-border-radius: 50px;
+border-radius: 50px;
+color:white;
+padding: 9.5px 10px 10px 13.5px;
+}
+.body{
+padding:15px 15px 10px 15px;
+font-size: 12px;
+line-height: 30px;
+}
+.section-title{
+width: 100%;
+padding: 10px;
+background-color: #455166;
+}
+.progress-bar, .progress{
+border-radius: 0;
+}
+.progress-bar-default{
+background-color: #3a5175;
+}
+.title{
+font-weight: bold;
+font-size: 19px;
+}
+
+@media print{
+  .main {
+  width: 100%;
+  min-height: 11in;
+  display: -webkit-flex;
+  display: flex;
+  overflow-y: auto;
+  }
+  .main .left-box {
+    background-color: white;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    width:100px;
+    color:black;
+    padding:20px 20px 0 20px;
+  }
+  .main .right-box{
+    background-color: #667896;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 0.32;
+    color:white;
+
+  }
+  #circle {
+  width: 40px;
+  height: 40px;
+  background: black;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  color:white;
+  padding: 9.5px 10px 10px 13.5px;
+  }
+  .body{
+  padding:15px 15px 10px 15px;
+  font-size: 12px;
+  line-height: 30px;
+  }
+  .section-title{
+  width: 100%;
+  padding: 10px;
+  background-color: #455166;
+  }
+  .progress-bar, .progress{
+  border-radius: 0;
+  }
+  .progress-bar-default{
+  background-color: #3a5175;
+  }
+  .title{
+  font-weight: bold;
+  font-size: 19px;
+  }
+}

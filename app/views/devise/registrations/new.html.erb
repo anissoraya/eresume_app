@@ -3,7 +3,7 @@
 </style>
 <div class="container">
     <div id="signupbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-        <div class="panel panel-success" >
+        <div class="panel panel-info" >
                 <div class="panel-heading">
                     <div class="panel-title"><center>Sign Up</center></div>
                 </div>
@@ -47,6 +47,45 @@
                 </div>
     </div>
 </div>
+<script type="text/javascript">
+/*
+$( document ).ready(function () {
+  $( "#new_user" ).validate( {
+    rules: {
+      username: {required: true},
+      email: {required: true},
+      password: {required: true},
+      password_confirmation: {required: true},
 
 
-<!-- Divide -->
+    },
+    messages: {
+      username: "Username can't be blank",
+      email: "Email can't be blank",
+      password: "Password can't be blank",
+      password_confirmation: "Password_confirmation can't be blank",
+
+
+    },
+    errorElement: "em",
+    errorPlacement: function ( error, element ) {
+      // Add the `help-block` class to the error element
+      error.addClass( "help-block" );
+
+      if ( element.prop( "type" ) === "checkbox" ) {
+        error.insertAfter( element.parent( "label" ) );
+      } else {
+        error.insertAfter( element );
+      }
+
+    },
+    highlight: function ( element, errorClass, validClass ) {
+      $( element ).parents( ".col-md-12" ).addClass( "has-error" ).removeClass( "has-success" );
+    },
+    unhighlight: function (element, errorClass, validClass) {
+      $( element ).parents( ".col-md-12" ).addClass( "has-success" ).removeClass( "has-error" );
+    }
+  });
+});
+*/
+</script>

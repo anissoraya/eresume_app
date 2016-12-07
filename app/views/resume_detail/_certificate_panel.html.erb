@@ -1,0 +1,19 @@
+<div class="col-xs-12"><br></div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-heading"><div class="panel-title">Certificates <span style="float:right"><button id="cert-show" class="btn btn default">Show</button></span></div></div>
+        <div class="panel-body">
+            <div class="col-xs-12" id="cert-list" style="display:none">
+              <%= render 'certificate_list' %>
+            </div>
+            <br>
+            <div align="center"><button id="new_cert_button" class="btn btn-default" >Add Certificate</button></div>
+        <br>
+            <div  class="col-xs-12" id="new_cert_form" style="display:none">
+                <%= render 'certificates/form', certificate: current_user.certificates.build %>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>

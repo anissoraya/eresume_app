@@ -8,5 +8,6 @@ class ResumeDetailController < ApplicationController
     @projects = Project.where(user_id: current_user.id)
     @references = Reference.where(user_id: current_user.id)
     @videos = VideoGallery.where(user_id: current_user.id)
+    @certs = Certificate.where(user_id: current_user.id).order(date: :desc)
   end
 end

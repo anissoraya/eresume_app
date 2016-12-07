@@ -1,5 +1,5 @@
 
-<%= form_for(video_gallery, id:'form_vd', remote: true) do |f| %>
+<%= form_for(video_gallery) do |f| %>
   <% if video_gallery.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(video_gallery.errors.count, "error") %> prohibited this video_gallery from being saved:</h2>
@@ -15,7 +15,7 @@
   <div class="field">
     <%= f.label 'Title', class:'col-sm-2 control-label' %>
     <div class="col-sm-10">
-      <%= f.text_field :name, class: 'form-control', autofocus: true %>
+      <%= f.text_field :name, class: 'form-control', autofocus: true, required: true %>
       <br>
     </div>
   </div>
@@ -25,7 +25,7 @@
   <div class="col-sm-10">
   <div class="input-group">
   <div class="input-group-addon">https://www.youtube.com/embed/</div>
-    <%= f.text_field :link, class: 'form-control', id:"exampleInputAmount", placeholder:"eg: h3iue6F6d0E" %>
+    <%= f.text_field :link, class: 'form-control', id:"exampleInputAmount", placeholder:"eg: h3iue6F6d0E", required: true %>
   </div>
   <br>
   <br>
@@ -41,18 +41,39 @@
   </div>
 <% end %>
 <script type='text/javascript'>
+/*
+$( document ).ready(function () {
+  $( "#new_video_gallery" ).validate( {
+    rules: {
+      name: {required: true},
+      link: {required: true}
 
-$('#form_vd').submit(function() {
-   var valuesToSubmit = $(this).serialize();
-   $.ajax({
-       type: "POST",
-       url: $(this).attr('action'), //sumbits it to the given url of the form
-       data: valuesToSubmit,
-       dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
-   }).success(function(json){
-       console.log("success", json);
-   });
-   return false; // prevents normal behaviour
+
+    },
+    messages: {
+      name: "Name can't be blank",
+      link: "Link can't be blank"
+
+    },
+    errorElement: "em",
+    errorPlacement: function ( error, element ) {
+      // Add the `help-block` class to the error element
+      error.addClass( "help-block" );
+
+      if ( element.prop( "type" ) === "checkbox" ) {
+        error.insertAfter( element.parent( "label" ) );
+      } else {
+        error.insertAfter( element );
+      }
+
+    },
+    highlight: function ( element, errorClass, validClass ) {
+      $( element ).parents( ".col-sm-10, .col-sm-4" ).addClass( "has-error" ).removeClass( "has-success" );
+    },
+    unhighlight: function (element, errorClass, validClass) {
+      $( element ).parents( ".col-sm-10, .col-sm-4" ).addClass( "has-success" ).removeClass( "has-error" );
+    }
+  });
 });
-
+*/
 </script>

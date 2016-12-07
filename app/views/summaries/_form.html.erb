@@ -1,4 +1,4 @@
-<%= form_for(summary, id:'form_sm', remote: true) do |f| %>
+<%= form_for(summary) do |f| %>
   <% if summary.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(summary.errors.count, "error") %> prohibited this summary from being saved:</h2>
@@ -13,7 +13,7 @@
 
   <div class="form-group">
     <div class="col-sm-12">
-      <%= f.text_area :description, class: 'form-control', placeholder: 'Summarize all about Yourself', style:'height:100px', autofocus: true %>
+      <%= f.text_area :description, class: 'form-control', placeholder: 'Summarize all about Yourself', style:'height:100px', autofocus: true, required: true %>
       <br>
     </div>
   </div>
@@ -29,17 +29,5 @@
 <% end %>
 <script type='text/javascript'>
 
-$('#form_sm').submit(function() {
-   var valuesToSubmit = $(this).serialize();
-   $.ajax({
-       type: "POST",
-       url: $(this).attr('action'), //sumbits it to the given url of the form
-       data: valuesToSubmit,
-       dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
-   }).success(function(json){
-       console.log("success", json);
-   });
-   return false; // prevents normal behaviour
-});
 
 </script>
