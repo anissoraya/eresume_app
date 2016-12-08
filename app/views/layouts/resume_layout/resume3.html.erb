@@ -4,10 +4,10 @@
     <title>E-resume.my</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag 'application', 'data-turbolinks-track': 'reload' -%>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' -%>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag 'resume3'%>
-    <%= stylesheet_link_tag    'print', media: 'print' %>
+    <%= stylesheet_link_tag 'resume3', media: 'all'%>
+    <%= stylesheet_link_tag    'print', media: 'all' %>
     <style>
     html,body{
       margin:0;
@@ -25,7 +25,7 @@
 
   <body>
     <div class="main">
-      <div class="left-box" style="background-color:#667896; ">
+      <div class="left-box">
         <div style="padding:10px"><center><h3><%= @user.personal_detail.name %></h3></center></div>
         <div class="section-title">
           PERSONAL DETAILS

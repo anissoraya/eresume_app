@@ -9,7 +9,7 @@ class User < ApplicationRecord
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
   validate :validate_username
 
-  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
+  has_attached_file :avatar, styles: { medium: "320x400>", thumb: "160x200>" }, default_url: "https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
     def validate_username

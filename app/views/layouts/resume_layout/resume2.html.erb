@@ -44,10 +44,10 @@
           <div class="row">
           <section>
             <div class="title">
-            <span style="padding-left:9px"><i class="fa fa-graduation-cap"></i></span><span style="padding-left:10px">EDUCATIONS</span>
+            <span style="padding-left:9px"><span class="fa fa-graduation-cap"></span></span><span style="padding-left:10px">EDUCATIONS</span>
             </div>
             <div class="body">
-              <% @user.educations.each do |edu| %>
+              <% @user.educations.take(4).each do |edu| %>
                   <div class="col-sm-6" style="font-weight:bold;">
                       <%= edu.major %>
                   </div>
@@ -67,7 +67,7 @@
             <span style="padding-left:9px"><i class="fa fa-briefcase"></i></span><span style="padding-left:10px">EXPERIENCES</span>
             </div>
             <div class="body">
-              <% @user.employment_histories.each do |work| %>
+              <% @user.employment_histories.take(4).each do |work| %>
                   <div class="col-sm-6" style="font-weight:bold;">
                       <%= work.job_title %>
                   </div>
@@ -89,7 +89,7 @@
             <span style="padding-left:9px"><i class="fa fa-rocket"></i></span><span style="padding-left:10px">PROJECTS</span>
             </div>
             <div class="body">
-              <% @user.projects.each do |project| %>
+              <% @user.projects.take(3).each do |project| %>
                   <div class="col-sm-6" style="font-weight:bold;">
                       <%= project.title %>
                   </div>
@@ -107,7 +107,7 @@
             <span style="padding-left:9px"><i class="fa fa-phone"></i></span><span style="padding-left:10px">REFERENCES</span>
             </div>
             <div class="body">
-              <% @user.references.each do |ref| %>
+              <% @user.references.take(2).each do |ref| %>
                   <div class="col-sm-6" style="font-weight:bold;">
                       <%= ref.name %>
                   </div>
@@ -163,10 +163,12 @@
         </div>
       </div>
 
-      <a href="#" class="print" rel="content">Print</a>
+      <!--<a href="#" class="print" rel="content">Print</a>-->
   </body>
   </html>
+
 <script type="text/javascript">
+/*
 $(function(){
   $('.print').click(function(){
     var container = $(this).attr('rel');
@@ -174,4 +176,5 @@ $(function(){
     return false;
   });
 });
+*/
 </script>

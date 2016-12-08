@@ -16,7 +16,7 @@ class ResumePreviewController < ApplicationController
       format.pdf do
         render :pdf => "pdf_file.pdf",
                 :template => 'resume_preview/preview_cv.pdf.erb',
-                :layout => "#{@user.user_layout.layout.name}.html.erb",
+                :layout => "resume_layout/#{@user.user_layout.layout.name}.html.erb",
                 margin:  {   top:              2,
                             bottom:            2,
                             left:              2,
@@ -43,9 +43,9 @@ class ResumePreviewController < ApplicationController
 
   def set_layout
     if @user.user_layout.present?
-      "#{@user.user_layout.layout.name}"
+      "resume_layout/#{@user.user_layout.layout.name}"
     else
-      'resume_layout/resume2'
+      'default'
     end
   end
 

@@ -1,10 +1,9 @@
 
-<p align="center" class="col-xs-4 col-xs-offset-4" style="font-size: 13px;color:grey">
-  <q><%= current_user.summary.description %></q>
+<p class="col-xs-12" style="font-size: 13px;color:grey">
+  <br>
+  <%= current_user.summary.description %>
   <br>
   <%if !current_user.summary.link.blank? %>
-  <center>
-    <iframe width="560" height="315" src="<%= current_user.summary.link %>" frameborder="0" allowfullscreen></iframe>
-  </center>
+
   <%end%>
 </p>

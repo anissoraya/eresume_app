@@ -10,18 +10,7 @@
 
 <div class="panel panel-default" style="margin-left:35px">
   <div class="panel-body">
-  <%= form_for(@layout, url:'#', method: :post) do |f| %>
-    <%= f.label :name, class:'form-label' %>
-    <div class="input-group">
-    <span class="input-group-addon">resume_layout/</span>
-    <%= f.text_field :name, class: 'form-control', placeholder: 'layout name' %>
-    </div>
-    <br>
-    <%= f.label 'Upload Image', class:'form-label' %>
-    <%= f.file_field :layout_image %>
-    <br>
-    <%= f.submit 'Submit', class: 'btn btn-default' %>
-  <%end%>
+    <%= render 'layouts/form', layout: @layout %>
 </div>
 </div>
 <legend></legend>
@@ -31,6 +20,7 @@
     <tr>
       <td>Layout Image</td>
       <td>Name</td>
+      <td></td>
     </tr>
   <% @layouts.each do |layout| %>
   <tr>
@@ -40,6 +30,9 @@
     </td>
     <td>
       <%= layout.name %>
+    </td>
+    <td>
+      <%= link_to 'Edit Layout', manage_layout_edit_path(layout), class: 'btn btn-link'%>
     </td>
   </tr>
   <%end%>

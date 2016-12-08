@@ -44,3 +44,54 @@
     font-weight: bold;
     font-size: 19px;
   }
+
+@media print{
+  .main {
+  width: 100%;
+  min-height: 11.67in;
+  display: -webkit-flex;
+  display: flex;
+  overflow-y: auto;
+  }
+
+
+.main .left-box {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 0.32;
+  width:20%;
+  color:white !important;
+  background-color:#667896 !important;
+}
+.main .right-box{
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  width:50%;
+  padding:20px 20px 0 20px;
+
+}
+
+.section-title{
+  width: 100%;
+  padding: 10px;
+  background-color: #455166 !important;
+}
+.body{
+  padding:15px 15px 10px 15px;
+  font-size: 12px;
+  line-height: 30px;
+}
+.progress-bar, .progress{
+  border-radius: 0;
+  background-color: #fff !important;
+}
+.progress-bar-default{
+  background-color: #3a5175 !important;
+}
+.title{
+  font-weight: bold;
+  font-size: 19px;
+}
+
+}

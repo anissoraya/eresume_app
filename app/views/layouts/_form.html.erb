@@ -1,0 +1,26 @@
+<%= form_for(layout) do |f| %>
+  <% if layout.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(layout.errors.count, "error") %> prohibited this layout from being saved:</h2>
+
+      <ul>
+      <% layout.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.label :name, class:'form-label' %>
+    <div class="input-group">
+    <span class="input-group-addon">resume_layout/</span>
+    <%= f.text_field :name, class: 'form-control', placeholder: 'layout name' %>
+    </div>
+    <br>
+    <%= f.label 'Upload Image', class:'form-label' %>
+    <%= f.file_field :layout_image %>
+    <br>
+    <%= f.submit 'Submit', class: 'btn btn-default' %>
+  </div>
+<% end %>

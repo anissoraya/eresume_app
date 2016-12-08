@@ -54,15 +54,16 @@ font-size: 19px;
 }
 
 @media print{
+
   .main {
   width: 100%;
-  min-height: 11in;
+  min-height: 11.65in;
   display: -webkit-flex;
   display: flex;
   overflow-y: auto;
   }
   .main .left-box {
-    background-color: white;
+    background-color: white !important;
     -webkit-flex: 1;
     -ms-flex: 1;
     flex: 1;
@@ -71,7 +72,7 @@ font-size: 19px;
     padding:20px 20px 0 20px;
   }
   .main .right-box{
-    background-color: #667896;
+    background-color: #667896 !important;
     -webkit-flex: 1;
     -ms-flex: 1;
     flex: 0.32;
@@ -96,13 +97,14 @@ font-size: 19px;
   .section-title{
   width: 100%;
   padding: 10px;
-  background-color: #455166;
+  background-color: #455166 !important;
   }
   .progress-bar, .progress{
   border-radius: 0;
+  background-color: white !important;
   }
   .progress-bar-default{
-  background-color: #3a5175;
+  background-color: #3a5175 !important;
   }
   .title{
   font-weight: bold;
