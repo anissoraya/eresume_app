@@ -69,6 +69,26 @@
       <br>
     </div>
   </div>
+  <script>
+  $(document).ready(function(){
+    $('#datetimepicker1').datetimepicker({
+        format: 'YYYY-MM-DD'
+    });
+    $('#datetimepicker2').datetimepicker({
+        useCurrent: false,
+        format: 'YYYY-MM-DD' //Important! See issue #1075
+
+    });
+    $("#datetimepicker1").on("dp.change", function (e) {
+        $('#datetimepicker2').data("DateTimePicker").minDate(e.date);
+    });
+    $("#datetimepicker2").on("dp.change", function (e) {
+        $('#datetimepicker1').data("DateTimePicker").maxDate(e.date);
+    });
+
+
+  });
+  </script>
 
 <div class="form-group">
   <%= f.label :end_date, class:'col-sm-2 control-label' %>
@@ -96,23 +116,6 @@
 <%end%>
 <!--form end-->
 <script type='text/javascript'>
-
-$(function () {
-        $('#datetimepicker1').datetimepicker({
-            format: 'YYYY-MM-DD'
-        });
-        $('#datetimepicker2').datetimepicker({
-            useCurrent: false,
-            format: 'YYYY-MM-DD' //Important! See issue #1075
-
-        });
-        $("#datetimepicker1").on("dp.change", function (e) {
-            $('#datetimepicker2').data("DateTimePicker").minDate(e.date);
-        });
-        $("#datetimepicker2").on("dp.change", function (e) {
-            $('#datetimepicker1').data("DateTimePicker").maxDate(e.date);
-        });
-});
 /*
 $( document ).ready(function () {
   $( "#new_education" ).validate( {
