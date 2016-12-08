@@ -47,7 +47,7 @@
             <span style="padding-left:9px"><span class="fa fa-graduation-cap"></span></span><span style="padding-left:10px">EDUCATIONS</span>
             </div>
             <div class="body">
-              <% @user.educations.take(4).each do |edu| %>
+              <% @user.educations.take(3).each do |edu| %>
                   <div class="col-sm-6" style="font-weight:bold;">
                       <%= edu.major %>
                   </div>
@@ -67,7 +67,7 @@
             <span style="padding-left:9px"><i class="fa fa-briefcase"></i></span><span style="padding-left:10px">EXPERIENCES</span>
             </div>
             <div class="body">
-              <% @user.employment_histories.take(4).each do |work| %>
+              <% @user.employment_histories.take(3).each do |work| %>
                   <div class="col-sm-6" style="font-weight:bold;">
                       <%= work.job_title %>
                   </div>

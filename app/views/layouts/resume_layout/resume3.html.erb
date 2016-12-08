@@ -42,7 +42,7 @@
           SKILLS
         </div>
         <div class="body">
-          <% @user.skills.order(rate: :desc).each do |skill|%>
+          <% @user.skills.order(rate: :desc).take(4).each do |skill|%>
           <div><%= skill.title %></div>
           <div class="progress">
             <div class="progress-bar progress-bar-default" style="width:<%= 100*skill.rate/5%>%" role="progressbar" aria-valuemin="0" aria-valuemax="100">
@@ -55,7 +55,7 @@
           LANGUAGES
         </div>
         <div class="body">
-          <% @user.languages.each do |language|%>
+          <% @user.languages.take(4).each do |language|%>
           <div class="progress">
             <div class="progress-bar progress-bar-default" style="width:<%= 100*language.writing_rate/5%>%" role="progressbar" aria-valuemin="0" aria-valuemax="100">
               <span style="text-align:center"><%= language.title %></span>
@@ -63,7 +63,18 @@
           </div>
           <%end%>
         </div>
+        <% if @user.certificates.take(4).present? %>
+        <div class="section-title">
+          CERTIFICATES
+        </div>
+        <div class="body">
+          <% @user.certificates.take(4).each do |cert|%>
+            <%= cert.name %>
+          <%end%>
+        </div>
+        <%end%>
       </div>
+<!-- right box -->
       <div  class="right-box" style="background-color:white;">
         <% if @user.summary.present? %>
         <section>
@@ -79,7 +90,7 @@
           <span style="padding-left:9px"><i class="fa fa-graduation-cap"></i></span><span style="padding-left:10px">EDUCATIONS</span>
           </div>
           <div class="body">
-            <% @user.educations.each do |edu| %>
+            <% @user.educations.take(4).each do |edu| %>
                 <div class="col-sm-6 col-xs-6" style="font-weight:bold;">
                     <%= edu.major %>
                 </div>
@@ -97,7 +108,7 @@
           <span style="padding-left:9px"><i class="fa fa-briefcase"></i></span><span style="padding-left:10px">EXPERIENCES</span>
           </div>
           <div class="body">
-            <% @user.employment_histories.each do |work| %>
+            <% @user.employment_histories.take(4).each do |work| %>
                 <div class="col-sm-6 col-xs-6" style="font-weight:bold;">
                     <%= work.job_title %>
                 </div>
@@ -120,7 +131,7 @@
           <span style="padding-left:9px"><i class="fa fa-rocket"></i></span><span style="padding-left:10px">PROJECTS</span>
           </div>
           <div class="body">
-            <% @user.projects.each do |project| %>
+            <% @user.projects.take(3).each do |project| %>
                 <div class="col-sm-6 col-xs-6" style="font-weight:bold;">
                     <%= project.title %>
                 </div>
@@ -138,7 +149,7 @@
           <span style="padding-left:9px"><i class="fa fa-phone"></i></span><span style="padding-left:10px">REFERENCES</span>
           </div>
           <div class="body">
-            <% @user.references.each do |ref| %>
+            <% @user.references.take(2).each do |ref| %>
                 <div class="col-sm-6 col-xs-6" style="font-weight:bold;">
                     <%= ref.name %>
                 </div>

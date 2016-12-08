@@ -5,11 +5,10 @@
 }
 .radio-toolbar label > input + img{ /* IMAGE STYLES */
   cursor:pointer;
-  border:2px solid transparent;
+  border:5px solid transparent;
 }
 .radio-toolbar label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
-  border:2px solid #457c7a;
-  opacity:30%;
+  border:5px solid #457c7a;
 }
 
 
@@ -20,7 +19,7 @@
 
   <div class="radio-toolbar">
   <%= f.collection_radio_buttons(:layout_id, Layout.all, :id, :layout_image)  do |b| %>
-    <div class="col-sm-4"><%= b.label { b.radio_button + image_tag(b.object.layout_image) } %></div>
+    <div class="col-sm-3"><%= b.label { b.radio_button + image_tag(b.object.layout_image(:medium)) } %></div>
   <%end%>
 </div>
     <div class="row">
@@ -31,6 +30,7 @@
   </div>
 <%end%>
   <%else%>
+
     <%= form_for(current_user.build_user_layout) do |f| %>
     <div class="radio-toolbar">
     <%= f.collection_radio_buttons(:layout_id, Layout.all, :id, :layout_image)  do |b| %>
@@ -43,7 +43,9 @@
         <center><%= f.submit 'Save', class: 'btn btn-success', style:'width:150px' %></center>
       </div>
     </div>
-<%end%>
+    <%end%>
+
+    <%end%>
 
 </div>
 <!--
@@ -128,10 +130,3 @@
       </div>
     </div>
     <!---->
-
-
-
-
-  </div>
-
-</div>

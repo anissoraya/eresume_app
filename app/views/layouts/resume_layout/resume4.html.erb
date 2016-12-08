@@ -17,7 +17,6 @@ body {
   font: 100% sans-serif;
   margin: 0em;
   background-color: #fff;
-  color: #666;
   font-size: 14px;
 }
 
@@ -27,191 +26,153 @@ body {
   </head>
 
   <body>
-    <header>
-  		<h1><img src="<%= @user.avatar(:thumb) %>" style="border-radius:100%"/><br><%= @user.personal_detail.name%></h1>
-  		<p><%= @user.personal_detail.phone_no %>/ <%= @user.email %></p>
-  	</header>
-
-  	<div class="container">
-
-  		<!-- Introduction-->
-  		<section class="center">
-  			<h1>Welcome!</h1>
-  			<p style="color:grey">
-  				<%= @user.summary.description %><br><br>
-          <% if !@user.summary.link.blank? %>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><span style="padding-right:10px"><i class="fa fa-video-camera"></i></span>Watch Video</button>
-          <%end%>
-        </p>
-  		</section>
-
-  		<hr>
-
-  		<!-- Gallery Block-->
-  		<section class="gallery">
-  			<h1 class="center"><span style="padding-right:10px">
-          <i class="fa fa-graduation-cap"></i>
-        </span>Educations</h1>
-  			<div class="row">
-          <% @user.educations.take(4).each do |edu| %>
-  			     <div class="col-sm-12">
-               <h5>
-               <strong><%= edu.major %></strong><span style="padding-left:10px">(<%= edu.date_enter %> - <%= edu.date_quit %>)</span></h5>
-               <p style="color:red; padding-left:25px;"><%= edu.status%></p>
-               <p style="color:grey; padding-left:25px"><%= edu.description%></p>
-             </div>
-          <%end%>
-  			</div>
-  		</section>
-
-  		<hr>
-
-  		<!-- Testimonials-->
-  		<section class="experience" id="experience">
-        <h1><center><span style="padding-right:10px">
-          <i class="fa fa-briefcase"></i>
-        </span>Work Experiences<center></h1>
-          <% @user.employment_histories.take(4).each do |work| %>
-            <div class="row">
-              <div class="col-sm-3">
-                <h5><%= work.company %></h5>
-                <h5 style="color:black"><%= work.job_title %></h5>
-                <p><span class="label label-danger"><%= work.date_enter %>
-                   - <% if work.presently_emp? %>
-                    Present
-                   <%else%>
-                   <%= work.date_quit %>
-                   <%end%>
-                 </span>
-                 </p>
-              </div>
-              <div class="col-sm-9">
-                <p style="color:grey;font-size:12px"><%= work.description %></p>
-              </div>
+    <div id="wrapper">
+        <div id="header">
+            <div class="header-title">
+              <%= @user.personal_detail.name%>
             </div>
-            <%end%>
-  		</section>
-  	</div> <!-- End container-->
-
-  	<!-- Spotlight -->
-  	<section class="spotlight">
-  		<div class="container">
-  			<div class="row">
-  				<div class="col-sm-12">
-  					<h1><center><span style="padding-right:10px">
-              <i class="fa fa-lightbulb-o"></i>
-            </span>Projects</center></h1>
-            <% @user.projects.take(4).each do |project| %>
-            <div class="col-sm-12">
-  					<p><%= project.title %> <span style="padding-left:20px">(<%= project.pro_date %>)</span></p>
-            <p style="font-size:12px"><%= project.description %></p>
-            <legend></legend>
-            </div>
-            <%end%>
-  				</div>
-  			</div>
-  		</div>
-  	</section>
-
-
-  	<!-- New container-->
-  	<div class="container">
-  		<!--Experience Tables-->
-  		<section class="experience">
-          <h1><center><span style="padding-right:10px">
-            <i class="fa fa-cogs"></i>
-          </span>Skills</center></h1>
-  			<div class="row">
-
-  				<div class="col-sm-4">
-  					<h2></h2>
-  					<p style="color:grey">Computer Skills</p>
-  				</div>
-  				<div class="col-sm-8">
-            <% @user.skills.take(4).each do |skill| %>
-            <div class="progress skill-bar ">
-               <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%= 100*skill.rate/5 %>" aria-valuemin="0" aria-valuemax="100">
-                   <span class="skill"><%= skill.title %> <i class="val"><%= 100*skill.rate/5 %>%</i></span>
-               </div>
-          </div>
-          <%end%>
-  				</div>
-  			</div>
-        <div class="row">
-
-  				<div class="col-sm-4">
-  					<h2></h2>
-  					<p style="color:grey">Language Skills</p>
-  				</div>
-  				<div class="col-sm-8">
-
-            <% @user.languages.order(writing_rate: :desc).take(4).each do |lan| %>
-            <div class="progress skill-bar ">
-               <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="<%= 100*lan.writing_rate/5 %>" aria-valuemin="0" aria-valuemax="100">
-                   <span class="skill"><%= lan.title%><i class="val"><%= 100*lan.writing_rate/5 %>%</i></span>
-               </div>
-            </div>
-
-            <legend></legend>
-            <%end%>
-    				</div>
-  			</div>
-
-  		</section>
-
-  		<hr>
-
-  		<section>
-  			<!--List of skills-->
-  			<div class="row">
-          <h1><center>References</center></h1>
-          <% @user.references.take(4).each do |ref| %>
-          <div class="col-sm-6" style="color:black"><%= ref.name %></div>
-          <div class="col-sm-6" style="color:grey">
-            <ul>
-              <li> <%= ref.company %>, <%= ref.address%></li>
-              <li> <%= ref.phone %></li>
-              <li> <%= ref.email %></li>
-            </ul>
-          </div>
-          <br/>
-
-          <% end %>
-  			</div>
-  		</section>
-
-
-
-  		<!--Footer-->
-  		<footer class="center">
-  			<hr>
-  			<span>&copy; <%= @user.personal_detail.name%></span>
-  		</footer>
-
-  	</div><!-- End Container -->
-
-    <!-- Modal -->
-      <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
-
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Modal Header</h4>
-            </div>
-            <div class="modal-body">
-              <p>
-                <iframe width="560" height="315" src="<%= @user.summary.link %>" frameborder="0" allowfullscreen></iframe>
-              </p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-
         </div>
-      </div>
+        <div id="content">
+          <div class="container container-fluid">
+            <% if @user.summary.present? %>
+            <section>
+              <div class="body">
+                <%= @user.summary.description %>
+              </div>
+            </section>
+            <% end %>
+            <!-- ******* -->
+            <br><br>
+            <% if @user.educations.present? %>
+            <div class="row">
+            <section>
+              <div class="title">
+              <span style="padding-left:9px"><span class="fa fa-graduation-cap"></span></span><span style="padding-left:10px">EDUCATIONS</span>
+              </div>
+              <div class="body" style="text-align:left">
+                <% @user.educations.order(end_date: :desc).take(3).each do |edu| %>
+                    <div class="col-sm-6" style="font-weight:bold;">
+                        <%= edu.major %>
+                    </div>
+                    <div class="col-sm-6" style="text-align:right"><%= edu.date_enter %> - <%= edu.date_quit %></div>
+                    <div class="col-sm-12"><%= edu.school %><br><%= edu.description%></div>
+                  <%end %>
+                  <div class="visible-sm">
+                  </div>
+              </div>
+            </section>
+            </div>
+            <%end%>
+            <!-- ******* -->
+            <% if @user.employment_histories.present? %>
+            <div class="row">
+            <section style="padding-top:15px">
+              <div class="title">
+              <span style="padding-left:9px"><i class="fa fa-briefcase"></i></span><span style="padding-left:10px">EXPERIENCES</span>
+              </div>
+              <div class="body">
+                <% @user.employment_histories.order(end_date: :desc).take(3).each do |work| %>
+                    <div class="col-sm-6" style="font-weight:bold;">
+                        <%= work.job_title %>
+                    </div>
+                    <div class="col-sm-6" style="text-align:right"><%= work.date_enter %> - <% if work.presently_emp? %>
+                     Present
+                    <%else%>
+                    <%= work.date_quit %>
+                    <%end%></div>
+                    <div class="col-sm-12"><%= work.company %><br><%= work.description%></div>
+                  <%end %>
+                </div>
+              </section>
+            </div>
+              <%end%>
+              <!-- ******* -->
+              <% if @user.projects.present? %>
+              <div class="row">
+              <section style="padding-top:15px">
+                <div class="title">
+                <span style="padding-left:9px"><i class="fa fa-rocket"></i></span><span style="padding-left:10px">PROJECTS</span>
+                </div>
+                <div class="body">
+                  <% @user.projects.order(project_date: :desc).take(3).each do |project| %>
+                      <div class="col-sm-6" style="font-weight:bold;">
+                          <%= project.title %>
+                      </div>
+                      <div class="col-sm-6" style="text-align:right"><%= project.pro_date %></div>
+                      <div class="col-sm-12"><%= project.company %><br><%= project.description%></div>
+                    <%end %>
+                </div>
+              </section>
+            </div>
+              <%end%>
+              <!-- ******* -->
+              <% if @user.references.present? %>
+              <div class="row">
+              <section style="padding-top:15px">
+                <div class="title">
+                <span style="padding-left:9px"><i class="fa fa-phone"></i></span><span style="padding-left:10px">REFERENCES</span>
+                </div>
+                <div class="body">
+                  <% @user.references.take(2).each do |ref| %>
+                      <div class="col-sm-6" style="font-weight:bold;">
+                          <%= ref.name %>
+                      </div>
+                      <div class="col-sm-12"><%= ref.company%><br><%= ref.address%><br><%= ref.phone%><br><%= ref.email%></div>
+                    <%end %>
+                </div>
+              </section>
+            </div>
+              <%end%>
+          </div>
+       </div>
+<!-- ======================================================== -->
+        <div id="rightcolumn">
+          <div class="section-title">PERSONAL DETAILS</div>
+          <div class="line"></div>
+          <div class="section-body">
+            <h6 style="font-weight:bold">PHONE</h6>
+            <%= @user.personal_detail.name %>
+            <h6 style="font-weight:bold">EMAIL</h6>
+            <%= @user.email %>
+            <h6 style="font-weight:bold">ADDRESS</h6>
+            <%= @user.personal_detail.full_street_address %>
+          </div>
+          <div class="section-title">KEY SKILLS</div>
+          <div class="line"></div>
+          <div class="section-body">
+            <% @user.skills.order(rate: :desc).each do |skill|%>
+            <div style="padding-bottom:10px"><%= skill.title %></div>
+            <div class="progress">
+              <div class="progress-bar progress-bar-default" style="width:<%= 100*skill.rate/5%>%" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                <span style="text-align:center"><%= skill.skil_rate %></span>
+              </div>
+            </div>
+            <%end%>
+          </div>
+          <div class="section-title">LANGUAGES</div>
+          <div class="line"></div>
+          <div class="section-body">
+            <% @user.languages.each do |language|%>
+            <div style="padding-bottom:10px"><%= language.title %></div>
+            <div class="progress">
+              <div class="progress-bar progress-bar-default" style="width:<%= 100*language.writing_rate/5%>%" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                <span style="text-align:center"> <%= language.lan_rate %></span>
+              </div>
+            </div>
+            <%end%>
+          </div>
+          <% if @user.certificates.present? %>
+          <div class="section-title">CERTIFICATES</div>
+          <div class="line"></div>
+          <div class="section-body">
+            <% @user.certificates.each do |certificate|%>
+            <div style="padding-bottom:10px"><%= certificate.title %></div>
+
+            <%end%>
+          </div>
+          <%end%>
+        </div>
+    </div>
   </body>
 
 </html>

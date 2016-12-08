@@ -9,6 +9,7 @@
 
 
   .main .left-box {
+    background-color:#667896 !important;
     -webkit-flex: 1;
     -ms-flex: 1;
     flex: 0.32;
@@ -56,12 +57,13 @@
 
 
 .main .left-box {
+  background-color:#667896 !important;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 0.32;
   width:20%;
   color:white !important;
-  background-color:#667896 !important;
+
 }
 .main .right-box{
   -webkit-flex: 1;

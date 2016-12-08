@@ -1,21 +1,123 @@
+*{
+  color: black;
+  font-size: 12px;
+}
+body {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color:#333
+}
+
+p {
+    padding: 10px;
+}
+
+#wrapper {
+    margin: 0 auto;
+    width: 100%;
+}
+
+#header {
+    float: left;
+    height: 150px;
+    width: 100%;
+    background: #96f0f2;
+}
+
+#content {
+    float: left;
+    background: #FFFFFF;
+    width: 80%;
+    height: 11.67in;
+}
+.container{
+  margin: 40px auto 20px 30px;
+  width:95%;
+  text-align: justify;
+}
+.body{
+  line-height: 20px;
+}
+
+#rightcolumn {
+    background: #e0e0e0;
+    width: 20%;
+    height: 11.67in;
+    float: left;
+}
+.header-title{
+  margin: 55px auto 40px 45px;
+  font-weight: bolder;
+  font-size: 24px;
+}
+
+.section-title{
+width: 100%;
+padding: 20px 10px 5px 15px;
+margin-top: 10px;
+font-size: 16px;
+font-weight: bold;
+}
+.line{
+  margin:0px 10px 5px 10px;
+  width: 90%;
+  border-top: 1px solid #969696;
+}
+.section-body{
+  padding: 5px 10px 10px 15px;
+  font-size: 13px;
+}
 .progress {
   height: 20px;
-
 }
-.progress .skill {
-  font: normal 9px "Open Sans Web";
-  line-height: 0px;
-  padding: 0;
-  margin: 0 0 0 20px;
-  text-transform: uppercase;
+.progress-bar, .progress{
+border-radius: 0;
 }
-.progress .skill .val {
-  float: right;
-  font-style: normal;
-  margin: 8.5px 20px 0 0;
+.progress-bar-default{
+background-color: #96f0f2;
 }
-
-.progress-bar {
-  text-align: left;
-  transition-duration: 3s;
+.title{
+font-weight: bold;
+font-size: 19px;
+padding-bottom: 10px;
+}
+@media print{
+  #header {
+      float: left;
+      height: 100px;
+      width: 100%;
+      background: #96f0f2 !important;
+  }
+  .header-title{
+    margin: 40px auto 40px 45px;
+    font-weight: bolder;
+    font-size: 24px;
+  }
+  .container{
+    margin: 40px 5px 5px 10px;
+    width:95%;
+    text-align: justify;
+  }
+  #content {
+      float: left;
+      background: #FFFFFF;
+      width: 70%;
+      height: 10.6in;
+  }
+  #rightcolumn {
+      background: #e0e0e0 !important;
+      width: 30%;
+      height: 10.63in;
+      float: left;
+  }
+  .progress {
+    height: 20px;
+    background-color: white !important;
+  }
+  .progress-bar, .progress{
+  border-radius: 0;
+  }
+  .progress-bar-default{
+  background-color: #96f0f2 !important;
+  }
 }
