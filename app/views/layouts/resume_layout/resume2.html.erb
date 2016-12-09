@@ -121,6 +121,7 @@
 
         <div class="right-box">
             <div style="padding:10px">
+            <% if @user.personal_detail.present? %>
             <h3><center><%= @user.personal_detail.name %></center></h3>
 
             </div>
@@ -135,6 +136,8 @@
               <strong>Email</strong><br>
               <%= @user.email %><br>
             </div>
+            <%end%>
+            <% if @user.skills.present? %>
             <div class="section-title">
               SKILLS
             </div>
@@ -148,6 +151,8 @@
               </div>
               <%end%>
             </div>
+            <%end%>
+            <% if @user.languages.present? %>
             <div class="section-title">
               LANGUAGES
             </div>
@@ -160,6 +165,7 @@
               </div>
               <%end%>
             </div>
+            <%end%>
         </div>
       </div>
 

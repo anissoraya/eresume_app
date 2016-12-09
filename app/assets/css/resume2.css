@@ -2,9 +2,10 @@ body{
   background-color: grey;
 }
 .main {
-width: 8.27in;
+
+width: 100%;
 height: 11.69in;
-margin: 0 auto 0 auto;
+/*margin: 0 auto 0 auto;*/
 display: -webkit-flex;
 display: flex;
 overflow-y: auto;

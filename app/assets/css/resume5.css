@@ -2,9 +2,10 @@ body{
   background-color: grey;
 }
 .main{
-  margin-right: auto;
+  /*margin-right: auto;
   margin-left: auto;
-  width: 8.27in;
+  */
+  width: 100%;
   height:11.69in;
   background-color: white;
 }

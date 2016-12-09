@@ -29,7 +29,9 @@ body {
     <div id="wrapper">
         <div id="header">
             <div class="header-title">
+                <% if @user.personal_detail.present? %>
               <%= @user.personal_detail.name%>
+              <%end%>
             </div>
         </div>
         <div id="content">
@@ -127,6 +129,7 @@ body {
        </div>
 <!-- ======================================================== -->
         <div id="rightcolumn">
+            <% if @user.personal_detail.present? %>
           <div class="section-title">PERSONAL DETAILS</div>
           <div class="line"></div>
           <div class="section-body">
@@ -137,6 +140,8 @@ body {
             <h6 style="font-weight:bold">ADDRESS</h6>
             <%= @user.personal_detail.full_street_address %>
           </div>
+          <%end%>
+          <% if @user.skills.present? %>
           <div class="section-title">KEY SKILLS</div>
           <div class="line"></div>
           <div class="section-body">
@@ -149,6 +154,8 @@ body {
             </div>
             <%end%>
           </div>
+          <%end%>
+          <% if @user.languages.present? %>
           <div class="section-title">LANGUAGES</div>
           <div class="line"></div>
           <div class="section-body">
@@ -161,6 +168,7 @@ body {
             </div>
             <%end%>
           </div>
+          <%end%>
           <% if @user.certificates.present? %>
           <div class="section-title">CERTIFICATES</div>
           <div class="line"></div>
