@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :layouts
   get 'manage_layout/index', as: 'manage_layout'
   get 'resume_preview/preview_layout_1'
-  get 'resume_preview/preview_layout_2'
+  get 'resume_preview/printView'
   get 'resume_preview/preview_layout_3'
   post 'manage_layout/new', to: 'manage_layout#create'
   get 'manage_layout/new'

@@ -20,11 +20,24 @@
   text-align: left;
   transition-duration: 3s;
 }
+
+.btn-header{
+  border-radius: 0%;
+  width:100%;
+  background-color: #32d8db;
+  color:white;
+}
+.btn-header:hover{
+  background-color: #28b5b7;
+  color:white;
+}
+
 </style>
 <div class="container">
 <br>
-<div class="col-sm-6"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal"><span style="padding-right:10px"><i class="fa fa-search"></i></span>Preview</button></div>
-<div class="col-sm-6" style="text-align:right"><%= link_to manage_layout_path,  class: "btn btn-success", style:"color:white" do %><span style="padding-right:10px"><i class="fa fa-pencil-square-o"></i></span>Choose Layout<%end%></div>
+<div class="col-sm-4"><button type="button" class="btn btn-header" data-toggle="modal" data-target="#myModal"><span style="padding-right:10px"><i class="fa fa-search"></i></span>Preview</button></div>
+<div class="col-sm-4" style="text-align:center"><a href="<%= resume_preview_printView_path %>" class="btn btn-header" target="_blank" style="color:white"><span style="padding-right:10px"><i class="fa fa-print"></i></span>Print</a></div>
+<div class="col-sm-4" style="text-align:right"><a href="<%= manage_layout_path %>" class="btn btn-header" style="color:white"><span style="padding-right:10px"><i class="fa fa-pencil-square-o"></i></span>Choose Layout</a></div>
 <br><br>
   <%= render 'personal_detail_panel' %>
 <!---------------------------------->

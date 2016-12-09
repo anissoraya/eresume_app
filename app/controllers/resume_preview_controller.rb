@@ -1,13 +1,13 @@
 class ResumePreviewController < ApplicationController
-  layout 'default', only: [:preview_layout_1, :preview_layout_2]
-  layout :set_layout, only: [:preview_layout_3]
+  layout 'default', only: [:preview_layout_1]
+  layout :set_layout, only: [:printView, :preview_layout_3]
   before_action :user_data
-  before_action :check_layout, only: [:preview_layout_3]
+  before_action :check_layout, only: [:printView,:preview_layout_3]
 
   def preview_layout_1
   end
 
-  def preview_layout_2
+  def printView
   end
 
   def preview_layout_3
@@ -37,7 +37,7 @@ class ResumePreviewController < ApplicationController
   def check_layout
     if !@user.user_layout.present?
       redirect_to manage_layout_path
-      flash[:notice] = "You haven't choose layout for your resume yet. Please add first"
+      format.html { redirect_to manage_layout_path, alert:"You haven't choose layout for your resume yet. Please add first"}
     end
   end
 
