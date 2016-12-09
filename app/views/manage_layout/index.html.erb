@@ -38,7 +38,7 @@
     <%= form_for(current_user.build_user_layout) do |f| %>
     <div class="radio-toolbar">
     <%= f.collection_radio_buttons(:layout_id, Layout.all, :id, :layout_image)  do |b| %>
-      <div class="col-sm-4"><%= b.label { b.radio_button + image_tag(b.object.layout_image(:medium)) } %></div>
+      <div class="col-sm-3"><%= b.label { b.radio_button + image_tag(b.object.layout_image(:medium)) } %></div>
     <%end%>
     </div>
       <div class="row">
