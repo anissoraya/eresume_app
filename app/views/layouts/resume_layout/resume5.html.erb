@@ -34,7 +34,7 @@
           <div class="row">
             <% if @user.educations.present? %>
             <div class="col-xs-4">
-              <div><h5>EDUCATION</h5></div>
+              <div><strong>EDUCATION</strong></div>
               <div class="line-print">&nbsp;</div>
               <% @user.educations.order(end_date: :desc).each do |edu| %>
               <div class="row">
@@ -49,7 +49,7 @@
             <%end%>
             <% if @user.employment_histories.present? %>
             <div class="col-xs-4">
-              <div><h5>WORKING EXPERIENCES</h5></div>
+              <div><strong>WORKING EXPERIENCES</strong></div>
               <div class="line-print">&nbsp;</div>
               <% @user.employment_histories.order(end_date: :desc).each do |work| %>
               <div class="row">
@@ -67,7 +67,7 @@
             <%end%>
             <% if @user.skills.present? %>
             <div class="col-xs-4">
-              <div><h5>SKILLS</h5></div>
+              <div><strong>SKILLS</strong></div>
               <div class="line-print">&nbsp;</div>
               <% @user.skills.order(rate: :desc).each do |skill| %>
               <div class="col-xs-12"><strong><%= skill.title %></strong>
@@ -84,7 +84,7 @@
           <div class="row">
             <% if @user.certificates.present? %>
             <div class="col-xs-4">
-              <div><h5>CERTIFICATES</h5></div>
+              <div><strong>CERTIFICATES</strong></div>
               <div class="line-print">&nbsp;</div>
               <% @user.certificates.each do |cert| %>
               <div class="col-xs-12"><strong><%= cert.title %></strong></div>
@@ -95,7 +95,7 @@
             <%end%>
             <% if @user.projects.present? %>
             <div class="col-xs-4">
-              <div><h5>PROJECTS</h5></div>
+              <div><strong>PROJECTS</strong></div>
               <div class="line-print">&nbsp;</div>
               <% @user.projects.order(project_date: :desc).each do |pro| %>
               <div class="row">
@@ -110,7 +110,7 @@
             <%end%>
             <% if @user.languages.present? %>
             <div class="col-xs-4">
-              <div><h5>LANGUAGES</h5></div>
+              <div><strong>LANGUAGES</strong></div>
               <div class="line-print">&nbsp;</div>
               <% @user.languages.order(writing_rate: :desc).each do |lan| %>
               <div class="col-xs-12"><strong><%= lan.title %></strong>
@@ -136,7 +136,7 @@
               <% if @user.references.present? %>
               <div class="row">
               <div class="col-xs-6">
-                <div><h5>REFERENCES</h5></div>
+                <div><strong>REFERENCES</strong></div>
                 <div class="line-print">&nbsp;</div>
                 <div class="col-xs-12">
                   <% @user.references.each do |ref| %>
@@ -153,7 +153,7 @@
               <%end%>
               <% if @user.personal_detail.present? %>
               <div class="col-xs-6">
-                <div><h5>CONTACT</h5></div>
+                <div><strong>CONTACT</strong></div>
                 <div class="line-print">&nbsp;</div>
                 <br>
                 <div class="col-xs-12">
