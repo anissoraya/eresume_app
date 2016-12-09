@@ -166,6 +166,16 @@
               <%end%>
             </div>
             <%end%>
+            <% if @user.certificates.present? %>
+            <div class="section-title">
+              CERTIFICATES
+            </div>
+            <div class="body">
+              <% @user.certificates.take(4).each do |cert|%>
+                <%= cert.name %>
+              <%end%>
+            </div>
+            <%end%>
         </div>
       </div>
 
