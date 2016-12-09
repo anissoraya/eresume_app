@@ -1,7 +1,7 @@
 .main{
   margin-right: auto;
   margin-left: auto;
-  width: 950px;
+  width: 100%;
   height:11in;
   background-color: white;
 }
@@ -24,13 +24,11 @@
   padding-bottom: 20px;
 }
 .pic img{
-  width:180px;
-  height:180px;
   border-radius:10px;
-  border:3px solid white;
+  border:3px solid white !important;
   -webkit-box-shadow: 0px 0px 11px 0px rgba(50, 50, 50, 0.75);
   -moz-box-shadow:    0px 0px 11px 0px rgba(50, 50, 50, 0.75);
-  box-shadow:         0px 0px 11px 0px rgba(50, 50, 50, 0.75);
+  box-shadow:         0px 0px 11px 0px rgba(50, 50, 50, 0.75) !important;
 }
 .pe p{
   padding: 20px 10px 20px 20px;
@@ -42,6 +40,29 @@
   color: green;
   background: none;
 }
+.line-print{
+   border-bottom:1px dotted #389B17 !important;
+}
+.rating{
+	position: relative;
+	height: 20px;
+	width: 100px;
+	background: linear-gradient(to right, #389B17, #389B17); /* tukar color background */
+	background-repeat: no-repeat;
+	background-position: 0px; 0px;
+	background-size: 0px 100%;
+}
+.rating:after{
+	position:absolute;
+	content: '';
+	height:100%;
+	width:100%;
+	background: radial-gradient(20px at center, transparent 7.5px, white 9px); /* tukar color background box */
+	background-position: 0px 0px;
+	background-size: 20px 100%;
+	border: 0px solid hidden;
+}
+
 @media screen and (max-width: 860px) {
 
   .main{
@@ -51,4 +72,13 @@
     height:auto;
     background-color: white;
   }
+}
+@media print{
+.noprint{
+  display: none !important;
+}
+.line-print{
+   border-bottom:1px dotted #389B17 !important;
+}
+
 }

@@ -8,10 +8,10 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <style>
-    html,body{
+    body{
       margin: 0;
       padding: 0;
-      background-color: black;
+      background-color: white;
     }
     body{
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -27,27 +27,18 @@
       <div class="container main">
           <div class="row">
             <div class="col-xs-12 pd">
-              <div class="col-xs-8 bg1">
+              <div class="col-xs-12 bg1">
                 <div class="col-xs-4 pic ">
-                  <img src="<%= @user.avatar %>" />
+                  <img src="<%= @user.avatar(:thumb) %>" />
                 </div>
-                <div class="col-xs-8 pe">
+                <div class="col-sm-8 pe">
                   <p>
                     <h4 class="label-title"><%= @user.personal_detail.name%></h4>
-                    <p>
+                    <p style="text-align:justify">
                       <%= @user.summary.description %>
                     </p>
                   </p>
                 </div>
-              </div>
-              <div class="col-xs-4 bg1">
-                <h5 class="label-title">Watch Video</h5>
-                <p class="video-link">
-                  <% @user.video_galleries.take(4).each do |video|%>
-                    <a href="http://www.youtube.com/watch?v=<%= video.link %>" target="_blank"><%= video.name %></a>
-                    <legend></legend>
-                  <%end%>
-                </p>
               </div>
             </div>
           </div>
@@ -55,24 +46,28 @@
             <div class="col-xs-4">
               <div style="border-bottom:1px dotted #389B17"><h5>EDUCATION</h5></div>
               <% @user.educations.order(end_date: :desc).each do |edu| %>
-              <div class="col-xs-12"><strong><%= edu.major %></strong></div>
-              <p><div class="col-xs-8"><%= edu.description%></div><div class="col-xs-4" style="text-align:right"><%= edu.date_enter%>-<%= edu.date_quit%></div>
+              <div class="row">
+              <div class="col-xs-6"><strong><%= edu.major %></strong></div><div class="col-xs-6" style="text-align:right"><%= edu.date_enter%>-<%= edu.date_quit%></div>
+              <p><div class="col-xs-12" style="padding-bottom:5px;"><%= edu.description%></div>
                 <br></br>
               </p>
+              </div>
               <%end%>
 
             </div>
             <div class="col-xs-4">
               <div style="border-bottom:1px dotted #389B17"><h5>WORKING EXPERIENCES</h5></div>
               <% @user.employment_histories.order(end_date: :desc).each do |work| %>
-              <div class="col-xs-12"><strong><%= work.job_title %></strong></div>
-              <p><div class="col-xs-8"><%= work.company%><br><%= work.description %></div><div class="col-xs-4" style="text-align:right"><%= work.date_enter%>-<% if work.presently_emp? %>
+              <div class="row">
+              <div class="col-xs-6"><strong><%= work.job_title %></strong></div><div class="col-xs-6" style="text-align:right"><%= work.date_enter%>-<% if work.presently_emp? %>
                Present
               <%else%>
               <%= work.date_quit %>
               <%end%></div>
+              <p><div class="col-xs-12" style="padding-bottom:5px;"><%= work.company%><br><%= work.description%></div>
                 <br></br>
               </p>
+              </div>
               <%end%>
             </div>
             <div class="col-xs-4">
@@ -89,16 +84,16 @@
 
           </div>
           <div class="row">
+            <% if @user.certificates.present? %>
             <div class="col-xs-4">
               <div style="border-bottom:1px dotted #389B17"><h5>CERTIFICATES</h5></div>
-              <% @user.educations.order(end_date: :desc).each do |edu| %>
-              <div class="col-xs-12"><strong><%= edu.major %></strong></div>
-              <p><div class="col-xs-8"><%= edu.description%></div><div class="col-xs-4" style="text-align:right"><%= edu.date_enter%>-<%= edu.date_quit%></div>
-                <br></br>
-              </p>
+              <% @user.certificates.each do |cert| %>
+              <div class="col-xs-12"><strong><%= cert.title %></strong></div>
+
               <%end%>
 
             </div>
+            <%end%>
             <div class="col-xs-4">
               <div style="border-bottom:1px dotted #389B17"><h5>PROJECTS</h5></div>
               <% @user.projects.order(project_date: :desc).each do |pro| %>
@@ -132,16 +127,14 @@
           <div class="row">
             <div class="col-xs-12">
               <div class="col-xs-6">
-                <div style="border-bottom:1px dotted #389B17"><h5>REFERENCES</h5></div>
+                <div class="line-print"><h5>REFERENCES</h5></div>
                 <div class="col-xs-12">
                   <% @user.references.each do |ref| %>
                   <div class="row">
-                    <div class="col-xs-7">
+                    <div class="col-xs-12">
                     <strong><%= ref.name %><br></strong>
                     <%= ref.company %><br>
                     <%= ref.address %><br>
-                    </div>
-                    <div class="col-xs-5">
                     <%= ref.phone %><br>
                     <%= ref.email %><br>
                     </div>
@@ -151,12 +144,24 @@
               </div>
               <div class="col-xs-6">
                 <div style="border-bottom:1px dotted #389B17"><h5>CONTACT</h5></div>
+                <br>
                 <div class="col-xs-12">
-                  <div class="col-xs-1"><i class="fa fa-map-marker"></i></div><div class="col-xs-11"><%= @user.personal_detail.full_street_address %></div><br>
-                  <div class="col-xs-1"><i class="fa fa-phone"></i></div><div class="col-xs-11"><%= @user.personal_detail.phone_no%></div><br>
-                  <div class="col-xs-1"><i class="fa fa-envelope"></i></div><div class="col-xs-11"><%= @user.email%></div><br>
+                  <div class="col-xs-12"><%= @user.personal_detail.full_street_address %></div><br>
+                  <div class="col-xs-12"><%= @user.personal_detail.phone_no%></div><br>
+                  <div class="col-xs-12"><%= @user.email%></div><br>
                 </div>
               </div>
+              <!--
+              <div class="col-xs-4 bg1 noprint">
+                <h5 class="label-title">Watch Video</h5>
+                <p class="video-link">
+                  <% @user.video_galleries.take(4).each do |video|%>
+                    <a href="http://www.youtube.com/watch?v=<%= video.link %>" target="_blank"><%= video.name %></a>
+                    <legend></legend>
+                  <%end%>
+                </p>
+              </div>
+              -->
             </div>
           </div>
       </div>

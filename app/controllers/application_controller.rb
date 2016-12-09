@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   layout :determine_layout
 
+  def after_sign_in_path_for(resource)
+    dashboard_index_path
+  end
+
   private
   def determine_layout
     if user_signed_in?
@@ -21,5 +25,4 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
-
 end
