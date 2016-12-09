@@ -1,6 +1,10 @@
+body{
+  background-color: grey;
+}
 .main {
-width: 100%;
-min-height: 11in;
+width: 8.27in;
+height: 11.69in;
+margin: 0 auto 0 auto;
 display: -webkit-flex;
 display: flex;
 overflow-y: auto;
@@ -20,7 +24,7 @@ overflow-y: auto;
   -ms-flex: 1;
   flex: 0.32;
   color:white;
-
+h
 }
 #circle {
 width: 40px;
