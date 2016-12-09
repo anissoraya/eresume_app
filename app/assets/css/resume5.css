@@ -28,8 +28,8 @@ body{
   padding-bottom: 20px;
 }
 .pic img{
-  width:320px;
-  height:400px;
+  width:160px;
+  height:200px;
   border-radius:10px;
   border:3px solid white !important;
   -webkit-box-shadow: 0px 0px 11px 0px rgba(50, 50, 50, 0.75);
