@@ -133,16 +133,14 @@
                 <div class="line-print"><h5>REFERENCES</h5></div>
                 <div class="col-xs-12">
                   <% @user.references.each do |ref| %>
-                  <div class="row">
                     <div class="col-xs-12">
                     <strong><%= ref.name %><br></strong>
                     <%= ref.company %><br>
                     <%= ref.address %><br>
                     <%= ref.phone %><br>
-                    <%= ref.email %><br>
+                    <%= ref.email %><br><br>
                     </div>
                   <%end%>
-                </div>
                 </div>
               </div>
               <%end%>
