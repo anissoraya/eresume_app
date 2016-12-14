@@ -14,7 +14,7 @@ class EmploymentHistory < ApplicationRecord
     if !end_date.nil?
     end_date.strftime("%b %Y")
     else
-      end_date
+      "Present"
     end
   end
 end

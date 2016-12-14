@@ -2,6 +2,11 @@
 <html>
   <head>
     <title>E-resume.my</title>
+    <meta name="pdfkit-page_size" content="A4"/>
+    <meta name="pdfkit-margin_top" content="0"/>
+    <meta name="pdfkit-margin_right" content="0"/>
+    <meta name="pdfkit-margin_bottom" content="0"/>
+    <meta name="pdfkit-margin_left" content="0"/>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -19,7 +24,30 @@ body {
   background-color: #fff;
   font-size: 14px;
 }
+@media print{
+  body{
+    width:auto;
+    margin:0;
+    padding:0;
+    border:none;
 
+  }
+  #wrapper{
+    width:auto;
+    margin:0;
+    padding:0;
+    border:none;
+  }
+  .body{
+    background-color: #fff;
+  }
+
+  #line-items{
+    page-break-before: always;
+  }
+
+
+}
 
 </style>
 <!-- CSS Layout -->
@@ -46,7 +74,7 @@ body {
             <!-- ******* -->
             <br><br>
             <% if @user.educations.present? %>
-            <div class="row">
+            <div class="row" id="line-items">
             <section>
               <div class="title">
               <span style="padding-left:9px"><span class="fa fa-graduation-cap"></span></span><span style="padding-left:10px">EDUCATIONS</span>
@@ -67,7 +95,7 @@ body {
             <%end%>
             <!-- ******* -->
             <% if @user.employment_histories.present? %>
-            <div class="row">
+            <div class="row" id="line-items">
             <section style="padding-top:15px">
               <div class="title">
               <span style="padding-left:9px"><i class="fa fa-briefcase"></i></span><span style="padding-left:10px">EXPERIENCES</span>
@@ -90,7 +118,7 @@ body {
               <%end%>
               <!-- ******* -->
               <% if @user.projects.present? %>
-              <div class="row">
+              <div class="row" id="line-items">
               <section style="padding-top:15px">
                 <div class="title">
                 <span style="padding-left:9px"><i class="fa fa-rocket"></i></span><span style="padding-left:10px">PROJECTS</span>
@@ -109,7 +137,7 @@ body {
               <%end%>
               <!-- ******* -->
               <% if @user.references.present? %>
-              <div class="row">
+              <div class="row" id="line-items">
               <section style="padding-top:15px">
                 <div class="title">
                 <span style="padding-left:9px"><i class="fa fa-phone"></i></span><span style="padding-left:10px">REFERENCES</span>

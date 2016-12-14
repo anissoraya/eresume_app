@@ -4,48 +4,128 @@
     <title>E-resume.my</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'print', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag 'resume1' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'resume1', media: 'all' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <style>
 <!-- CSS Layout -->
-body,html{
-  height: 100%;
-  background-color: #f2f2f2;
-}
 
 /* remove outer padding */
 
 </style>
 <!-- CSS Layout -->
   </head>
-  <body class="bg">
+  <body>
+    <div class="main">
+    <div class="row">
+      <div class="col-sm-12"><div class="name-header"><h1><%= @user.personal_detail.name %></h1></div></div>
+      <div class="col-sm-12 justify"><%= @user.summary.description %></div>
+    </div>
+    <div class="row align">
+      <!--left column-->
+        <div class="col-sm-3 left" style="padding-right:40px">
+          <div class="row personal_info">
+            <div class="name-header"><%= image_tag 'user-icon.png', style: 'width:30px;height:30px'%> Personal Details</div>
+            <div class="content" style="line-height:20px">
+              <strong>Phone</strong><br>
+              <%= @user.personal_detail.phone_no %><br>
+              <strong>Address</strong><br>
+              <%= @user.personal_detail.full_street_address %><br>
+              <strong>Email</strong><br>
+              <%= @user.email %><br>
+            </div>
+          </div>
+          <br>
+          <div class="row skill">
+            <div class="name-header"><%= image_tag 'puzzle-icon.png', style: 'width:30px;height:30px'%> Key Skills</div>
+            <div class="content">
+              <% @user.skills.order(rate: :desc).take(4).each do |skill| %>
+              <%= skill.title %>
+                <br> <% skill.rate.times.each do |r| %>
+                        <span><i class="fa fa-star"></i></span>
+                      <%end%>
+                <br>
+              <%end%>
+            </div>
+          </div>
+          <br>
+          <div class="row language">
+            <div class="name-header"><%= image_tag 'languages-icon.png', style: 'width:30px;height:30px'%> Languages</div>
+            <div class="content">
+              <% @user.languages.order(writing_rate: :desc).take(4).each do |lan| %>
+              <strong><%= lan.title %> - </strong>
+                  <%= lan.lan_rate %>
+                  <br>
+                <%end%>
+            </div>
+          </div>
+          <br>
+          <div class="row certificate">
+            <div class="name-header"><%= image_tag 'cert-icon.png', style: 'width:30px;height:30px'%> Certificates</div>
+            <div class="content">
+              <ul style="padding:0;margin-left:10px">
+              <% @user.certificates.take(4).each do |cert| %>
+                  <li><strong><%= cert.title %></strong></li>
+              <%end%>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!--right column-->
+        <div class="col-sm-9 right">
+            <div class="row experience">
+              <div class="name-header"><%= image_tag 'briefcase-icon.png', style: 'width:30px;height:30px'%> Experiences</div>
+              <div class="content">
+                <% @user.employment_histories.order(end_date: :desc).take(4).each do |work| %>
+                <div class="row">
+                  <div class="col-sm-2"><%= work.date_enter%> - <%= work.date_quit %></div>
+                  <div class="col-sm-10 justify">
+                    <strong><%= work.job_title %> at <%= work.company %></strong><br>
+                    <%= work.description %><br><br>
+                  </div>
+                </div>
+                <%end%>
+              </div>
+            </div>
+            <br><br>
+            <div class="row education">
+              <div class="name-header"><%= image_tag 'graduate-icon.png', style: 'width:30px;height:30px'%> Educations</div>
+              <div class="content">
+                <% @user.educations.order(end_date: :desc).take(4).each do |edu| %>
+                <div class="row">
+                  <div class="col-sm-2"><%= edu.date_enter%> - <%= edu.date_quit %><br> <strong><%= edu.status %></strong></div>
+                  <div class="col-sm-10 justify">
+                    <strong><%= edu.major %> at <%= edu.school %></strong><br>
+                    <%= edu.description %><br><br>
+                  </div>
+                </div>
+                <%end%>
+              </div>
+            </div>
+            <br><br>
+            <div class="row project">
+              <div class="name-header"><%= image_tag 'rocket-icon.png', style: 'width:30px;height:30px'%> Projects</div>
+              <div class="content">
+                <% @user.projects.order(project_date: :desc).take(4).each do |project| %>
+                <div class="row">
+                  <div class="col-sm-2"><%= project.pro_date %><br></div>
+                  <div class="col-sm-10 justify">
+                    <strong><%= project.title %> ( <%= project.company %> )</strong><br>
+                    <%= project.description %><br>
+                  </div>
+                </div>
+                <%end%>
+              </div>
+            </div>
+        </div>
+
+    </div>
+  </div>
+    <!--print-->
       <%= yield %>
-</body>
+  </body>
   </html>
   <script>
-  $(document).ready(function() {
-     $('.progress .progress-bar').css("width",
-               function() {
-                   return $(this).attr("aria-valuenow") + "%";
-               }
-       )
-   });
-    $(function() {
-    $('a[href*="#"]:not([href="#"])').click(function() {
-      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-        var target = $(this.hash);
-        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-        if (target.length) {
-          $('html, body').animate({
-            scrollTop: target.offset().top
-          }, 1000);
-          return false;
-        }
-      }
-    });
-  });
-
-
 
   </script>

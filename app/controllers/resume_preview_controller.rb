@@ -8,21 +8,18 @@ class ResumePreviewController < ApplicationController
   end
 
   def printView
+    #respond_to do |format|
+    #  format.html
+    #  format.pdf
+    # end
   end
 
   def preview_layout_3
     respond_to do |format|
       format.html
-      format.pdf do
-        render :pdf => "pdf_file.pdf",
-                :template => 'resume_preview/preview_cv.pdf.erb',
-                :layout => "resume_layout/#{@user.user_layout.layout.name}.html.erb",
-                margin:  {   top:              2,
-                            bottom:            2,
-                            left:              2,
-                            right:             2 }
-      end
+      format.pdf
     end
+
   end
 
   def preview_cv

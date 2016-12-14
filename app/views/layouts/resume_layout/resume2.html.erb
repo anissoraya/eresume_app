@@ -2,12 +2,17 @@
 <html>
   <head>
     <title>E-resume.my</title>
+    <meta name="pdfkit-page_size" content="A4"/>
+    <meta name="pdfkit-margin_top" content="0"/>
+    <meta name="pdfkit-margin_right" content="0"/>
+    <meta name="pdfkit-margin_bottom" content="0"/>
+    <meta name="pdfkit-margin_left" content="0"/>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag    'resume2', media: 'all' %>
-    <%= stylesheet_link_tag    'print', media: 'print' %>
+    <%= stylesheet_link_tag    'print', media: 'all' %>
   <style>
   html,body{
     margin:0;
@@ -25,6 +30,17 @@
   }
   body{
     -webkit-print-color-adjust: exact;
+  }
+  @media print{
+    .body{
+      background-color: #fff;
+    }
+    .container{
+      width:auto;
+      margin:0;
+      padding:0;
+      border:none;
+    }
   }
   </style>
 

@@ -8,6 +8,6 @@ Bundler.require(*Rails.groups)
 
 module EresumeApp
   class Application < Rails::Application
-
+    config.middleware.use PDFKit::Middleware, :print_media_type => true
   end
 end
