@@ -92,6 +92,13 @@
       </div>
       <!-- right column -->
       <div class="col-sm-8 right">
+        <% if @user.summary.present? %>
+        <section>
+          <div class="body justify">
+            <%= @user.summary.description %><br><br>
+          </div>
+        </section>
+        <% end %>
         <% if @user.employment_histories.present? %>
         <section>
           <div class="title-content"><%= image_tag 'work-blue-01.png', style: 'width:25px;height:25px'%><strong> EXPERIENCES</strong></div>
