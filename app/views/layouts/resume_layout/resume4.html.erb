@@ -24,30 +24,6 @@ body {
   background-color: #fff;
   font-size: 14px;
 }
-@media print{
-  body{
-    width:auto;
-    margin:0;
-    padding:0;
-    border:none;
-
-  }
-  #wrapper{
-    width:auto;
-    margin:0;
-    padding:0;
-    border:none;
-  }
-  .body{
-    background-color: #fff;
-  }
-
-  #line-items{
-    page-break-before: always;
-  }
-
-
-}
 
 </style>
 <!-- CSS Layout -->
@@ -77,7 +53,7 @@ body {
             <div class="row" id="line-items">
             <section>
               <div class="title">
-              <span style="padding-left:9px"><span class="fa fa-graduation-cap"></span></span><span style="padding-left:10px">EDUCATIONS</span>
+              <div style="padding-left:10px;font-size:12px">EDUCATIONS<legend></legend></div>
               </div>
               <div class="body" style="text-align:left">
                 <% @user.educations.order(end_date: :desc).take(3).each do |edu| %>
@@ -98,18 +74,15 @@ body {
             <div class="row" id="line-items">
             <section style="padding-top:15px">
               <div class="title">
-              <span style="padding-left:9px"><i class="fa fa-briefcase"></i></span><span style="padding-left:10px">EXPERIENCES</span>
+              <div style="padding-left:10px;font-size:12px">EXPERIENCES<legend></legend></div>
               </div>
               <div class="body">
-                <% @user.employment_histories.order(end_date: :desc).take(3).each do |work| %>
+                <% @user.employment_histories.order(start_date: :desc).take(3).each do |work| %>
                     <div class="col-sm-6" style="font-weight:bold;">
                         <%= work.job_title %>
                     </div>
-                    <div class="col-sm-6" style="text-align:right"><%= work.date_enter %> - <% if work.presently_emp? %>
-                     Present
-                    <%else%>
-                    <%= work.date_quit %>
-                    <%end%></div>
+                    <div class="col-sm-6" style="text-align:right"><%= work.date_enter %> -
+                    <%= work.date_quit %></div>
                     <div class="col-sm-12"><%= work.company %><br><%= work.description%></div>
                   <%end %>
                 </div>
@@ -121,7 +94,7 @@ body {
               <div class="row" id="line-items">
               <section style="padding-top:15px">
                 <div class="title">
-                <span style="padding-left:9px"><i class="fa fa-rocket"></i></span><span style="padding-left:10px">PROJECTS</span>
+                <div style="padding-left:10px;font-size:12px">PROJECTS<legend></legend></div>
                 </div>
                 <div class="body">
                   <% @user.projects.order(project_date: :desc).take(3).each do |project| %>
@@ -137,10 +110,10 @@ body {
               <%end%>
               <!-- ******* -->
               <% if @user.references.present? %>
-              <div class="row" id="line-items">
+              <div class="row line-break" id="line-items">
               <section style="padding-top:15px">
                 <div class="title">
-                <span style="padding-left:9px"><i class="fa fa-phone"></i></span><span style="padding-left:10px">REFERENCES</span>
+                <div style="padding-left:10px;font-size:12px">REFERENCES<legend></legend></div>
                 </div>
                 <div class="body">
                   <% @user.references.take(2).each do |ref| %>

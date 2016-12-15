@@ -22,6 +22,7 @@ p {
     height: 150px;
     width: 100%;
     background: #96f0f2;
+    padding-top: 10px;
 }
 
 #content {
@@ -83,6 +84,9 @@ padding-bottom: 10px;
 }
 
 @media print{
+  *{
+    font-size: 10px;
+  }
   #header {
       float: left;
       height: 100px;
@@ -120,5 +124,8 @@ padding-bottom: 10px;
   }
   .progress-bar-default{
   background-color: #96f0f2 !important;
+  }
+  .line-break{
+    page-break-before: always !important;
   }
 }
