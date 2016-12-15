@@ -8,7 +8,7 @@ class Skill < ApplicationRecord
     elsif rate == 3
       "Intermediate"
     else
-      "Beginner"
+      "Basic"
     end
 
   end

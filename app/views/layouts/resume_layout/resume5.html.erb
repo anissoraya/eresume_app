@@ -75,12 +75,19 @@
               <div><strong>SKILLS</strong></div>
               <div class="line-print">&nbsp;</div>
               <% @user.skills.order(rate: :desc).each do |skill| %>
+              <div class="row">
               <div class="col-xs-12"><strong><%= skill.title %></strong>
-                <br> <% skill.rate.times.each do |r| %>
-                        <span><i class="fa fa-star"></i></span>
+                <br> <% if skill.rate == 5  %>
+                      <%= image_tag '5-green-circle.png', style: 'width:60px;height:11px' %>
+                      <%elsif skill.rate == 3 %>
+                        <%= image_tag '3-green-circle', style: 'width:60px;height:11px' %>
+                        <%elsif skill.rate == 1 %>
+                        <%= image_tag '2-green-circle', style: 'width:60px;height:11px' %>
                       <%end%>
+                <br>
               </div>
               <br></br>
+              </div>
               <%end%>
             </div>
             <%end%>
@@ -92,8 +99,9 @@
               <div><strong>CERTIFICATES</strong></div>
               <div class="line-print">&nbsp;</div>
               <% @user.certificates.each do |cert| %>
+              <div class="row">
               <div class="col-xs-12"><strong><%= cert.title %></strong></div>
-
+              </div>
               <%end%>
 
             </div>
@@ -118,11 +126,19 @@
               <div><strong>LANGUAGES</strong></div>
               <div class="line-print">&nbsp;</div>
               <% @user.languages.order(writing_rate: :desc).each do |lan| %>
+              <div class="row">
               <div class="col-xs-12"><strong><%= lan.title %></strong>
-              <br> <% lan.writing_rate.times.each do |r| %>
-                      <span><i class="fa fa-star"></i></span>
-                    <%end%>
+                <br> <% if lan.writing_rate == 5  %>
+                      <%= image_tag '5-green-circle.png', style: 'width:60px;height:11px' %>
+                      <%elsif lan.writing_rate == 4 %>
+                        <%= image_tag '4-green-circle', style: 'width:60px;height:11px' %>
+                        <%elsif lan.writing_rate == 3 %>
+                          <%= image_tag '3-green-circle', style: 'width:60px;height:11px' %>
+                        <%elsif lan.writing_rate == 1 %>
+                        <%= image_tag '2-green-circle', style: 'width:60px;height:11px' %>
+                      <%end%> <%= lan.lan_rate %>
                 <br>
+              </div>
               </div>
               <%end%>
             </div>

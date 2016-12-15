@@ -1,0 +1,57 @@
+*{
+  color: #3b4656;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+.main{
+  margin-top:40px;
+  margin-left:30px;
+  margin-right: auto;
+  margin-bottom: auto;
+  width:90%;
+  min-height:10in;
+}
+.header-title{
+  font-size: 28px;
+  font-weight: bolder;
+}
+.header-content{
+  font-size: 14px;
+
+}
+.justify{
+  text-align: justify;
+}
+.left{
+  background-color: #dbdbdb;
+}
+.info-title{
+  font-weight: bold;
+  font-size: 12px;
+}
+.info-content{
+  font-size: 14px;
+}
+.main-content{
+  font-size: 13px;
+}
+@media print{
+  *{
+    color: #3b4656 !important;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  }
+  .left{
+    background-color: #dbdbdb !important;
+  }
+  .line-break{
+    page-break-after: always;
+  }
+  .header-content{
+    font-size: 12px;
+  }
+  .info-content{
+    font-size: 10px;
+  }
+  .main-content{
+    font-size: 10px;
+  }
+}

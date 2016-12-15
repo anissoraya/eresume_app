@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>E-resume.my</title>
+    <meta name="pdfkit-page_size" content="A4"/>
+    <meta name="pdfkit-margin_top" content="10"/>
+    <meta name="pdfkit-margin_right" content="0"/>
+    <meta name="pdfkit-margin_bottom" content="20"/>
+    <meta name="pdfkit-margin_left" content="5"/>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'resume6', media: 'all' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <style>
+  </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="row upper">
+        <div class="header-title"><%= @user.personal_detail.name %></div>
+        <div class="header-content justify">
+          <%= @user.summary.description %>
+        </div>
+      </div>
+      <br><br>
+      <div class="row bottom">
+      <!--left column-->
+      <div class="col-sm-3 left" style="padding-top:10px; padding-left:10px; padding-right:auto">
+            <div class="info-title" style="border-bottom:1px solid #969696">PERSONAL DETAILS</div>
+            <div class="info-content">
+                <strong>Address:</strong><br> <%= @user.personal_detail.full_street_address %><br><br>
+                <strong>Phone No:</strong><br> <%= @user.personal_detail.phone_no %><br><br>
+                <strong>Email:</strong><br> <%= @user.email %><br><br>
+            </div>
+            <div class="info-title" style="border-bottom:1px solid #969696">REFERENCES</div>
+            <div class="info-content">
+                <% @user.references.take(2).each do |ref| %>
+                <strong><%= ref.name %></strong><br>
+                <strong>Company:</strong><br> <%= ref.address %><br><br>
+                <strong>Phone No:</strong><br> <%= ref.phone %><br><br>
+                <strong>Email:</strong><br> <%= ref.email %><br><br>
+                <legend></legend>
+                <%end%>
+            </div>
+      </div>
+      <!--right column-->
+      <div class="col-sm-9 right">
+        <section>
+          <div class="content-title">
+            <span style="padding-left:5px"><%= image_tag 'graduate-icon.png', style: 'width:30px;height:30px'%></span>
+            <span style="font-weight:bolder;padding-left:5px">EDUCATIONS</span>
+          </div>
+          <div class="main-content" style="padding-left:42px">
+            <%@user.educations.order(end_date: :desc).each do |edu| %>
+                  <div class="row">
+                    <div class="col-sm-8">
+                      <strong><%= edu.major %></strong><br>
+                      <%= edu.school%>
+                      <div class="justify"><%= edu.description %></div>
+                      <br><br>
+                    </div>
+                    <div class="col-sm-4" style="text-align:right">
+                      <%= edu.date_enter %> - <%= edu.date_quit %>
+                    </div>
+                  </div>
+              <%end%>
+          </div>
+        </section>
+
+        <section>
+          <div class="content-title">
+            <span style="padding-left:5px"><%= image_tag 'briefcase-icon.png', style: 'width:30px;height:30px'%></span>
+            <span style="font-weight:bolder;padding-left:5px">WORKING EXPERIENCES</span>
+          </div>
+          <div class="main-content" style="padding-left:42px">
+            <%@user.employment_histories.order(start_date: :desc).each do |work| %>
+                  <div class="row">
+                    <div class="col-sm-8">
+                      <strong><%= work.job_title %></strong><br>
+                      <%= work.company %>
+                      <div class="justify"><%= work.description %></div>
+                      <br><br>
+                    </div>
+                    <div class="col-sm-4" style="text-align:right">
+                      <%= work.date_enter %> - <%= work.date_quit %>
+                    </div>
+                  </div>
+              <%end%>
+          </div>
+        </section>
+
+        <section>
+          <div class="content-title">
+            <span style="padding-left:5px"><%= image_tag 'rocket-icon.png', style: 'width:30px;height:30px'%></span>
+            <span style="font-weight:bolder;padding-left:5px">PROJECTS</span>
+          </div>
+          <div class="main-content" style="padding-left:42px">
+            <%@user.projects.order(project_date: :desc).each do |project| %>
+                  <div class="row">
+                    <div class="col-sm-8">
+                      <strong><%= project.title %></strong><br>
+                      <%= project.company %>
+                      <div class="justify"><%= project.description %></div>
+                      <br><br>
+                    </div>
+                    <div class="col-sm-4" style="text-align:right">
+                      <%= project.pro_date %>
+                    </div>
+                  </div>
+              <%end%>
+          </div>
+        </section>
+
+        <section>
+          <div class="content-title">
+            <span style="padding-left:5px"><%= image_tag 'puzzle-icon.png', style: 'width:30px;height:30px'%></span>
+            <span style="font-weight:bolder;padding-left:5px">SKILLS</span>
+          </div>
+          <div class="main-content" style="padding-left:42px">
+            <%@user.skills.order(rate: :desc).each do |skill| %>
+                  <div class="row">
+                    <div class="col-sm-8">
+                      <strong><%= skill.title %></strong>
+                      <br><br>
+                    </div>
+                    <div class="col-sm-4" style="text-align:right">
+                            <% if skill.rate == 5  %>
+                              <%= image_tag '5-circle-01.png', style: 'width:61px;height:18px' %><br>
+                            <%elsif skill.rate == 3 %>
+                                <%= image_tag '3-circle.png', style: 'width:60px;height:11px' %><br>
+                              <%elsif skill.rate == 1 %>
+                                <%= image_tag '2-circle.png', style: 'width:60px;height:11px' %><br>
+                            <%end%>
+                            <%= skill.skil_rate %>
+                            <br><br>
+                    </div>
+                  </div>
+              <%end%>
+          </div>
+        </section>
+
+        <section>
+          <div class="content-title">
+            <span style="padding-left:5px"><%= image_tag 'languages-icon.png', style: 'width:30px;height:30px'%></span>
+            <span style="font-weight:bolder;padding-left:5px">LANGUAGES</span>
+          </div>
+          <div class="main-content" style="padding-left:42px">
+            <%@user.languages.order(writing_rate: :desc).each do |language| %>
+                  <div class="row">
+                    <div class="col-sm-8">
+                      <strong><%= language.title %></strong>
+                      <br><br>
+                    </div>
+                    <div class="col-sm-4" style="text-align:right">
+                      <!--
+                            <% if language.writing_rate == 5  %>
+                              <%= image_tag '5-circle-01.png', style: 'width:65px;height:19px' %><br>
+                            <%elsif language.writing_rate == 4 %>
+                                <%= image_tag '4-circle-01.png', style: 'width:60px;height:11px' %><br>
+                              <%elsif language.writing_rate == 3 %>
+                                <%= image_tag '3-circle.png', style: 'width:60px;height:11px' %><br>
+                                <%elsif language.writing_rate == 1 %>
+                                  <%= image_tag '2-circle.png', style: 'width:60px;height:11px' %><br>
+                            <%end%>
+                          -->
+                            <%= language.lan_rate %>
+                            <br><br>
+                    </div>
+                  </div>
+              <%end%>
+          </div>
+        </section>
+      </div>
+
+      </div>
+    </div>
+  </body>
+  </html>

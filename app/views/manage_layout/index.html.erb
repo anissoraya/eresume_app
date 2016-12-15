@@ -13,14 +13,14 @@
 
 
 </style>
-<div class="container"style="min-height: 500px;text-align:center">
-  <div class="panel panel-default">
-    <div class="panel-heading"><strong>CHOOSE LAYOUT</strong></div>
-    <div class="panel-body">
+
 <% if current_user.user_layout.present? %>
 
   <%= form_for(current_user.user_layout) do |f| %>
-
+  <div class="container"style="min-height: 500px;text-align:center">
+    <div class="panel panel-default">
+      <div class="panel-heading"><strong>CHOOSE LAYOUT</strong><br><br><%= f.submit 'Save Layout', class: 'btn btn-success', style:'width:150px' %></div>
+      <div class="panel-body">
   <div class="radio-toolbar">
   <%= f.collection_radio_buttons(:layout_id, Layout.all, :id, :layout_image)  do |b| %>
     <div class="col-sm-3"><%= b.label { b.radio_button + image_tag(b.object.layout_image(:medium)) } %></div>
@@ -29,13 +29,19 @@
     <div class="row">
     <div class="col-sm-12">
       <br>
-      <center><%= f.submit 'Save', class: 'btn btn-success', style:'width:150px' %></center>
+
     </div>
   </div>
+</div></div>
+</div>
 <%end%>
   <%else%>
 
     <%= form_for(current_user.build_user_layout) do |f| %>
+    <div class="container"style="min-height: 500px;text-align:center">
+      <div class="panel panel-default">
+        <div class="panel-heading"><strong>CHOOSE LAYOUT</strong><br><br><%= f.submit 'Save', class: 'btn btn-success', style:'width:150px' %></div>
+        <div class="panel-body">
     <div class="radio-toolbar">
     <%= f.collection_radio_buttons(:layout_id, Layout.all, :id, :layout_image)  do |b| %>
       <div class="col-sm-3"><%= b.label { b.radio_button + image_tag(b.object.layout_image(:medium)) } %></div>
@@ -47,11 +53,12 @@
         <center><%= f.submit 'Save', class: 'btn btn-success', style:'width:150px' %></center>
       </div>
     </div>
+  </div></div>
+</div>
     <%end%>
 
     <%end%>
-    </div></div>
-</div>
+
 <section><br></section>
 <!--
 <div class="container"style="min-height: 500px;margin-left:155px">

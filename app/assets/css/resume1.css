@@ -1,12 +1,14 @@
 *{
   color: #282828;
-  font-size: 12px;
+  font-size: 14px;
 }
 .main{
   margin-top:40px;
   margin-left:30px;
-  margin-right: 40px;
-  min-height:11in;
+  margin-right: auto;
+  margin-bottom: auto;
+  width:90%;
+  min-height:10in;
 }
 .name-header{
   font-weight: bolder;
@@ -29,5 +31,6 @@
 @media print{
   *{
   color: #282828 !important;
+  font-size: 11px;
   }
 }
