@@ -1,0 +1,67 @@
+.none{
+  background-color: #2c4444;
+  height:100px;
+}
+.header{
+  padding-top: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.name{
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  font-size: 26px;
+}
+.summary{
+  text-align: justify;
+}
+.left{
+  padding-right:20px;
+  padding-left: 10%;
+  text-align: right;
+
+}
+.image{
+  width:40px;
+  height:40px
+}
+.sec-title{
+  font-size:16px;
+  padding-left:10px
+}
+.sec-content{
+  border-left:1px solid #bababa;
+  margin-left:16px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+}
+.sec-desc{
+  text-align: justify;
+}
+.sec-date{
+  text-align: right;
+}
+@media print{
+  .none{
+    background-color: #2c4444 !important;
+  }
+  .summary{
+    font-size: 11px;
+  }
+  .left{
+    font-size: 11px;
+  }
+  .image{
+    width:30px;
+    height:30px;
+  }
+  .sec-title{
+    font-size:14px;
+  }
+  .sec-content{
+    margin-left: 11px;
+  }
+  .sec-content, .sec-desc, .sec-date{
+    font-size: 11px;
+  }
+}

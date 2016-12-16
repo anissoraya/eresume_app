@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>E-resume.my</title>
+    <meta name="pdfkit-page_size" content="A4"/>
+    <meta name="pdfkit-margin_top" content="0"/>
+    <meta name="pdfkit-margin_right" content="0"/>
+    <meta name="pdfkit-margin_bottom" content="20"/>
+    <meta name="pdfkit-margin_left" content="0"/>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'resume8', media: 'all' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <style>
+  </style>
+  </head>
+  <body>
+      <div class="main">
+        <div class="row">
+            <div class="col-sm-4 left">
+              <%if @user.personal_detail.present? %>
+              <section>
+                <div class="purple-title">Personal Info</div>
+                <div class="left-content">
+                  <div class="row">
+                    <div class="col-sm-1"><%= image_tag 'map-purple-icon.png', style:'width:18px;height:18px'%></div><div class="col-sm-10 justify"><%= @user.personal_detail.full_street_address %><br><br></div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-1"><%= image_tag 'phone-purple-icon.png', style:'width:18px;height:18px'%></div><div class="col-sm-10 justify"><%= @user.personal_detail.phone_no %><br><br></div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-1"><%= image_tag 'email-purple-icon.png', style:'width:18px;height:18px'%></div><div class="col-sm-10 justify"><%= @user.email %><br><br></div>
+                  </div>
+                </div>
+              </section>
+              <%end%>
+              <%if @user.skills.present? %>
+              <section>
+                <div class="purple-title"><br>SKILLS</div>
+                <div class="left-content">
+                    <% @user.skills.order(rate: :desc).take(4).each do |skill| %>
+                    <div class="row">
+                      <div class="col-sm-6"><%= skill.title %></div>
+                      <div class="col-sm-6">
+                        <% if skill.rate == 5 %>
+                            <%= image_tag '5-purple-rate.png', class:'image-rate'%>
+                          <%elsif skill.rate == 3 %>
+                          <%= image_tag '3-purple-rate.png', class:'image-rate'%>
+                            <%elsif skill.rate == 1 %>
+                            <%= image_tag '2-purple-rate.png', class:'image-rate'%>
+                        <%end%><br><font class="size"><%= skill.skil_rate%></font><br><br>
+                        </div>
+                    </div>
+                    <%end%>
+
+
+                </div>
+              </section>
+              <%end%>
+              <%if @user.languages.present? %>
+              <section>
+                <div class="purple-title">Languages</div>
+                <div class="left-content">
+                    <% @user.languages.order(writing_rate: :desc).take(4).each do |lan| %>
+                    <div class="row">
+                      <div class="col-sm-6"><%= lan.title %></div>
+                      <div class="col-sm-6">
+                        <% if lan.writing_rate == 5 %>
+                            <%= image_tag '5-purple-rate.png', class:'image-rate'%>
+                          <%elsif lan.writing_rate == 3 %>
+                          <%= image_tag '3-purple-rate.png', class:'image-rate'%>
+                          <%elsif lan.writing_rate == 4 %>
+                          <%= image_tag '4-purple-rate.png', class:'image-rate'%>
+                            <%elsif lan.writing_rate == 1 %>
+                            <%= image_tag '2-purple-rate.png', class:'image-rate'%>
+                        <%end%>
+                        <br><font class="size"><%= lan.lan_rate%></font><br><br>
+                        </div>
+                    </div>
+                    <%end%>
+                </div>
+              </section>
+              <%end%>
+              <%if @user.certificates.present? %>
+              <section>
+                <div class="purple-title">Certificates</div>
+                <div class="left-content">
+                  <div class="row">
+                    <% @user.certificates.take(4).each do |cert| %>
+                      <div class="col-sm-12"><%= cert.title %><br><br></div>
+                    <%end%>
+                  </div>
+
+                </div>
+              </section>
+              <%end%>
+              <%if @user.references.present? %>
+              <section>
+                <div class="purple-title">References</div>
+                <div class="left-content">
+                  <div class="row">
+                    <% @user.references.take(2).each do |ref| %>
+                      <div class="col-sm-12">
+                        <strong><%= ref.name %></strong><br>
+                        <%= ref.address %><br>
+                        <%= ref.phone %><br>
+                        <%= ref.email %><br><br>
+                      </div>
+                    <%end%>
+                  </div>
+
+                </div>
+              </section>
+              <%end%>
+            </div>
+            <div class="col-sm-8 right">
+              <%if @user.personal_detail.present? %>
+              <div class="row">
+                <div class="col-sm-12" style="text-align:right">
+                  <span class="title-name"><%= @user.personal_detail.name %><br></span>
+                </div>
+              </div>
+              <%end%>
+              <%if @user.summary.present? %>
+                <div class="row">
+                  <div class="col-sm-12 justify">
+                    <%= @user.summary.description %><br><br>
+                  </div>
+                </div>
+                <%end%>
+                <%if @user.educations.present? %>
+                <div class="row content">
+                  <div class="col-sm-12">
+                    <div class="sec-title">Educations<br><br></div>
+                    <div class="sec-content">
+                      <% @user.educations.each do |edu| %>
+                        <div class="row">
+                          <div class="col-sm-8 justify">
+                            <strong><%= edu.major %></strong><br>
+                            <%= edu.school %><br>
+                            <%= edu.description %><br><br>
+                          </div>
+                          <div class="col-sm-4 right-text"><%= edu.date_enter %> - <%= edu.date_quit %></div>
+                        </div>
+                      <%end%>
+                    </div>
+                  </div>
+                </div>
+                <%end%>
+                <%if @user.employment_histories.present? %>
+                <div class="row content">
+                  <div class="col-sm-12">
+                    <div class="sec-title">Experiences<br><br></div>
+                    <div class="sec-content">
+                      <% @user.employment_histories.each do |work| %>
+                        <div class="row">
+                          <div class="col-sm-8 justify">
+                            <strong><%= work.job_title %></strong><br>
+                            <%= work.company %><br>
+                            <%= work.description %><br><br>
+                          </div>
+                          <div class="col-sm-4 right-text"><%= work.date_enter %> - <%= work.date_quit %></div>
+                        </div>
+                      <%end%>
+                    </div>
+                  </div>
+                </div>
+                <%end%>
+                <%if @user.projects.present? %>
+                <div class="row content">
+                  <div class="col-sm-12">
+                    <div class="sec-title">Projects<br><br></div>
+                    <div class="sec-content">
+                      <% @user.projects.each do |pro| %>
+                        <div class="row">
+                          <div class="col-sm-8 justify">
+                            <strong><%= pro.title %></strong><br>
+                            <%= pro.company %><br>
+                            <%= pro.description %><br><br>
+                          </div>
+                          <div class="col-sm-4 right-text"><%= pro.pro_date %></div>
+                        </div>
+                      <%end%>
+                    </div>
+                  </div>
+                </div>
+                <%end%>
+            </div>
+
+      </div>
+    </div>
+  </body>
+  </html>

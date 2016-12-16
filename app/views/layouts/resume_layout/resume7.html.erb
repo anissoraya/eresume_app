@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>E-resume.my</title>
+    <meta name="pdfkit-page_size" content="A4"/>
+    <meta name="pdfkit-margin_top" content="0"/>
+    <meta name="pdfkit-margin_right" content="0"/>
+    <meta name="pdfkit-margin_bottom" content="20"/>
+    <meta name="pdfkit-margin_left" content="0"/>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'resume7', media: 'all' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <style>
+  </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="row">
+        <div class="col-sm-6 none"></div>
+      </div>
+      <div class="row header">
+        <% if @user.personal_detail.present? %><div class="col-sm-6 name"> <strong><%= @user.personal_detail.name%></strong></div><%end%>
+        <% if @user.summary.present? %><div class="col-sm-6 summary"> <%= @user.summary.description %></div><%end%>
+      </div>
+      <hr/>
+      <div class="row content">
+        <div class="col-sm-4 left">
+          <% if @user.personal_detail.present? %>
+          <section>
+          <strong>Address</strong> <br><%= @user.personal_detail.full_street_address %><br><br>
+          <strong>Phone</strong> <br><%= @user.personal_detail.phone_no %><br><br>
+          <strong>Email</strong> <br><%= @user.email %><br><br>
+          </section>
+          <%end%>
+            <% if @user.languages.present? %>
+          <section>
+            <hr>
+            <strong>LANGUAGES</strong><br>
+            <% @user.languages.order(writing_rate: :desc).each do |lan| %>
+            <div class="row"><div class="col-sm-6" style="text-align:left"><%= lan.title %></div><div class="col-sm-6"><%= lan.lan_rate %><br><br></div></div>
+
+            <%end%>
+
+          </section>
+          <%end%>
+          <% if @user.certificates.present? %>
+          <section>
+            <hr>
+            <strong>CERTIFICATES</strong><br>
+            <% @user.certificates.take(4).each do |cert| %>
+            <%= cert.title %><br><br>
+
+            <%end%>
+
+          </section>
+          <%end%>
+
+          <% if @user.references.present? %>
+          <section>
+            <hr>
+            <strong>REFERENCES</strong><br>
+            <% @user.references.take(2).each do |ref| %>
+            <strong><%= ref.name %></strong><br>
+            <%= ref.address %><br>
+            <%= ref.phone %><br>
+            <%= ref.email %><br><br>
+
+            <%end%>
+
+          </section>
+          <%end%>
+        </div>
+        <div class="col-sm-8 right">
+          <% if @user.educations.present? %>
+          <section>
+            <span><%= image_tag 'arrow.png', class:'image' %></span><span class="sec-title"><strong>EDUCATIONS</strong></span>
+            <div class="sec-content">
+              <% @user.educations.order(end_date: :desc).each do |edu| %>
+                <div class="row">
+                  <div class="col-sm-7 sec-desc">
+                    <strong><%= edu.major%></strong><br>
+                    <%= edu.school %><br>
+                    <%= edu.description %><br><br>
+                  </div>
+                  <div class="col-sm-5 sec-date"><%= edu.date_enter %> - <%= edu.date_quit %></div>
+                </div>
+                <%end%>
+            </div>
+          </section>
+          <%end%>
+          <% if @user.employment_histories.present? %>
+          <section>
+            <span><%= image_tag 'arrow.png', class:'image' %></span><span class="sec-title"><strong>WORKING EXPERIENCES</strong></span>
+            <div class="sec-content">
+              <% @user.employment_histories.order(end_date: :desc).each do |work| %>
+                <div class="row">
+                  <div class="col-sm-7 sec-desc">
+                    <strong><%= work.job_title%></strong><br>
+                    <%= work.company %><br>
+                    <%= work.description %><br><br>
+                  </div>
+                  <div class="col-sm-5 sec-date"><%= work.date_enter %> - <%= work.date_quit %></div>
+                </div>
+                <%end%>
+            </div>
+          </section>
+          <%end%>
+          <% if @user.projects.present? %>
+          <section>
+            <span><%= image_tag 'arrow.png', class:'image' %></span><span class="sec-title"><strong>PROJECTS</strong></span>
+            <div class="sec-content">
+              <% @user.projects.order(project_date: :desc).each do |pro| %>
+                <div class="row">
+                  <div class="col-sm-7 sec-desc">
+                    <strong><%= pro.title%></strong><br>
+                    <%= pro.description %><br><br>
+                  </div>
+                  <div class="col-sm-5 sec-date"><%= pro.pro_date %></div>
+                </div>
+                <%end%>
+            </div>
+          </section>
+          <%end%>
+          <% if @user.skills.present? %>
+          <section>
+            <span><%= image_tag 'arrow.png', class:'image' %></span><span class="sec-title"><strong>SKILLS</strong></span>
+            <div class="sec-content">
+              <% @user.skills.order(rate: :desc).each do |skill| %>
+                <div class="row">
+                  <div class="col-sm-7 sec-desc">
+                    <strong><%= skill.title%></strong><br><br>
+                  </div>
+                  <div class="col-sm-5 sec-date">
+                    <% if skill.rate == 5 %>
+                      <%= image_tag '5-square-rate.png', style: 'width:70px;height:14px' %>
+                    <%elsif skill.rate == 3 %>
+                      <%= image_tag '3-square-rate.png', style: 'width:70px;height:14px' %>
+                    <%elsif skill.rate == 1 %>
+                      <%= image_tag '2-square-rate.png', style: 'width:70px;height:14px' %>
+                    <%end%>
+                  </div>
+                </div>
+                <%end%>
+            </div>
+          </section>
+          <%end%>
+        </div>
+      </div>
+    </div>
+  </body>
+  </html>

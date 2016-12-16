@@ -1,0 +1,74 @@
+*{
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  color: #636363 !important;
+}
+.left{
+  padding-top:30px;
+  padding-left: 30px;
+  padding-right: 15px;
+}
+.purple-title{
+  color: #514366 !important;
+  font-size: 16px;
+  font-family: Impact, Charcoal, sans-serif;
+}
+.left-content{
+  padding-top: 20px;
+}
+.justify{
+  text-align: justify;
+}
+.image-rate{
+  width:90px;
+  height:15px
+}
+.sec-title{
+  color: #514366 !important;
+  font-family: Impact, Charcoal, sans-serif;
+  font-size: 16px;
+}
+
+.size{
+  font-size: 11px;
+}
+.right{
+  padding-top:30px;
+  padding-right: 20px;
+}
+.title-name{
+  font-size: 28px;
+  font-weight: bolder;
+  font-family: Impact, Charcoal, sans-serif;
+  color: #514366 !important;
+}
+.right-text{
+  text-align: right;
+}
+.content{
+  padding-right: 30px;
+}
+
+@media print{
+  *{
+    font-size: 11px;
+    color: #636363 !important;
+  }
+  .purple-title{
+    color: #514366 !important;
+    font-size: 16px;
+    font-family: Impact, Charcoal, sans-serif;
+  }
+  .image-rate{
+    width:80px;height:9px
+  }
+  .size{
+    font-size: 9px;
+  }
+  .sec-title{
+    color: #514366 !important;
+    font-family: Impact, Charcoal, sans-serif;
+  }
+  .title-name{
+    color: #514366 !important;
+  }
+}

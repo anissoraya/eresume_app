@@ -7,9 +7,9 @@ class Language < ApplicationRecord
     elsif writing_rate == 4
       "Fluent"
     elsif writing_rate == 3
-      "Conservative"
+      "Conversational"
     else
-      "Beginner"
+      "Basic"
     end
   end
 end
