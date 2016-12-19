@@ -188,8 +188,24 @@
                   </div>
                 </div>
                 <%end%>
+                <%if @user.video_galleries.present? %>
+                <div class="row content dont-show">
+                  <div class="col-sm-12">
+                    <div class="sec-title">Videos<br><br></div>
+                    <div class="sec-content">
+                      <% @user.video_galleries.each do |video| %>
+                        <div class="row">
+                          <div class="col-sm-8 justify">
+                            <a href="http://www.youtube.com/watch?v=<%= video.link %>" target="_blank"><%= video.name %></a>
+                            <br><br>
+                          </div>
+                        </div>
+                      <%end%>
+                    </div>
+                  </div>
+                </div>
+                <%end%>
             </div>
-
       </div>
     </div>
   </body>

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  match '/', to: 'home#index', constraints: { subdomain: 'www' }, via: [:get]
+  match '/', to: 'resume_preview#preview_layout_1', constraints: { subdomain: /.+/ }, via: [:get]
+
   devise_for :admins, controllers: {registrations:'admins/registrations', sessions: 'admins/sessions'}
   resources :certificates
   resources :video_galleries
@@ -30,6 +33,6 @@ Rails.application.routes.draw do
   devise_for :users
   root 'home#index'
 
-  match '', to: 'resume_preview#preview_layout_3', via: :get, constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www'}
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+
 end

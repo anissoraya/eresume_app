@@ -18,6 +18,16 @@ class ApplicationController < ActionController::Base
     end
 
   end
+  def get_resume
+
+    users = User.where(subdomain: request.subdomain)
+
+    if users.count > 0
+      @user = users.first
+    #elsif request.subdomain != 'www'
+      #redirect_to root_url(subdomain: 'www')
+    end
+  end
 
   protected
   def configure_permitted_parameters
@@ -25,4 +35,6 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
+
+
 end

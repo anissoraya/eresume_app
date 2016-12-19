@@ -71,4 +71,7 @@
   .title-name{
     color: #514366 !important;
   }
+  .dont-show{
+    display: none;
+  }
 }

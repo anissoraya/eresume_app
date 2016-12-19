@@ -1,10 +1,13 @@
 class ResumePreviewController < ApplicationController
   layout 'default', only: [:preview_layout_1]
-  layout :set_layout, only: [:printView, :preview_layout_3]
-  before_action :user_data
+  layout :set_layout, only: [:printView, :preview_layout_3, :preview_layout_1]
+  before_action :get_resume, only: [:preview_layout_1]
+  before_action :user_data, only:[:printView, :preview_layout_3]
   before_action :check_layout, only: [:printView,:preview_layout_3]
 
   def preview_layout_1
+    #@user = User.find_by_subdomain(request.subdomain)
+    head(:not_found) if @user.nil?
   end
 
   def printView
