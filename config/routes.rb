@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   resources :personal_details
   get 'profile/index'
 
-  devise_for :users
+  devise_for :users, controllers: {registrations: 'registrations'}
   root 'home#index'
 
 

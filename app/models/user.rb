@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable,  request_keys: [:subdomain],
+         :recoverable, :rememberable, :trackable, :validatable,  #request_keys: [:subdomain],
          :authentication_keys => [:login]
          attr_accessor :login
 
@@ -16,9 +16,9 @@ class User < ApplicationRecord
       if User.where(email: username).exists?
         errors.add(:username, :invalid)
       end
-      if User.where(subdomain: subdomain).exists?
-        errors.add(:subdomain, :invalid)
-      end
+      #if User.where(subdomain: subdomain).exists?
+        #errors.add(:subdomain, :invalid)
+      #end
     end
 
     def login=(login)
