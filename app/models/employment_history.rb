@@ -17,4 +17,8 @@ class EmploymentHistory < ApplicationRecord
       "Present"
     end
   end
+
+  def date_format_enter
+    start_date.strftime('%Y-%m-%d')
+  end
 end

@@ -36,16 +36,18 @@
     <%= f.label :project_date, class:'col-sm-2 control-label' %>
     <div class="col-sm-6">
       <div class='input-group date' id='datetimepicker7'>
-      <%= f.text_field :project_date, class: "form-control", required: true %>
+      <%= f.date_field :project_date, class: "form-control", required: true %>
       <span class="input-group-addon">
           <span class="glyphicon glyphicon-calendar"></span>
       </span></div>
       <script type="text/javascript">
+      /*
       $(function(){
         $('#datetimepicker7').datetimepicker({
-            format: 'YYYY-MM-DD'
+            format: 'DD/MM/YYYY',
+            defaultDate: "<%= project.project_date %>"
         });
-      });
+      });*/
       </script>
       <br>
     </div>

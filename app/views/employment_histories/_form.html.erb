@@ -59,7 +59,7 @@
     <%= f.label :start_date, class:'col-sm-2 control-label' %>
     <div class="col-sm-4">
         <div class='input-group date' id='datetimepicker3'>
-          <%= f.text_field :start_date, class: "form-control", required: true%>
+          <%= f.date_field :start_date, class: "form-control", required: true%>
           <span class="input-group-addon">
             <span class="glyphicon glyphicon-calendar"></span>
           </span>
@@ -72,7 +72,7 @@
     <%= f.label :end_date, class:'col-sm-2 control-label' %>
     <div class="col-sm-4">
       <div class='input-group date' id='datetimepicker4'>
-        <%= f.text_field :end_date, class: "form-control",  id:'date-field1' %>
+        <%= f.date_field :end_date, class: "form-control",  id:'date-field1' %>
         <span class="input-group-addon">
           <span class="glyphicon glyphicon-calendar"></span>
         </span>
@@ -88,74 +88,74 @@
       </div>
     </div>
   </div>
-<% end %>
-
-<script type='text/javascript'>
-
-
-$(function () {
-        $('#datetimepicker3').datetimepicker({
-            format: 'YYYY-MM-DD'
-        });
-        $('#datetimepicker4').datetimepicker({
-            useCurrent: false,
-            format: 'YYYY-MM-DD' //Important! See issue #1075
-
-        });
-        $("#datetimepicker3").on("dp.change", function (e) {
-            $('#datetimepicker4').data("DateTimePicker").minDate(e.date);
-        });
-        $("#datetimepicker4").on("dp.change", function (e) {
-            $('#datetimepicker3').data("DateTimePicker").maxDate(e.date);
-        });
-
-});
-
-$(function (){
-  enable_cb();
-  $("#present").click(enable_cb);
-});
-function enable_cb() {
-    $("#date-field1").prop("disabled", this.checked);
-}
-
+  <script type='text/javascript'>
 /*
-$( document ).ready(function () {
-  $( "#new_employment_history" ).validate( {
-    rules: {
-      job_title: {required: true},
-      company: {required: true},
-      location: {required: true},
-      start_date: {required: true}
+  $(document).ready(function () {
+          $('#datetimepicker3').datetimepicker({
+              format: 'YYYY-MM-DD',
+              defaultDate: "<%= employment_history.start_date %>"
+          });
+          $('#datetimepicker4').datetimepicker({
+              //useCurrent: false,
+              //format: 'YYYY-MM-DD' //Important! See issue #1075
+              //defaultDate: "<%= employment_history.end_date %>"
 
+          });
+        //  $("#datetimepicker3").on("dp.change", function (e) {
+        //      $('#datetimepicker4').data("DateTimePicker").minDate(e.date);
+        //  });
+        //  $("#datetimepicker4").on("dp.change", function (e) {
+        //      $('#datetimepicker3').data("DateTimePicker").maxDate(e.date);
+        //  });
 
-    },
-    messages: {
-      job_title: "Job title can't be blank",
-      company: "Company can't be blank",
-      location: "Location can't be blank",
-      start_date: "Date can't be blank"
-
-    },
-    errorElement: "em",
-    errorPlacement: function ( error, element ) {
-      // Add the `help-block` class to the error element
-      error.addClass( "help-block" );
-
-      if ( element.prop( "type" ) === "checkbox" ) {
-        error.insertAfter( element.parent( "label" ) );
-      } else {
-        error.insertAfter( element );
-      }
-
-    },
-    highlight: function ( element, errorClass, validClass ) {
-      $( element ).parents( ".col-sm-10, .col-sm-4" ).addClass( "has-error" ).removeClass( "has-success" );
-    },
-    unhighlight: function (element, errorClass, validClass) {
-      $( element ).parents( ".col-sm-10, .col-sm-4" ).addClass( "has-success" ).removeClass( "has-error" );
-    }
   });
-});
+
+  $(document).ready(function (){
+    enable_cb();
+    $("#present").click(enable_cb);
+  });
+  function enable_cb() {
+      $("#date-field1").prop("disabled", this.checked);
+  }
 */
-</script>
+  /*
+  $( document ).ready(function () {
+    $( "#new_employment_history" ).validate( {
+      rules: {
+        job_title: {required: true},
+        company: {required: true},
+        location: {required: true},
+        start_date: {required: true}
+
+
+      },
+      messages: {
+        job_title: "Job title can't be blank",
+        company: "Company can't be blank",
+        location: "Location can't be blank",
+        start_date: "Date can't be blank"
+
+      },
+      errorElement: "em",
+      errorPlacement: function ( error, element ) {
+        // Add the `help-block` class to the error element
+        error.addClass( "help-block" );
+
+        if ( element.prop( "type" ) === "checkbox" ) {
+          error.insertAfter( element.parent( "label" ) );
+        } else {
+          error.insertAfter( element );
+        }
+
+      },
+      highlight: function ( element, errorClass, validClass ) {
+        $( element ).parents( ".col-sm-10, .col-sm-4" ).addClass( "has-error" ).removeClass( "has-success" );
+      },
+      unhighlight: function (element, errorClass, validClass) {
+        $( element ).parents( ".col-sm-10, .col-sm-4" ).addClass( "has-success" ).removeClass( "has-error" );
+      }
+    });
+  });
+  */
+  </script>
+<% end %>
