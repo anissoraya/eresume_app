@@ -38,6 +38,7 @@
 <div class="col-sm-4"><button type="button" class="btn btn-header" data-toggle="modal" data-target="#myModal"><span style="padding-right:10px"><i class="fa fa-search"></i></span>Preview</button></div>
 <div class="col-sm-4" style="text-align:center"><%= link_to resume_preview_printView_path(:format => "pdf"), class: 'btn btn-header', target:'_blank', style: 'color:white' do %><span style="padding-right:10px"><i class="fa fa-print"></i></span>Download PDF<%end%></div>
 <div class="col-sm-4" style="text-align:right"><a href="<%= manage_layout_path %>" class="btn btn-header" style="color:white"><span style="padding-right:10px"><i class="fa fa-pencil-square-o"></i></span>Choose Layout</a></div>
+
 <br><br>
   <%= render 'personal_detail_panel' %>
 <!---------------------------------->

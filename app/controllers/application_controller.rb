@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     dashboard_index_path
   end
-  
+
   private
   def determine_layout
     if user_signed_in?
@@ -23,8 +23,8 @@ class ApplicationController < ActionController::Base
 
     if users.count > 0
       @user = users.first
-    #elsif request.subdomain != 'www'
-      #redirect_to root_url(subdomain: 'www')
+    elsif request.subdomain != 'www'
+      redirect_to root_url(subdomain: 'www')
     end
   end
 

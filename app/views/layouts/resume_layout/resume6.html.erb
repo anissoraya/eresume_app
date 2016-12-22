@@ -36,8 +36,8 @@
             <div class="info-title" style="border-bottom:1px solid #969696">REFERENCES</div>
             <div class="info-content">
                 <% @user.references.take(2).each do |ref| %>
-                <strong><%= ref.name %></strong><br>
-                <strong>Company:</strong><br> <%= ref.address %><br><br>
+                <strong><%= ref.name %></strong> (<%= ref.relationship %>)<br><br>
+                <strong>Company:</strong><br> <%= ref.company%>, <%= ref.address %><br><br>
                 <strong>Phone No:</strong><br> <%= ref.phone %><br><br>
                 <strong>Email:</strong><br> <%= ref.email %><br><br>
                 <legend></legend>
